@@ -1,0 +1,11 @@
+{
+	"nodes":[
+		{"id":"e0b5a4e1e80f981e","type":"file","file":"Playground/fabrun A/fabrun A.md","x":-880,"y":-2200,"width":400,"height":400},
+		{"id":"7d818d636c969721","x":-880,"y":-1720,"width":400,"height":400,"type":"file","file":"Playground/fabrun A/A-M1.md"},
+		{"id":"1f034f8f39d2fac7","x":-880,"y":-1240,"width":400,"height":400,"type":"file","file":"Playground/fabrun A/A-M2.md"},
+		{"id":"03df36dec649706a","type":"file","file":"Playground/Tools/KJL/KJL logs.md","x":-240,"y":-2200,"width":400,"height":400},
+		{"id":"c963f24b2576152e","x":240,"y":-2200,"width":400,"height":400,"type":"file","file":"Playground/Tools/Spin coat/Spin coat logs.md"},
+		{"id":"4ed694024e601c04","type":"file","file":"Playground/Tools/beamwrite/Beamwrite logs.md","x":720,"y":-2200,"width":400,"height":400}
+	],
+	"edges":[]
+}
