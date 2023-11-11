@@ -6,4 +6,6 @@
 | Pieter Abbeel       | #academia       | https://people.eecs.berkeley.edu/~pabbeel/ |                                 |
 | Yuke Zhu            | #academia       | https://www.cs.utexas.edu/~yukez/          |                                 |
 | [[UT Austin]]       | #academia       |                                            |                                 |
-| [[MIT]]                    |                 |                                            |                                 |
+| [[MIT]]             |                 |                                            |                                 |
+| [[Google Deepmind]] |                 |                                            |                                 |
+| [[DLR Institute of Robotics and Mechatronics]]                    |                 |                https://www.dlr.de/rm/en/desktopdefault.aspx/tabid-11370/                            |                                 |
