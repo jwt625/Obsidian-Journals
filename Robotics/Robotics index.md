@@ -15,3 +15,7 @@ https://docs.google.com/document/d/1QIEI6IdHOcW4N1cRyucb33io4LriNYafIMs1sjLfTQU/
 
 # Projects
 https://github.com/AlexanderKoch-Koch/low_cost_robot
+
+
+# Blogs
+https://www.alex-hattori.com/
