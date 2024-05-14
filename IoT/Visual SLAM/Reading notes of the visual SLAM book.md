@@ -35,4 +35,7 @@ Classification
 - Gaussian/non-Gaussian: noise property
 
 Linear Gaussian (LG system) is the simplest, optimal estimation given by Kalman Filter (KF).
+Nonlinear non-Gaussian: extended Kalman Filter (EKF) and nonlinear optimization.
+
+Mainstream today (2016): graph optimization.
 
