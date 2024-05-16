@@ -39,3 +39,31 @@ Nonlinear non-Gaussian: extended Kalman Filter (EKF) and nonlinear optimization.
 
 Mainstream today (2016): graph optimization.
 
+# Chapter 2
+
+Skew-symmetric conversion:
+
+![[Pasted image 20240515232304.png]]
+
+
+Rodrigue's formula
+$$ \textbf R = \cos\theta \textbf I + (1-\cos\theta) \textbf n \textbf n^T + \sin \theta \textbf n ^{\bigwedge} $$
+from which we could derive  $\theta =\arccos((\text{tr}\textbf R-1)/2)$.
+
+
+
+## Lie Algebra
+
+Treat rotation matrix as parametrized by time $t$.
+$$\textbf R(t)\textbf R(t)^T=\textbf I$$
+It is easy to see $\dot {\textbf R}(t)\textbf R(t)^T$ is a skew-symmetric matrix, and thus it corresponds to a vector $\phi(t)$. As a result,
+$$\dot{\textbf R}(t)=\phi(t)^{\bigwedge} \textbf R(t).$$
+$$\textbf R(t)=\exp(\phi_0^{\bigwedge}t).$$
+$\phi$ is called the tangent space near the origin of SO(3), or the Lie algebra.
+
+
+
+
+
+
+
