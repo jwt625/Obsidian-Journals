@@ -67,3 +67,26 @@ $\phi$ is called the tangent space near the origin of SO(3), or the Lie algebra.
 
 
 
+# Chapter 6: visual odometry
+2024/05/22, 9:15 am
+
+SIFT: Scale-Invariant Feature Transform: classic, heavy calculation, cannot achieve real-time (2016). Rarely used
+FAST keypoint: fast. No descriptor
+ORB: Oriented FAST and Rotated BRIEF (descriptor)
+
+![[Pasted image 20240522091726.png]]
+
+FAST: compare brightness, different from neighboring pixels is likely a corner point
+1. select a pixel p, get it brightness Ip
+2. set a threshold, e.g. 20% of Ip
+3. select 16 pixels on a circle with a radius of 3
+4. of there are consecutive N points with brightness greater or smaller than Ip +- T, then p is a feature point. N is usually 12 (FAST-12). 9 and 11 are also common
+5. repeat
+Could check 1, 5, 9, 13 to quickly exclude non-corner points.
+![[Pasted image 20240522092138.png]]
+
+
+It has a scaling problem because of the fixed radius of 3. It also has no direction information. ORB adds the description of scale and rotation.
+
+Image pyramid: downsampling image at different levels to obtain images with different resolutions.
+
