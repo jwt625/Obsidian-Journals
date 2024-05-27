@@ -20,6 +20,8 @@ Found the same issue from someone else: https://github.com/oobabooga/text-genera
 - Reading through it and followed to this issue: https://github.com/abetlen/llama-cpp-python/issues/1000
 
 23:30 Finally finished the download about ~ 15 min ago. It runs.
+`.\llamafile.exe -m mixtral-8x7b-v0.1.Q4_K_M.gguf`
+
 ![[Pasted image 20240526233040.png]]
 
 But it feels dumb. So much worse than the free version of chatGPT or perplexity.
