@@ -1,4 +1,5 @@
 
+# Flash firmware
 20240617, 23:22: created this doc.
 Previous:
 - I got two HELTEC LoRa 32 WiFi BLE board from Amazon
@@ -42,6 +43,16 @@ Writing at 0x0... (1%)
 
 2024-06-18, 00:06 Done. So easy to setup.
 
+
+
+# Picking antenna
+2024-06-18 09:49
+
+See tests by the community: https://github.com/meshtastic/antenna-reports?tab=readme-ov-file
+I'm going for Molex 206764-0050:
+- https://www.digikey.com/en/products/detail/molex/2067640100/9520958
+
+Damn shipping is 7 bucks. What else do I need from Digikey?
 
 
 
