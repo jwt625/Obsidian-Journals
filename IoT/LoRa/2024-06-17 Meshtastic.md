@@ -54,6 +54,27 @@ I'm going for Molex 206764-0050:
 
 Damn shipping is 7 bucks. What else do I need from Digikey?
 
+# Case
+2024-06-18 22:34
+Found this one looking pretty attractive: https://www.thingiverse.com/thing:6625731
+- found it through public search on onshape lol:
+![[Pasted image 20240618224245.png]]
+
+Found his youtube channel and homepage:
+- https://www.youtube.com/@slabua/videos
+- https://www.slblabs.com/
+
+No post about the meshtastic project.
+Trying to identify the boards:
+![[Pasted image 20240618223733.png]]
+
+How tf are they this chip:
+- Blue board: GPS module, $9: https://www.amazon.com/HiLetgo-GY-NEO6MV2-Controller-Ceramic-Antenna/dp/B01D1D0F5M
+- Purple: BME280 temperature, humidity, pressure sensor: https://www.amazon.com/Sumklin-Temperature-Precision-Barometric-GY-BME280/dp/B0CHWKVJLH/
+- Battery: https://www.amazon.com/3000mAh-974058-Rechargeable-Replacement-Electronic/dp/B09YQ393N2
+
+
+
 
 
 # Reference
