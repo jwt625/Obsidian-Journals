@@ -72,6 +72,28 @@ How tf are they this chip:
 - Blue board: GPS module, $9: https://www.amazon.com/HiLetgo-GY-NEO6MV2-Controller-Ceramic-Antenna/dp/B01D1D0F5M
 - Purple: BME280 temperature, humidity, pressure sensor: https://www.amazon.com/Sumklin-Temperature-Precision-Barometric-GY-BME280/dp/B0CHWKVJLH/
 - Battery: https://www.amazon.com/3000mAh-974058-Rechargeable-Replacement-Electronic/dp/B09YQ393N2
+- the thing on the top looks like the GPS antenna
+
+Pbb need to read and learn how the HELTEC LoRa board work:
+https://heltec.org/project/wifi-lora-32-v3/
+
+# Learning HELTEC LoRa board
+23:22 Installed Arduino IDE:
+![[Pasted image 20240618232250.png]]
+
+Installing Heltec ESP32 library following:
+- https://github.com/HelTecAutomation/Heltec_ESP32?tab=readme-ov-file#how-to-install-this-library
+
+Maybe I should start with more straightforward tutorials like this one:
+- https://randomnerdtutorials.com/esp32-bme280-arduino-ide-pressure-temperature-humidity/
+- got it from asking perplexity
+23:28 I am going to order the BME280 and the GPS modules from Amazon. Pbb also the battery.
+How do I charge the battery?
+- need a lithium polymer battery charger
+23:37 Ordered. Going to sleep.
+
+# ESP32 with BME280 Sensor
+
 
 
 
