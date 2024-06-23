@@ -92,8 +92,28 @@ How do I charge the battery?
 - need a lithium polymer battery charger
 23:37 Ordered. Going to sleep.
 
+# Printing the case
+20240622, 10:38
+![[Pasted image 20240622103855.png]]
+![[Pasted image 20240622104104.png]]
+10:43 Connected to printer over wifi and send the work. Pretty convenient.
+
+
+
+
 # ESP32 with BME280 Sensor
 
+## Twitter sensor recommendations
+20240622, 23:09
+https://x.com/0zAND1z/status/1804472999241826688
+```
+NEO6Mv2 is used frequently in India. Here’s an urban weather station POC I built for
+
+[@BLRxZo](https://x.com/BLRxZo)
+
+<3 With some (luck) calibration, you can manage to keep it indoors too!
+```
+`DHT22, MQ9, SGP-30, and DSM501A!`
 
 
 
@@ -102,3 +122,4 @@ How do I charge the battery?
 # Reference
 https://bayme.sh/
 https://meshtastic.org/
+https://www.thingiverse.com/thing:6625731
