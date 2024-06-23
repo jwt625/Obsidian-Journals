@@ -46,4 +46,29 @@ eval "$(rbenv init -)"
 Reinstalling bundler and jekyll. Done.
 2024-06-23T15:14:39-07:00 Server running.
 
+Ok time to go back to reading jekyll for blogging.
+
+Asked chatGPT to recommend me a few templates. Decide to try out 
+- https://github.com/mmistakes/minimal-mistakes
+Configuration:
+- https://mmistakes.github.io/minimal-mistakes/docs/configuration/
+
+Tried directly running `jekyll serve` and did not work:
+```
+Ws-MacBook-Pro:ofs w$ jekyll serve
+
+/Users/w/.rbenv/versions/3.1.0/lib/ruby/gems/3.1.0/gems/bundler-2.5.14/lib/bundler/resolver.rb:336:in `raise_not_found!': **Could not find gem 'github-pages' in locally installed gems. (****Bundler::GemNotFound****)**
+
+
+```
+
+Go back to the readme and following the installation -> remote-theme method:
+- https://github.com/mmistakes/minimal-mistakes?tab=readme-ov-file#remote-theme-method
+Running `bundle`.
+- seeing it fetching a whole lot of different shit. I do not like all these dependencies.
+
+2024-06-23T15:36:49-07:00 Done following the readme. Got redirected to:
+- https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+
+
 
