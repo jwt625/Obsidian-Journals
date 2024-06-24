@@ -76,4 +76,68 @@ Running `bundle`.
 	- it runs for quite a while
 
 
+Running the website: `bundle exec jekyll serve`
+- have to run `bundle install` first on the windows machine.
+- `wdm` install throws error. ChatGPT suggests installing it manually.
+```
 
+Using rubygems directory: C:/Users/Wentao/.local/share/gem/ruby/3.3.0
+Temporarily enhancing PATH for MSYS/MINGW...
+Building native extensions. This could take a while...
+ERROR:  Error installing wdm:
+        ERROR: Failed to build gem native extension.
+
+    current directory: C:/Users/Wentao/.local/share/gem/ruby/3.3.0/gems/wdm-0.1.1/ext/wdm
+C:/Ruby33-x64/bin/ruby.exe extconf.rb
+checking for -lkernel32... yes
+checking for windows.h... yes
+checking for ruby.h... yes
+checking for HAVE_RUBY_ENCODING_H... yes
+checking for rb_thread_call_without_gvl()... yes
+creating Makefile
+
+current directory: C:/Users/Wentao/.local/share/gem/ruby/3.3.0/gems/wdm-0.1.1/ext/wdm
+make DESTDIR\= sitearchdir\=./.gem.20240623-11948-m2cf5j sitelibdir\=./.gem.20240623-11948-m2cf5j clean
+
+current directory: C:/Users/Wentao/.local/share/gem/ruby/3.3.0/gems/wdm-0.1.1/ext/wdm
+make DESTDIR\= sitearchdir\=./.gem.20240623-11948-m2cf5j sitelibdir\=./.gem.20240623-11948-m2cf5j
+generating wdm_ext-x64-mingw-ucrt.def
+compiling entry.c
+compiling memory.c
+compiling monitor.c
+compiling queue.c
+compiling rb_change.c
+rb_change.c: In function 'extract_absolute_path_from_notification':
+rb_change.c:139:5: warning: 'RB_OBJ_TAINT' is deprecated: taintedness turned out to be a wrong idea. [-Wdeprecated-declarations]
+  139 |     OBJ_TAINT(path);
+      |     ^~~~~~~~~
+In file included from C:/Ruby33-x64/include/ruby-3.3.0/ruby/internal/core/rstring.h:30,
+                 from C:/Ruby33-x64/include/ruby-3.3.0/ruby/internal/arithmetic/char.h:29,
+                 from C:/Ruby33-x64/include/ruby-3.3.0/ruby/internal/arithmetic.h:24,
+                 from C:/Ruby33-x64/include/ruby-3.3.0/ruby/ruby.h:28,
+                 from C:/Ruby33-x64/include/ruby-3.3.0/ruby.h:38,
+                 from wdm.h:22,
+                 from rb_change.c:4:
+C:/Ruby33-x64/include/ruby-3.3.0/ruby/internal/fl_type.h:824:1: note: declared here
+  824 | RB_OBJ_TAINT(VALUE obj)
+      | ^~~~~~~~~~~~
+compiling rb_monitor.c
+rb_monitor.c: In function 'rb_monitor_run_bang':
+rb_monitor.c:509:29: error: implicit declaration of function 'rb_thread_call_without_gvl' [-Wimplicit-function-declaration]
+  509 |         waiting_succeeded = rb_thread_call_without_gvl(wait_for_changes, monitor->process_event, stop_monitoring, monitor);
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [Makefile:248: rb_monitor.o] Error 1
+
+make failed, exit code 2
+
+Gem files will remain installed in C:/Users/Wentao/.local/share/gem/ruby/3.3.0/gems/wdm-0.1.1 for inspection.
+Results logged to C:/Users/Wentao/.local/share/gem/ruby/3.3.0/extensions/x64-mingw-ucrt/3.3.0/wdm-0.1.1/gem_make.out
+```
+
+
+Ugh seems like I need to install an older version of Ruby...
+- going to switch to `3.0.7`
+- `bundle install` sees to run through
+
+Now `bundle exec jekyll serve`
+Yes it runs and serves.
