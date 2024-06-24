@@ -70,5 +70,10 @@ Running `bundle`.
 2024-06-23T15:36:49-07:00 Done following the readme. Got redirected to:
 - https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
 
+2024-06-23T22:04:23-07:00 Setting up jekyll on windows desktop
+- installing Ruby with devkit
+- `gem install jekyll bundler`
+	- it runs for quite a while
+
 
 
