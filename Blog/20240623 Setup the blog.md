@@ -141,3 +141,19 @@ Ugh seems like I need to install an older version of Ruby...
 
 Now `bundle exec jekyll serve`
 Yes it runs and serves.
+
+# Examples (other people's blogs) to learn from
+
+https://www.willwhang.dev/
+
+https://lilianweng.github.io/
+
+https://www.jacobwright.xyz/
+
+https://lumingtang.info/
+
+https://cld.sh/index.php
+
+https://bithole.dev/
+
+https://lawtonskaling.sites.stanford.edu/
