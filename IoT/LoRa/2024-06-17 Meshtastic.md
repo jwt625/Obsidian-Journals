@@ -115,7 +115,17 @@ NEO6Mv2 is used frequently in India. Here’s an urban weather station POC I bui
 ```
 `DHT22, MQ9, SGP-30, and DSM501A!`
 
+Actually there are people showing how to do it with meshtastic / Heltec V3 board:
+- https://www.youtube.com/watch?v=VXRbyFbLYg4&ab_channel=JD
+- https://www.youtube.com/watch?v=9gV4yKQVtuw&ab_channel=TechMinds
+![[Pasted image 20240624231659.png]]
 
+2024-06-24T22:29:57-07:00 Trying out the web client:
+- https://meshtastic.org/docs/software/web-client/
+
+2024-06-24T23:00:26-07:00 Texting works between my phone and my desktop
+![[Pasted image 20240624230043.png]]
+Soldered pins and trying to get BME280 to work.
 
 
 
