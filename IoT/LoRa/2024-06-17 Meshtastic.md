@@ -128,6 +128,41 @@ Actually there are people showing how to do it with meshtastic / Heltec V3 board
 Soldered pins and trying to get BME280 to work.
 
 
+# Battery & charger
+2024-06-25T21:42:08-07:00
+Turns out the charger I got is completely wrong.
+- These are all RC car Lipo chargers.
+- Both chatGPT and perplexity are useless.
+
+Found this video:
+- https://www.youtube.com/watch?v=nIPmzSI-ItA&ab_channel=CreativeStuff
+- He was testing this charger: https://www.amazon.com/dp/B074M77J5M?ref=ppx_pop_mob_ap_share
+- not available any more
+- found this one in related: https://www.amazon.com/AKK-Battery-Charge-Charger-Inductrix/dp/B07FD741J7/ref=dp_prsubs_sccl_3/141-7734019-3313648
+	- It does have `JST 1.25`. I'm ordering it.
+
+
+Connector types:
+- https://www.scondar.com/jst-connector-types/
+
+Found some people are as confused:
+- http://community.heltec.cn/t/wifi-lora-32-battery-connector-confusement/240/7
+ChatGPT is also totally wrong:
+![[Pasted image 20240625222115.png]]
+While on heltec V3 website:
+![[Pasted image 20240625222127.png]]
+
+
+
+
+# BOM
+
+Battery:
+- got this one first, it is wrong / wrong connector https://www.amazon.com/gp/product/B09YQ393N2/ref=ox_sc_act_title_2?smid=A39OKXP5I8EI3U&psc=1
+- these looks right: https://www.amazon.com/gp/product/B08VRZTHDL/ref=ox_sc_act_title_3?smid=A3JZ0E8P9D7DI&psc=1
+
+
+
 
 # Reference
 https://bayme.sh/
