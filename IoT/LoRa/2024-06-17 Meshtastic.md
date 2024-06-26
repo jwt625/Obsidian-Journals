@@ -153,6 +153,19 @@ While on heltec V3 website:
 ![[Pasted image 20240625222127.png]]
 
 
+# GPS
+2024-06-25T22:37:47-07:00
+https://www.youtube.com/watch?v=k5G8Eex6Wzg&ab_channel=HAMTechRADIOSCANNERM0FXBCBDRONEHOBBYDiary
+Pins:
+![[Pasted image 20240625224853.png]]
+2024-06-25T23:03:51-07:00 Soldering done. Using GPIO 19 and 20.
+- blue LED on the GPS module board is blinking.
+- no position in app
+- restarted app, now showing position is `disabled`
+- Enable it and rebooting
+
+2024-06-25T23:14:42-07:00 I'm going to call it a day and going to sleep now. Maybe it just takes time.
+
 
 
 # BOM
