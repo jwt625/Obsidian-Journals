@@ -26,5 +26,11 @@ Following:
 2024-06-28T17:48:16-07:00 Paid the fee.
 
 
+# Studying
+
+
+https://hamstudy.org/browse/E4_2020/E1A
+https://hamstudy.org/browse/E3_2023/G1A
+https://hamstudy.org/browse/E2_2022/T1A
 
 
