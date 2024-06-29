@@ -25,5 +25,14 @@ Found a blog on gamebanana:
 Yes:
 ![[Pasted image 20240628185156.png]]
 
+2024-06-28T18:55:12-07:00
+Do I still have the game file to dump/unzip it?
+- https://gamebanana.com/tuts/16043
+
+
+
+
+
+# Modding onshape
 Also found a discord server for onshape community and joined.
 - https://discord.gg/zcScyKpmHV
