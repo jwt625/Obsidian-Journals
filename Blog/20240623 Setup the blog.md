@@ -74,7 +74,17 @@ Running `bundle`.
 - installing Ruby with devkit
 - `gem install jekyll bundler`
 	- it runs for quite a while
+Copied files to jwt625.github.io repo. Running jekyll serve and get the following error:
+```
+/Users/w/.rbenv/versions/3.1.0/lib/ruby/gems/3.1.0/gems/bundler-2.5.14/lib/bundler/runtime.rb:304:in `check_for_activated_spec!': **You have already activated public_suffix 6.0.0, but your Gemfile requires public_suffix 5.1.1. Prepending `bundle exec` to your command may solve this. (****Gem::LoadError****)**
+```
 
+Trying `bundle exec jekyll serve`
+
+Had to add `gem "webrick", "~> 1.7"` to gemfile.
+Rerun bundle install.
+
+2024-06-23T15:47:10-07:00 Server is running again.
 
 Running the website: `bundle exec jekyll serve`
 - have to run `bundle install` first on the windows machine.
