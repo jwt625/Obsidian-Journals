@@ -28,6 +28,10 @@ Yes:
 2024-06-28T18:55:12-07:00
 Do I still have the game file to dump/unzip it?
 - https://gamebanana.com/tuts/16043
+I have the nsp file
+- need this:
+- https://github.com/SciresM/hactool
+
 
 
 
