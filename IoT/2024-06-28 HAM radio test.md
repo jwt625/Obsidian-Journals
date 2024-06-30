@@ -33,4 +33,12 @@ https://hamstudy.org/browse/E4_2020/E1A
 https://hamstudy.org/browse/E3_2023/G1A
 https://hamstudy.org/browse/E2_2022/T1A
 
+So many questions... Will focus on technician.
+
+US amateur radio bands:
+- https://www.arrl.org/files/file/Regulatory/Band%20Chart/Band%20Chart%20-%2011X17%20Color.pdf
+
+Q codes:
+- https://www.qsl.net/w5www/qcode.html
+
 
