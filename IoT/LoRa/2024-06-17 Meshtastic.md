@@ -173,7 +173,8 @@ Pins:
 ![[Pasted image 20240630172147.png]]
 2024-06-30T17:21:58-07:00 Running on battery. Going to see how long this 250 mAh battery lasts.
 
-
+2024-06-30T19:40:36-07:00 It is used up. Voltage at 3.43 V.
+- lasted 2 h 20 min...
 
 # BOM
 
