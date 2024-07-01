@@ -152,6 +152,97 @@ Ugh seems like I need to install an older version of Ruby...
 Now `bundle exec jekyll serve`
 Yes it runs and serves.
 
+
+
+# Set up Google analytics
+
+2024-06-30T22:30:01-07:00
+Pretty straight forward to setup:
+- https://analytics.google.com/
+- https://mmistakes.github.io/minimal-mistakes/docs/configuration/#analytics
+
+Seems like it is working:
+![[Pasted image 20240630223041.png]]
+
+This is my gf using VPN to Singapore lol:
+![[7468e65c6bfca51d673d75d6ab2ae44.png]]
+
+
+# Theme tuning
+2024-06-30T22:38:05-07:00
+Okay here is a list of things I want:
+- show dates of the posts at the home page, as well as at the top of the post.
+	- fixed: https://mmistakes.github.io/minimal-mistakes/docs/configuration/#post-dates
+- large banner picture like these in their github repo:
+	- figured it out, just need to use `image` instead of `overlay_image` in the page `header`.
+![[Pasted image 20240630223907.png]]
+
+2024-06-30T23:17:37-07:00
+Now I just want better front page with teaser pictures from the post showing up. Like Will Whang's blog.
+Also want to setup Disqus or any other commenting shit.
+- https://disqus.com/admin/create/
+- https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+- damn got it working within 5 min
+
+
+For the teaser, chatGPT suggested:
+```
+---
+layout: default
+title: Home
+---
+
+<div class="posts">
+  {% for post in paginator.posts %}
+    <article class="post">
+      {% if post.teaser %}
+        <div class="post-teaser">
+          <img src="{{ post.teaser }}" alt="{{ post.title }}">
+        </div>
+      {% endif %}
+      <header>
+        <h2 class="post-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h2>
+        <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
+      </header>
+      <div class="post-excerpt">
+        {{ post.excerpt }}
+      </div>
+    </article>
+  {% endfor %}
+</div>
+
+```
+
+It kind of worked but added a whole section.
+I want to see how and where the template process it...
+
+2024-06-30T23:42:14-07:00
+Found a blog:
+- https://www.janmeppe.com/blog/add-teaser-to-minimal-mistakes/
+- nah not useful. It is about the "you may also like" section
+- Ok this one seems to be actually doing it:
+- https://web.chaehni.ch/web/blog-thumbnails/
+
+Realized I'm using a remote theme or gem-based theme, and the `_layout` or `_include` folders are not local. Might need to download it. Sounds like a headache, not sure if it is going to break.
+- ok reading the template code makes way more sense.
+
+Also now I'm using the following for serving locally:
+- `bundle exec jekyll serve --incremental`
+
+2024-06-30T23:56:23-07:00
+Going to try overriding the template file
+- changed `archive-single.html`
+- if this is not working, I'm gonna call it for tonight.
+Fuck yeah it worked:
+![[Pasted image 20240630235928.png]]
+- just need minor adjustment to put the teaser below the title and excerpt.
+- 2024-07-01T00:00:47-07:00 ok done. Commiting.
+
+
+
+
 # Examples (other people's blogs) to learn from
 
 https://www.willwhang.dev/
