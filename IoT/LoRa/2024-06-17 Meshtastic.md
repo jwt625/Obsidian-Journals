@@ -167,12 +167,22 @@ Pins:
 2024-06-25T23:14:42-07:00 I'm going to call it a day and going to sleep now. Maybe it just takes time.
 
 
+# Battery test
+2024-06-30T17:21:29-07:00
+250 mA batteries and charger finally arrived.
+![[Pasted image 20240630172147.png]]
+2024-06-30T17:21:58-07:00 Running on battery. Going to see how long this 250 mAh battery lasts.
+
+
 
 # BOM
 
 Battery:
 - got this one first, it is wrong / wrong connector https://www.amazon.com/gp/product/B09YQ393N2/ref=ox_sc_act_title_2?smid=A39OKXP5I8EI3U&psc=1
 - these looks right: https://www.amazon.com/gp/product/B08VRZTHDL/ref=ox_sc_act_title_3?smid=A3JZ0E8P9D7DI&psc=1
+
+LiPo charger:
+- https://www.amazon.com/dp/B07FD741J7?psc=1&ref=ppx_yo2ov_dt_b_product_details
 
 
 
