@@ -42,3 +42,14 @@ Q codes:
 - https://www.qsl.net/w5www/qcode.html
 
 
+# Registration & license
+
+2024-07-02T04:13:18-07:00
+Paid the FCC processing fee of $35 earlier on Monday.
+Received the email about call sign etc. about 1 h ago. Great.
+![[Pasted image 20240702041359.png]]
+
+Also in the FCC license database:
+- https://wireless2.fcc.gov/UlsApp/UlsSearch/searchLicense.jsp
+![[Pasted image 20240702041819.png]]
+
