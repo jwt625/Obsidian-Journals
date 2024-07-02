@@ -242,6 +242,37 @@ Fuck yeah it worked:
 
 
 
+# Adding latex math and mathjax
+2024-07-02T04:31:07-07:00
+Following ChatGPT. Going to edit `_layout/default.html`.
+Adding
+```
+<head>
+  <!-- Other head elements -->
+
+  <!-- MathJax script -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+```
+
+Hmm it is not working.
+Now following
+- https://quuxplusone.github.io/blog/2018/08/05/mathjax-in-jekyll/
+- and
+- https://quuxplusone.github.io/blog/2020/08/19/mathjax-v3-in-jekyll/
+
+Not working
+Now following
+- https://choimon.github.io/blog/mathjax-for-minimalmistakes-githubpage/
+- ok it worked
+
+
+
+
+
+
 
 # Examples (other people's blogs) to learn from
 
