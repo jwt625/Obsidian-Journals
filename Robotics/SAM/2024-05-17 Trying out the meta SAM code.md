@@ -13,6 +13,9 @@ Get most of the ipynotebook running.
 
 5:20 pm, trying to figure out what ONNX is: https://onnx.ai/index.html
 
+2024-07-02T20:37:02-07:00
+Revisit. Should I figure it out on the windows desktop, or keep using the macbook?
+Maybe I'll stay on the macbook.
 
 
 
