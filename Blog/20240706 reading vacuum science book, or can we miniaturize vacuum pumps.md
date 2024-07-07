@@ -14,6 +14,7 @@ High vacuum pumps:
 - getter-ion pumps
 - cryopumps
 - vapor jet pumps
-- 
+- turbo-type pumps
+
 
 
