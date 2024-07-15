@@ -1,3 +1,10 @@
+---
+tags:
+  - IoT
+date: 0202-06-17
+---
+
+#IoT 
 
 # Flash firmware
 20240617, 23:22: created this doc.

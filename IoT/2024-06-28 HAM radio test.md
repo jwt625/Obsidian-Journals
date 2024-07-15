@@ -1,3 +1,12 @@
+---
+tags:
+  - IoT
+  - HAM
+date: 2024-06-28
+---
+
+
+
 # Registration and preparation
 
 2024-06-28T17:23:54-07:00
