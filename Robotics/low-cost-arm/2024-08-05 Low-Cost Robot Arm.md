@@ -11,5 +11,8 @@ Follower arm STL files:
 
 2024-08-05T21:14:02-07:00
 Started printing ~ 15 min ago. No support. Chose the PLA strength default and reduced the outer shell from 6 to 4.
+![[Pasted image 20240805225956.png]]
 
-
+2024-08-05T23:00:02-07:00
+- the part with the curly tip did not stick around 35% maybe. Removed it
+- all other ones are still printing fine
