@@ -16,3 +16,9 @@ Started printing ~ 15 min ago. No support. Chose the PLA strength default and re
 2024-08-05T23:00:02-07:00
 - the part with the curly tip did not stick around 35% maybe. Removed it
 - all other ones are still printing fine
+
+2024-08-05T23:07:41-07:00
+Found out I could add support to individual objects.
+![[Pasted image 20240805230751.png]]
+
+Still trying to find out where do I cancel objects.
