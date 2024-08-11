@@ -50,6 +50,25 @@ Done. Going to call it a day and go sleep.
 ![[Pasted image 20240810233923.png]]
 - yaaay
 
+# Butcher block table
+2024-08-11T06:38:18-07:00
+
+Wood type vs. Young's modulus:
+- https://amesweb.info/Materials/Youngs-Modulus-of-Wood.aspx
+- going to use 10 GPa
+
+Going to use 0.1 for Poission's ratio
+Maybe COMSOL has some wood materials?
+Mesh:
+![[Pasted image 20240811065752.png]]
+
+2024-08-11T06:57:57-07:00
+- soltime 20 s?
+Disp:
+![[Pasted image 20240811065811.png]]
+
+
+
 
 
 
