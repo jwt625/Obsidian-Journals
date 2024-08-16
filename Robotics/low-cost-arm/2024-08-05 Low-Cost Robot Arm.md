@@ -22,3 +22,4 @@ Found out I could add support to individual objects.
 ![[Pasted image 20240805230751.png]]
 
 Still trying to find out where do I cancel objects.
+- done. Can't do it on desktop studio and had to get the app...
