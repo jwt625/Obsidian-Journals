@@ -33,3 +33,25 @@ Further open the lid underneath the solenoid, there is a flexure inside, and a m
 2024-08-17T23:01:01-07:00
 Going to open the sensor tomorrow.
 
+
+2024-08-18T21:40:45-07:00
+Opened the sensor this morning and took pictures with both phone and the Pluggable digital viewer.
+![[Pasted image 20240818214143.png]]
+![[Pasted image 20240818214150.png]]
+![[Pasted image 20240818214155.png]]
+![[Pasted image 20240818214203.png]]
+
+Also took more pictures of the inlet and outlet:
+![[S20240818_0005.jpg]]
+
+![[S20240818_0007.jpg]]
+
+![[S20240818_0008.jpg]]
+
+![[S20240818_0010.jpg]]
+
+![[S20240818_0004.jpg]]
+
+
+
+
