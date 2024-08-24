@@ -91,3 +91,47 @@ Now you should be able to select everything inside the selection area, even if i
 ## Print
 2024-08-18T21:39:20-07:00
 Started printing.
+
+
+## Print not working
+
+Many disconnected layers...
+Tried to fix it with the following suggested by ChatGPT. Not working:
+### Step 3: Repair the Non-Manifold Edges
+
+There are several methods to repair these edges, depending on the problem:
+
+#### Method 1: Fill Open Edges
+
+1. If you find open edges (edges that should be connected to form a closed mesh):
+    - Select the edges or vertices around the open edge.
+    - Press `F` to create a new face that closes the gap.
+    - Repeat this for all open edges.
+
+#### Method 2: Merge Vertices
+
+1. If the non-manifold issue is due to vertices that should be merged:
+    - Select the vertices you want to merge.
+    - Press `M` and choose **At Center** or **By Distance** to merge them. **By Distance** is useful for automatically merging vertices that are close together.
+
+#### Method 3: Remove Internal Faces
+
+1. If the non-manifold issue is caused by internal faces (faces inside the model that shouldn't exist):
+    - Select the internal faces manually or use `Select > Select All by Trait > Interior Faces`.
+    - Press `X` and choose **Faces** to delete them.
+
+#### Method 4: Bridge Edge Loops
+
+1. If you have two open edge loops that need to be connected:
+    - Select the two edge loops (you can do this by holding `Alt` and right-clicking the edges).
+    - Press `Ctrl+E` and select **Bridge Edge Loops** to connect them with new faces.
+
+### Step 4: Check for Further Issues
+
+1. After repairing the non-manifold edges, recheck your model by repeating `Select > Select All by Trait > Non-Manifold`.
+2. If no more issues are selected, your model is now manifold and should be good for 3D printing.
+
+### Step 5: Final Cleanup
+
+1. **Remove Doubles**: If you suspect there are overlapping vertices, use `M > Merge by Distance` to clean them up.
+2. **Recalculate Normals**: Press `Ctrl+N` (or `Shift+N` in some versions) to recalculate the normals, ensuring that all faces are oriented correctly.
