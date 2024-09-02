@@ -21,3 +21,18 @@ Reading ([link](https://x.com/JulianFried/status/1825240628072198427))
 - Chip War by Chris Miller
 - Invention by James Dyson 
 - Against the Odds by James Dyson
+
+
+Metal 3D printing: craftcloud
+- post: https://x.com/YikesItsTim/status/1825629804202438770
+
+
+Resin 3D printing
+- clear coat (https://x.com/oldestasian/status/1826284137625620624)
+
+TODO and Reading list:
+- [] https://www.construction-physics.com/p/how-to-build-a-50000-ton-forging
+	- from https://x.com/_brianpotter/status/1826275489046245392
+- [] make a certified outside five sigma seal
+	- https://x.com/servomechanica/status/1826504576507510802
+- 
