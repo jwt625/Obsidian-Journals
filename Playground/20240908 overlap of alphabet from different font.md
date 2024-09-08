@@ -30,5 +30,16 @@ Done. No convolutions yet:
 ![[Pasted image 20240908124921.png]]
 
 
+2024-09-08T16:23:14-07:00
+Asked Claude to add convolution + max. Worked in one go:
+![[Pasted image 20240908162332.png]]
+
+Now lower cases, and with shift & max:
+![[Pasted image 20240908163428.png]]
+![[Pasted image 20240908163434.png]]
+![[Pasted image 20240908163438.png]]
+![[Pasted image 20240908163444.png]]
+
+
 
 
