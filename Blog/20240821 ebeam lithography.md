@@ -140,3 +140,13 @@ I started shadowing on fab in mid 2015. I might actually still have the cleanroo
 - What is the bottleneck? What can be automated?
 
 - TBA...
+
+
+
+# Reference
+
+2024-09-13T21:39:18-07:00
+https://research.manchester.ac.uk/en/equipments/raith-ebpg5200-100kv-e-beam-lithography-system-aka-vistec
+
+https://nano.yale.edu/history
+
