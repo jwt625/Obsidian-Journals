@@ -35,4 +35,9 @@ TODO and Reading list:
 	- from https://x.com/_brianpotter/status/1826275489046245392
 - [] make a certified outside five sigma seal
 	- https://x.com/servomechanica/status/1826504576507510802
-- 
+
+
+# Projects:
+
+## Robotics
+- https://github.com/apirrone/Open_Duck_Mini
