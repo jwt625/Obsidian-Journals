@@ -41,3 +41,10 @@ TODO and Reading list:
 
 ## Robotics
 - https://github.com/apirrone/Open_Duck_Mini
+
+
+
+# TODO
+
+https://x.com/oldestasian/status/1838452136541139145
+
