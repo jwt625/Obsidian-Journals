@@ -74,3 +74,39 @@ Built a toy model and it is still only deforming in-plane...
 Giving up for now, going to sleep.
 
 
+2024-09-24T08:07:23-07:00
+Found "include geometry nonlinearity" is turned on in the example mambrane:
+![[Pasted image 20240924080740.png]]
+YES that's it!
+![[Pasted image 20240924080826.png]]
+And it is stress dependent, 2x initial stress:
+![[Pasted image 20240924080920.png]]
+
+Without geometry nonlinearity:
+![[Pasted image 20240924081421.png]]
+With:
+![[Pasted image 20240924081458.png]]
+
+
+Ok going back to the acoustic model.
+2024-09-24T08:19:48-07:00
+The full physics seems to run for freq domain solver:
+![[Pasted image 20240924082000.png]]
+However param sweep gives this error:
+![[Pasted image 20240924082023.png]]
+Going to try 100 Hz manually.
+
+
+2024-09-24T08:25:40-07:00
+New error after clearing all solutions and datasets:
+![[Pasted image 20240924082548.png]]
+
+2024-09-24T08:29:17-07:00
+Hmm somehow it is now running without the param sweep enabled but it is doing the param sweep. I reset the solver config just before this and tried running with the param sweep and it returned the same error.
+
+Expr to plot:
+- `-10*log10(acpr.S21*conj(acpr.S21))`
+2024-09-24T08:50:23-07:00
+Close enough:
+![[Pasted image 20240924085026.png]]
+
