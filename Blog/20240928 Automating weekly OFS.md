@@ -1,4 +1,9 @@
 2024-09-28T21:04:17-07:00
+# Shortcuts
+
+Dashboard: https://developer.twitter.com/en/portal/dashboard
+
+
 Following ChatGPT's advice:
 ### 1. **Set up Twitter API Access**
 
@@ -81,4 +86,109 @@ Ok it changed to `354040563` after I updated it to jwt0625.
 2024-09-28T21:52:00-07:00
 Seems like I need to fix the authentication:
 `pip install authlib`
+
+What kind of bullshits... Going to see if I could find examples.
+- https://github.com/xdevplatform/Twitter-API-v2-sample-code/tree/main/Bookmarks-lookup
+
+Ok find out I have not setup the user authentication settings:
+![[Pasted image 20240928220219.png]]
+
+2024-09-28T22:05:57-07:00
+ok done:
+![[Pasted image 20240928220600.png]]
+- used `http://127.0.0.1:5000/callbac` for `callback URL`
+- used `http://example.com` for `website URL`
+
+
+# Switch to JavaScript
+
+2024-09-28T22:49:48-07:00
+Still trying to figure out how the authentication works:
+- https://developer.x.com/en/docs/x-api/tweets/bookmarks/api-reference/get-users-id-bookmarks
+
+Maybe I should switch to JavaScript since all the examples are generated in JS...
+2024-09-28T22:56:20-07:00
+Updated node.js from v18 to v20.
+
+Installing shit in VSCode terminal:
+`npm install axios express simple-oauth2 dotenv`
+
+![[Pasted image 20240928225756.png]]
+
+2024-09-28T23:05:31-07:00
+Installing twitter api
+```
+npm install twitter-api-sdk
+```
+![[Pasted image 20240928230528.png]]
+
+Same error:
+![[Pasted image 20240928230610.png]]
+What kind of shit is this...
+2024-09-28T23:18:34-07:00
+Ok changed the API app to web app.
+```
+https://twitter.com/i/oauth2/authorize?state=my-state&code_challenge_method=s256&client_id=WEtDWnlKbTFqdEo1RWJOSkRpYjA6MTpjaQ&scope=bookmark.read+tweet.read+users.read&response_type=code&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fcallback&code_challenge=mImjkwyjpRdK4DFVh6Ki-vmbimQh5kGOQopmRW5EIaQ
+```
+- fuck, same error.
+- https://devcommunity.x.com/t/always-getting-a-something-went-wrong-using-oauth2/175507
+	- `On Developer portal and your app code the “callback_url” must be identical.`
+
+## Fixed "something went wrong"
+![[Pasted image 20240928233003.png]]
+Fuck okay it is because of the callback_url not being identical.
+Now get the following error in terminal:
+```
+{
+  status: 403,
+  statusText: 'Forbidden',
+  headers: {
+    'api-version': '2.111',
+    'cache-control': 'no-cache, no-store, max-age=0',
+    'content-disposition': 'attachment; filename=json.json',
+    'content-encoding': 'gzip',
+    'content-length': '328',
+    'content-type': 'application/json; charset=utf-8',
+    date: 'Sun, 29 Sep 2024 06:30:23 UTC',
+    perf: '7402827104',
+    server: 'tsa_p',
+    'strict-transport-security': 'max-age=631138519',
+    'x-access-level': 'read',
+    'x-connection-hash': 'ced81d5e7ea31457e693c0f8571690e04ab58c097483157c6e0583fdfe72d32d',   
+    'x-content-type-options': 'nosniff',
+    'x-frame-options': 'SAMEORIGIN',
+    'x-rate-limit-limit': '40000',
+    'x-rate-limit-remaining': '39999',
+    'x-rate-limit-reset': '1727592323',
+    'x-response-time': '24',
+    'x-transaction-id': 'f927dc9a25a07820',
+    'x-xss-protection': '0'
+  },
+  error: {
+    client_id: '29394064',
+    detail: 'When authenticating requests to the Twitter API v2 endpoints, you must use keys and tokens from a Twitter developer App that is attached to a Project. You can create a project via the developer portal.',
+    registration_url: 'https://developer.twitter.com/en/docs/projects/overview',
+    title: 'Client Forbidden',
+    required_enrollment: 'Appropriate Level of API Access',
+    reason: 'client-not-enrolled',
+    type: 'https://api.twitter.com/2/problems/client-forbidden'
+  }
+}
+```
+![[Pasted image 20240928233104.png]]
+- https://devcommunity.x.com/t/when-authenticating-requests-to-the-twitter-api-v2-endpoints-you-must-use-keys-and-tokens-from-a-twitter-developer-app-that-is-attached-to-a-project-you-can-create-a-project-via-the-developer-portal/192346/12
+
+2024-09-28T23:47:36-07:00
+Removed "tweet.read" and "users.read" from scopes. Now it just says forbidden. Should add tweet.read back.
+
+2024-09-28T23:58:44-07:00
+Found that it is because free API only has post, delete and get user...
+![[Pasted image 20240928235933.png]]
+
+Tested posting and it works...
+![[Pasted image 20240928235849.png]]
+Returning value:
+- `{"data":{"id":"1840284954925903891","edit_history_tweet_ids":["1840284954925903891"],"text":"Test API"}}`
+
+
 
