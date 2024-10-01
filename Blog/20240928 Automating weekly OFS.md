@@ -192,3 +192,15 @@ Returning value:
 
 
 
+# Testing selenium
+
+2024-09-30T21:49:06-07:00
+`pip install selenium`
+
+Damn it ran on the first run:
+![[Pasted image 20240930224738.png]]
+![[Pasted image 20240930224744.png]]
+
+
+Modified to download the full size media into a local folder and include the local path in the json as well.
+
