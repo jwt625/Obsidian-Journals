@@ -33,3 +33,18 @@ Where to buy
 Decided to get 3/4x1/2 in.
 - https://www.kjmagnetics.com/magfield.asp?pName=DC8-N52
 ![[Pasted image 20241002234020.png]]![[Pasted image 20241002234105.png]]
+
+# Holder drawing and printing
+2024-10-07T21:55:45-07:00
+The magnets are here. Ordered five.
+
+
+Changing part appearance in onshape:
+- https://www.youtube.com/watch?v=FbpIvv1AuJE&ab_channel=Onshape
+Defining variables:
+- https://cad.onshape.com/help/Content/variable.htm
+
+Insert part in assembly:
+- https://cad.onshape.com/help/Content/insertpartorassembly.htm
+
+![[Pasted image 20241008000755.png]]
