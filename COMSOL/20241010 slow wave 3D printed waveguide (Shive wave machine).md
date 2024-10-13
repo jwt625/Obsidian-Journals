@@ -30,5 +30,14 @@ Found typo in periodic BC. Should use the same kF in the parameters instead of c
 
 ![[test.gif]]
 
+2024-10-11T21:26:06-07:00
+First version, already printed:
+- model62_solid_slow_wave_toy_20241010_arrayed_for_geom_export.mph
+![[Pasted image 20241011212651.png]]
+![[Pasted image 20241011212619.png]]
 
+Second version, standing up:
+- model62_solid_slow_wave_toy_20241011_cuvy.mph
+![[Pasted image 20241011212747.png]]![[Pasted image 20241011212827.png]]
 
+Does not propagate as well.
