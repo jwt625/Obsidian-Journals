@@ -41,3 +41,15 @@ Second version, standing up:
 ![[Pasted image 20241011212747.png]]![[Pasted image 20241011212827.png]]
 
 Does not propagate as well.
+
+
+2024-10-14T21:42:20-07:00
+Tried using steel ball. Does not help much. The meander helps more:
+![[Pasted image 20241014214311.png]]
+![[Pasted image 20241014214244.png]]
+
+![[Pasted image 20241014215017.png]]
+![[Pasted image 20241014215038.png]]
+
+Surprisingly not a big difference. The steel ball is not doing much. Maybe should just keep pushing down the frequency.
+
