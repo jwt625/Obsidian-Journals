@@ -41,6 +41,8 @@ TODO and Reading list:
 
 ## Robotics
 - https://github.com/apirrone/Open_Duck_Mini
+- [Helpful DoggyBot: Open-World Object Fetching using Legged Robots and Vision-Language Models](https://github.com/WooQi57/Helpful-Doggybot)
+- [MEVIUS: A Quadruped Robot Easily Constructed through E-Commerce with Sheet Metal Welding and Machining](https://github.com/haraduka/mevius)
 
 
 

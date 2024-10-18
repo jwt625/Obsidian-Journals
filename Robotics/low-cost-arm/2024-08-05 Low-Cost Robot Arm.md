@@ -23,3 +23,35 @@ Found out I could add support to individual objects.
 
 Still trying to find out where do I cancel objects.
 - done. Can't do it on desktop studio and had to get the app...
+
+
+# Continue the build
+2024-10-17T20:13:00-07:00
+Damn it's been more than two months since I printed the parts for the arm. Let's follow the instructions and start buying things.
+
+## Printing leader arm
+2024-10-17T21:51:35-07:00
+
+`Documents\3D_print\low_cost_robot-main\hardware\leader`
+![[Pasted image 20241017215344.png]]
+
+
+## Ordering
+2024-10-17T22:01:45-07:00
+
+On https://www.robotis.us/:
+![[Pasted image 20241017220149.png]]
+- placed
+- Total $237.5
+![[Pasted image 20241017220429.png]]
+
+Amazon:
+![[Pasted image 20241017220457.png]]
+
+Misc:
+- probably need some screws and heat set threaded insert
+![[Pasted image 20241017221851.png]]
+
+
+
+
