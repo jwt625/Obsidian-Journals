@@ -33,10 +33,10 @@ Very nice:
 ## TODO
 Tracker side:
 - get thumbnail
-- add button to start and stop tracking
+- [x] add button to start and stop tracking
 	- maybe also a timer for duration of the tracking
-- integrate the viewer directly into the plugin
-- track also the top five occurrence words?
+- [x] integrate the viewer directly into the plugin
+- [x] track also the top five occurrence words?
 Viewer side:
 - display more details when hovering?
 - dynamic move the nodes when hovering and displaying more details?
@@ -49,9 +49,9 @@ Going to feed it the existing project files.
 
 It recommended the following order for the new features:
 Suggested Implementation Order:
-1. Start/Stop Tracking (fundamental control feature)
-2. Word Frequency Analysis (data enrichment, no UI changes needed)
-3. Integrated Viewer (foundation for other viewer features)
+1. [x] Start/Stop Tracking (fundamental control feature)
+2. [x] Word Frequency Analysis (data enrichment, no UI changes needed)
+3. [x] Integrated Viewer (foundation for other viewer features)
 4. Thumbnails (more complex, requires storage handling)
 5. Enhanced Hover Details (builds on previous features)
 6. Dynamic Node Movement (polish feature)
@@ -69,5 +69,70 @@ As well as additional features:
 
 2024-10-22T22:58:29-07:00
 Implementing start/stop tracking, as well as word count.
+2024-10-22T23:28:20-07:00
+Tested and committed. Going to integrate the viewer tomorrow.
+
+2024-10-23T08:01:05-07:00
+- add different icons for different status
+- better logging
+
+# Viewer integration
+
+2024-10-23T21:10:34-07:00
+Asked Claude to plan out the viewer integration process.
+It generated a few overview and process / flow charts:
+
+```
+extension/
+├── popup/
+│   ├── popup.html    (simple controls & mini preview)
+│   └── popup.js      (basic interactions)
+├── viewer/
+│   ├── viewer.html   (full visualization page)
+│   ├── viewer.js     (main visualization logic)
+│   └── components/   (modular visualization components)
+│       ├── tree.js   (D3.js tree rendering)
+│       ├── controls.js (layout/view controls)
+│       └── details.js (node details/hover panel)
+├── background.js
+└── manifest.json
+```
+
+Component comm flow:
+```
+Background Script <--> Viewer Page
+         ↑
+         |
+      Popup UI
+```
+
+Data flow:
+
+```
+[Background]     [Storage]        [Viewer]
+  Tree Data  -->  Chrome  -->  Initial Load
+     |            Storage         |
+  Updates  ---------------------->|  (via message passing)
+     |                           |
+  Changes  <----------------------|  (if we add interactive features)
+```
 
 
+Should try to debug the tracker errors before moving on to integrating viewer.
+
+background.js:166 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'create')
+    at initializeEventListeners (background.js:166:17)
+    at background.js:187:5
+
+2024-10-23T21:49:41-07:00 debug of missing functions and permission of alarms resolved.
+
+2024-10-23T23:27:05-07:00
+Ok a lot of suffering to rewrite the background.js and improve the viewer.
+- plugin popup looks much nicer:
+![[Pasted image 20241023234228.png]]
+The toggle animation is glitched for some of the leaf nodes.
+- 2024-10-23T23:40:06-07:00: mostly fixed. 
+
+
+TODO:
+- fix the plugin popup failed to initialize when the viewer tab is open
