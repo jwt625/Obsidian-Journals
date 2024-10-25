@@ -136,3 +136,13 @@ The toggle animation is glitched for some of the leaf nodes.
 
 TODO:
 - fix the plugin popup failed to initialize when the viewer tab is open
+
+2024-10-24T21:53:06-07:00
+Still debugging the popup fail to initialize when having the viewer open.
+When viewer tab is not present:
+![[Pasted image 20241024215331.png]]
+
+When viewer present:
+![[Pasted image 20241024215400.png]]
+
+
