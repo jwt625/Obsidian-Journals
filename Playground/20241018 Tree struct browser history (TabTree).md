@@ -144,5 +144,9 @@ When viewer tab is not present:
 
 When viewer present:
 ![[Pasted image 20241024215400.png]]
+Maybe should gave up/pause on this first...
 
-
+TODO:
+- add button in the viewer to load an existing json
+- add button to zoom in and out along x and y
+- add hovering to display extra info
