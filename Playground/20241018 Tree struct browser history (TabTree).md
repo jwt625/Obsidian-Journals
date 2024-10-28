@@ -271,3 +271,20 @@ Would you like me to elaborate on any of these suggestions or provide more detai
 
 Ok improved the zoom, improved text display near the node for different zoom.
 Added hover detail display and improved it.
+
+
+# Move to new repo
+2024-10-27T09:36:06-07:00
+
+Should move it to a separate repo.
+Also things need to be fixed on the tracker side:
+- close time missing for some cases
+- new tab is being tracked
+- add crawling thumbnail
+- still creates duplicated nodes when current tab creates a new tab
+On the viewer side:
+- remove the separate x and y zoom
+- add save button to do the same as the save button in the popup
+- add bookmark/tagging to the viewer nodes
+
+
