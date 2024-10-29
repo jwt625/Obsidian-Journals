@@ -286,5 +286,10 @@ On the viewer side:
 - remove the separate x and y zoom
 - add save button to do the same as the save button in the popup
 - add bookmark/tagging to the viewer nodes
+- add functionality to hide nodes
+- assign different colors to different nodes by
+	- url domain
+	- dwell time
+
 
 
