@@ -55,3 +55,19 @@ Misc:
 
 
 
+# Assembly
+2024-10-29T20:19:14-07:00
+
+https://www.youtube.com/watch?v=RckrXOEoWrk&ab_channel=AlexanderKoch
+
+Fuck, forgot to order the leader arm materials.
+Ordered:
+![[Pasted image 20241029214032.png]]
+![[Pasted image 20241029214408.png]]
+2024-10-29T22:41:46-07:00
+Rough assembly done. Need to wait for leader arm parts...
+Also there is one motor that is not used??
+- ok I think it is for the extension arm that is not shown in the youtube video (https://www.youtube.com/watch?v=RckrXOEoWrk&ab_channel=AlexanderKoch)
+
+
+
