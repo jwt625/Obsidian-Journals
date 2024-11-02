@@ -272,7 +272,6 @@ Would you like me to elaborate on any of these suggestions or provide more detai
 Ok improved the zoom, improved text display near the node for different zoom.
 Added hover detail display and improved it.
 
-
 # Move to new repo
 2024-10-27T09:36:06-07:00
 
@@ -290,6 +289,11 @@ On the viewer side:
 - assign different colors to different nodes by
 	- url domain
 	- dwell time
+	- number of child
 
+
+2024-11-01T21:34:19-07:00
+- improved changing node size. Need to make it more clear what do the buttons do
+- 
 
 
