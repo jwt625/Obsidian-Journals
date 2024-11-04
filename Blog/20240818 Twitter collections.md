@@ -49,6 +49,14 @@ TODO and Reading list:
 	- http://jherrm.com/gcode-viewer/
 
 
+## Tools
+- https://openmodelica.org/
+	- https://x.com/machinesynth/status/1850551296513790035
+
+## Blogs
+- https://people.engr.tamu.edu/spalermo/ecen620.html
+	- https://x.com/techjeet5/status/1851497605928296811
+
 
 # TODO
 
