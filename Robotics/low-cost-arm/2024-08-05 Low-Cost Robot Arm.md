@@ -34,6 +34,10 @@ Damn it's been more than two months since I printed the parts for the arm. Let's
 
 `Documents\3D_print\low_cost_robot-main\hardware\leader`
 ![[Pasted image 20241017215344.png]]
+2024-11-03T20:10:57-08:00
+Hmm found one part missing.
+![[Pasted image 20241103201153.png]]
+Oh this part is from the robotis.
 
 
 ## Ordering
@@ -69,5 +73,9 @@ Rough assembly done. Need to wait for leader arm parts...
 Also there is one motor that is not used??
 - ok I think it is for the extension arm that is not shown in the youtube video (https://www.youtube.com/watch?v=RckrXOEoWrk&ab_channel=AlexanderKoch)
 
+
+2024-11-03T22:53:20-08:00
+Finished assembling both leader and follower!
+![[signal-2024-11-03-225415_002.jpeg]]
 
 
