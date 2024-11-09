@@ -115,10 +115,53 @@ Going to also try on the batteries.
 
 
 
+# 20241108, SAM2
+
+2024-11-08T21:35:54-08:00
+
+https://github.com/facebookresearch/sam2
+
+Ugh need an older version:
+- https://www.python.org/downloads/macos/
+
+Following Claude and got 3.11:
+```
+python3.11 -m venv torch_env
+source torch_env/bin/activate
+
+pip3 install torch torchvision torchaudio
+
+pip install ipykernel
+python -m ipykernel install --user --name=torch_env
+```
 
 
+Installing opencv:
+```
+pip install opencv-python
+```
 
 
+2024-11-08T22:37:14-08:00
+Ok now continuing SAM2 installation:
+![[Pasted image 20241108223736.png]]
+Finished fine:
+![[Pasted image 20241108223844.png]]
 
 
+As well as
+```
+pip install -e ".[notebooks]"
+```
 
+Done.
+
+
+2024-11-08T22:39:46-08:00
+
+Downloading checkpoint:
+```
+cd checkpoints && \
+./download_ckpts.sh && \
+cd ..
+```
