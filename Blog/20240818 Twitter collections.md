@@ -52,6 +52,10 @@ TODO and Reading list:
 ## Tools
 - https://openmodelica.org/
 	- https://x.com/machinesynth/status/1850551296513790035
+- https://universalgcodesender.com/
+	- https://x.com/MoonL88537/status/1853478448725197244
+- Cheap Chinese Thorlabs: https://www.oeabt.com/
+
 
 ## Blogs
 - https://people.engr.tamu.edu/spalermo/ecen620.html
