@@ -165,3 +165,14 @@ cd checkpoints && \
 ./download_ckpts.sh && \
 cd ..
 ```
+
+![[Pasted image 20241108224053.png]]
+
+## Static image
+2024-11-08T22:41:43-08:00
+
+https://github.com/facebookresearch/sam2/blob/main/notebooks/image_predictor_example.ipynb
+2024-11-08T22:51:38-08:00
+Ran thru the whole notebook, everything is working!
+Should read thru it tmw.
+
