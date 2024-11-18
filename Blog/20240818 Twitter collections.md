@@ -60,6 +60,8 @@ TODO and Reading list:
 ## Blogs
 - https://people.engr.tamu.edu/spalermo/ecen620.html
 	- https://x.com/techjeet5/status/1851497605928296811
+- https://ciechanow.ski/archives/
+
 
 ## My own threads
 - https://x.com/jwt0625/status/1752513064422043881
