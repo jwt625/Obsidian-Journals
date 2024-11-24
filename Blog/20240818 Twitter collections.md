@@ -62,6 +62,8 @@ TODO and Reading list:
 	- https://x.com/techjeet5/status/1851497605928296811
 - https://ciechanow.ski/archives/
 - https://phbd.xyz/
+- three.js god: https://bruno-simon.com/
+
 
 
 
