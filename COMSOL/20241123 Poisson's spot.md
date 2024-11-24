@@ -57,15 +57,24 @@ Nope changing it to a ring does not help.
 Found another nice ref:
 - https://www.lighttrans.com/use-cases/application/observation-of-the-poisson-spot.html
 ![[Pasted image 20241123161100.png]]
+![[Pasted image 20241123163628.png]]
+Theirs:
 ![[Pasted image 20241123161119.png]]
-
-Using the same params:
+Mine using the same params:
 ![[Pasted image 20241123161141.png]]
 Actually wavelength is 1 um. Switching to 532 nm.
 ![[Pasted image 20241123161223.png]]
 Plotting E^2:
 ![[Pasted image 20241123161446.png]]
 Ok maybe it is the beam size. Doubling it.
+Still no good:
+![[Pasted image 20241123163211.png]]
+
+2024-11-23T17:01:30-08:00
+Fuck yeah, got it using axial symmetric 2D sim:
+
+![[Pasted image 20241123170151.png]]
+![[Pasted image 20241123170206.png]]
 
 
 
