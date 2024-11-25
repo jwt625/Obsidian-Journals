@@ -277,6 +277,17 @@ Test TODO
 
 
 
+2024-11-24T14:09:27-08:00
+Had to install `github-pages` on new Mac mini:
+![[Pasted image 20241124140938.png]]
+- chose overwrite the executables
+
+Ughhh:
+![[Pasted image 20241124141030.png]]
+- installed
+- also installed: `gem install jekyll-algolia`
+
+
 
 # Examples (other people's blogs) to learn from
 

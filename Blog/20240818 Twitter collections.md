@@ -68,9 +68,10 @@ TODO and Reading list:
 
 
 ## My own threads
-- https://x.com/jwt0625/status/1752513064422043881
-- https://x.com/jwt0625/status/1819611427289944513
-- https://x.com/jwt0625/status/1806157999058354522
+- Good reads about history of Varian Associates: https://x.com/jwt0625/status/1752513064422043881
+- Collection of torture devices in papers: https://x.com/jwt0625/status/1819611427289944513
+- Thread of bendy stuff on a chip: https://x.com/jwt0625/status/1806157999058354522
+- Thread to collect people trying to get silicon further away from their circuits for various reasons (mainly loss and parasitic capacitance). Keep running into this topic and struggling to find those papers: https://x.com/jwt0625/status/1812682883808850122
 
 # TODO
 
