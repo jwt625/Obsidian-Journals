@@ -26,6 +26,46 @@ Got 19.6 fF.
 2024-11-27T23:04:06-08:00
 Start by modifying the rcs_sphere model.
 
+2024-11-27T23:26:50-08:00
+Ok built and got it running:
+![[Pasted image 20241127232659.png]]
+![[Pasted image 20241127232714.png]]
+
+Probably need some loss to see the resonance? Or look at the phase and amplitude in the lumped inductor?
+- sol time is 9 s, probably fast enough to do a quick freq sweep.
+
+2024-11-27T23:36:51-08:00
+Hmm weird looking average Ez between the antenna:
+![[Pasted image 20241127233702.png]]
+
+2D FF:
+![[Pasted image 20241127233736.png]]
+- Why is the FF not symmetric??
+6.5 GHz is the strongest:
+![[Pasted image 20241127233822.png]]
+Zoom-in:
+![[Pasted image 20241127233857.png]]
+
+Adding |E|^2 to the average plot:
+![[Pasted image 20241127234535.png]]
+Ok going to sweep 3 to 4 GHz with finer step.
+2024-11-27T23:52:03-08:00
+Done 3-4 GHz:
+![[Pasted image 20241127235122.png]]
+![[Pasted image 20241127235201.png]]
+However FF is monotonic:
+![[Pasted image 20241127235235.png]]
+
+2024-11-28T00:00:07-08:00
+Ok found the scattered BC selection was wrong. Rerun...
+- nope no change. Guess the PML is doing its job.
+Ok the FF calculation selection was wrong... Rerun.
+- fuck, it is fucking the same...
+2024-11-28T00:10:45-08:00
+- give up for now, need to sleep.
+
+
+
 
 
 
