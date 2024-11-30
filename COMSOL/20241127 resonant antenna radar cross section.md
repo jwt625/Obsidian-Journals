@@ -64,6 +64,110 @@ Ok the FF calculation selection was wrong... Rerun.
 2024-11-28T00:10:45-08:00
 - give up for now, need to sleep.
 
+# Debug FF plot with control sim
+
+2024-11-28T22:00:06-08:00
+Control sim without the antenna:
+- still the same far field pattern.
+- Good news, some settings are wrong.
+![[Pasted image 20241128220033.png]]
+Also the background field is still a bit curved/bent:
+![[Pasted image 20241128220543.png]]
+
+Checked the radar cross section. Should be checking the relative electric field: `abs(comp1.emw.relEz)`.
+
+So this is just from the mesh:
+![[Pasted image 20241128220711.png]]
+Going to turn off the extra pads and the finer mesh.
+2024-11-28T22:12:07-08:00
+Turned off the extra mesh. There is still something in relEz:
+![[Pasted image 20241128221223.png]]
+- also turned off fixed color range
+Background field:
+![[Pasted image 20241128221308.png]]
+- `emw.Ebz`
+Ez:
+![[Pasted image 20241128221336.png]]
+
+Back to the control sim with the finer mesh around the antenna:
+relEz:
+![[Pasted image 20241128221515.png]]
+Ez:
+![[Pasted image 20241128221534.png]]
+Ok so good news the mesh is not doing anything weird.
+
+Fuck it let's build a model from scratch.
+Start: 2024-11-28T22:18:30-08:00
+![[Pasted image 20241128222718.png]]
+This looks freaking fine.
+Ok going to add the antenna.
+
+2024-11-28T22:37:36-08:00
+Hmm it looks good at a single frequency but wrong as soon as the frequency is swept:
+![[Pasted image 20241128223751.png]]
+![[Pasted image 20241128223806.png]]
+
+The radar cross section eval is:
+- `10*log10(at2(r0*cos(phi),r0*sin(phi),emw.bRCS2D))`
+
+Also going to run 4e9 Hz to see:
+![[Pasted image 20241128224036.png]]
+Why tf is this different from f0??
+Running 4.459e9:
+![[Pasted image 20241128224248.png]]
+Nonsense...
+4.4597e9:
+Wow okay:
+![[Pasted image 20241128224349.png]]
+
+The 3D sphere RCS sim:
+![[Pasted image 20241128224930.png]]
+emw.bRCS3D is just |Efar|^2.
+
+
+Freq sweep, basically looks the same as before:
+![[Pasted image 20241128225731.png]]
+
+relE, manual range to be -1 to 1, 3.5 GHz:
+![[Pasted image 20241128225827.png]]
+Oh fuck because the background field is not updated properly...
+Fuck me.
+
+2024-11-28T23:18:01-08:00
+Fixed:
+![[Pasted image 20241128231803.png]]
+![[Pasted image 20241128231818.png]]
+Going to do a finer sweep around 3.5 GHz.
+- 2 min 23 s
+- This 2019 macbook is killing me.
+![[Pasted image 20241128233248.png]]
+![[Pasted image 20241128233427.png]]
+
+Finer from 3.2 to 3.5 GHz.
+![[Pasted image 20241128234100.png]]
+
+2024-11-28T23:45:23-08:00
+Running 3.34 ~ 3.36 GHz.
+Ohh sweeeet:![[Pasted image 20241128235058.png]]
+
+Field on resonant:
+![[Pasted image 20241128235151.png]]
+What is the Chu–Harrington limit of this shit:
+- size = a ~ 1.5 mm
+- lambda = 86.6 mm
+- k = 2pi/lambda
+- Chu-Harrington limit of Q is 776.
+- Corresponding max FWHM is 4.5 MHz.
+
++-10 color range:
+![[Pasted image 20241129001810.png]]
+2024-11-29T00:18:16-08:00
+Exported gif.
+
+Efar^2 is **1e-5**:
+![[Pasted image 20241129002537.png]]
+- comparing to 9e-12 ~ 1e-11 when off-resonance
+- 1e6 larger RCS
 
 
 
