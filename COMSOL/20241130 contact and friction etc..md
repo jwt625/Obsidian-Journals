@@ -31,7 +31,39 @@ This global equation is also very interesting:
 The contact pair also needs to be setup under component -> definition.
 
 Going to check another model about sliding.
+## Sliding wedge
+2024-11-30T20:01:52-08:00
+![[Pasted image 20241130200147.png]]
 
+The solver looks annoying. Different solvers are doing different contact method and solution method. What are the differences?
+![[Pasted image 20241130200345.png]]
+
+Ok I think I should just start building one.
+
+## Two cylinders in a box
+
+![[Pasted image 20241130202815.png]]
+![[Pasted image 20241130202831.png]]
+Five pairs of contacts:
+![[Pasted image 20241130202851.png]]
+
+
+2024-11-30T20:27:57-08:00
+It is not fucking converging:
+![[Pasted image 20241130202803.png]]
+
+Going to try the contact from the loaded spring contact model:
+![[Pasted image 20241130203132.png]]
+
+Still does not converge, however it does when I put the global equation and variable force back in.
+What is this quantum tunneling:
+![[Pasted image 20241130203558.png]]
+![[Pasted image 20241130204216.png]]
+![[Pasted image 20241130204225.png]]
+
+2024-11-30T20:53:37-08:00
+Piece of shit:
+![[Pasted image 20241130205340.png]]
 
 
 

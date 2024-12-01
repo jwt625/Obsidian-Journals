@@ -64,6 +64,9 @@ TODO and Reading list:
 - https://phbd.xyz/
 - three.js god: https://bruno-simon.com/
 
+## Fab
+Electroplating:
+- https://enchantedleaves.com/pages/electroforming-tutorial-free-step-by-step-guide-to-making-copper-electroformed-jewelry-learn-how-to-electroform?srsltid=AfmBOorz4uYQVhFb6ZkPHBnM3zb4Un-utpXm1ok6VlQyKUy-gMz_BfT_
 
 
 
