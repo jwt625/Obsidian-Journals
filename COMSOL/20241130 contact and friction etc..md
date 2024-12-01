@@ -65,5 +65,8 @@ What is this quantum tunneling:
 Piece of shit:
 ![[Pasted image 20241130205340.png]]
 
+2024-11-30T22:23:12-08:00
+I gave up. It partially worked at some point, the left cylinder is deforming inside the box, but not properly pushing the second cylinder...
+
 
 
