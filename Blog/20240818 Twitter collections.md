@@ -80,3 +80,11 @@ Electroplating:
 
 https://x.com/oldestasian/status/1838452136541139145
 
+
+# Production
+
+2024-12-01T23:43:34-08:00
+I figure I should start taking notes about the progress of how I produce my tweets.
+Most of them are screenshots, which are easy.
+Major new things are videos, where I do not want to pay youtube premium for downloading yet.
+Thus I am currently using OBS to record the screen, and then process (crop etc.) in iMovie.
