@@ -57,12 +57,14 @@ TODO and Reading list:
 - Cheap Chinese Thorlabs: https://www.oeabt.com/
 
 
-## Blogs
+## Blogs, lectures
 - https://people.engr.tamu.edu/spalermo/ecen620.html
 	- https://x.com/techjeet5/status/1851497605928296811
 - https://ciechanow.ski/archives/
 - https://phbd.xyz/
 - three.js god: https://bruno-simon.com/
+- Advanced machining at MIT: https://x.com/randallmbriggs/status/1864410334636986746
+
 
 ## Fab
 Electroplating:
