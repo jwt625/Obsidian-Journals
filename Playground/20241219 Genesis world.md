@@ -126,4 +126,79 @@ Example: https://github.com/Genesis-Embodied-AI/Genesis/blob/main/examples/rende
 
 2024-12-19T23:15:36-08:00
 Well let's try saving the video.
+- ok building the scene takes the longest. Should not have killed it.
+- why is the frame rate so slow: `[38;5;159m[Genesis] [23:24:55] [INFO] Running at [38;5;121m0.06[0m[38;5;159m FPS.[0m`
+- it was ~ 6000 FPS when running in terminal.
+
+2024-12-19T23:34:22-08:00
+Ok now the example_render.py for macOS actually opens up the genesis window, and I could pan in it.
+- after including the `-v` argument
+![[Pasted image 20241219233542.png]]
+
+So the visualization part just does not run on macOS directly
+- https://genesis-world.readthedocs.io/en/latest/user_guide/getting_started/visualization.html
+- The full code script does not run, and would get stuck
+```python
+import genesis as gs
+
+gs.init(backend=gs.cpu)
+
+scene = gs.Scene(
+    show_viewer = True,
+    viewer_options = gs.options.ViewerOptions(
+        res           = (1280, 960),
+        camera_pos    = (3.5, 0.0, 2.5),
+        camera_lookat = (0.0, 0.0, 0.5),
+        camera_fov    = 40,
+        max_FPS       = 60,
+    ),
+    vis_options = gs.options.VisOptions(
+        show_world_frame = True,
+        world_frame_size = 1.0,
+        show_link_frame  = False,
+        show_cameras     = False,
+        plane_reflection = True,
+        ambient_light    = (0.1, 0.1, 0.1),
+    ),
+    renderer=gs.renderers.Rasterizer(),
+)
+
+plane = scene.add_entity(
+    gs.morphs.Plane(),
+)
+franka = scene.add_entity(
+    gs.morphs.MJCF(file='xml/franka_emika_panda/panda.xml'),
+)
+
+cam = scene.add_camera(
+    res    = (640, 480),
+    pos    = (3.5, 0.0, 2.5),
+    lookat = (0, 0, 0.5),
+    fov    = 30,
+    GUI    = False,
+)
+
+scene.build()
+
+# render rgb, depth, segmentation, and normal
+# rgb, depth, segmentation, normal = cam.render(rgb=True, depth=True, segmentation=True, normal=True)
+
+cam.start_recording()
+import numpy as np
+
+for i in range(120):
+    scene.step()
+    cam.set_pose(
+        pos    = (3.0 * np.sin(i / 60), 3.0 * np.cos(i / 60), 2.5),
+        lookat = (0, 0, 0.5),
+    )
+    cam.render()
+cam.stop_recording(save_to_filename='video.mp4', fps=60)
+
+```
+The above script get stuck at:
+![[Pasted image 20241219233742.png]]
+
+
+
 
