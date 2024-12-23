@@ -78,6 +78,7 @@ Electroplating:
 - Thread of bendy stuff on a chip: https://x.com/jwt0625/status/1806157999058354522
 - Thread to collect people trying to get silicon further away from their circuits for various reasons (mainly loss and parasitic capacitance). Keep running into this topic and struggling to find those papers: https://x.com/jwt0625/status/1812682883808850122
 - Gelsight: https://x.com/jwt0625/status/1863488042667020578
+- Ranging and dual comb: https://x.com/jwt0625/status/1867465010420887652
 	
 
 # TODO
