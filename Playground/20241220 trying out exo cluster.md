@@ -59,6 +59,8 @@ Verification:
 - `./mnistCUDNN` test passed:
 ![[Pasted image 20241223115556.png]]
 
+Now three nodes:
+![[Pasted image 20241223124750.png]]
 ## Installation on old macbook pro
 2024-12-23T12:44:04-08:00
 
