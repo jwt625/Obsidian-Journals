@@ -21,4 +21,13 @@ Going to try Llama 3.3 70B. Might not have enough memory lol. Let's see.
 
 ![[Pasted image 20241220160551.png]]
 
+# On ubuntu
+2024-12-23T11:24:12-08:00
+Installed on 2020 desktop's ubuntu 20.04.
+Basically following CUDA instructions with a lot of help from claude. As well as restart after the isntallation:
+https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
+
+Tests:
+`deviceQuery`:
+
 
