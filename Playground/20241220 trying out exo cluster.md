@@ -59,7 +59,26 @@ Verification:
 - `./mnistCUDNN` test passed:
 ![[Pasted image 20241223115556.png]]
 
+## Installation on old macbook pro
+2024-12-23T12:44:04-08:00
 
+Had to do a venv otherwise pip takes forever:
+```
+# Create a virtual environment
+python3.12 -m venv ~/venvs/exo-env
+
+# Activate the virtual environment
+source ~/venvs/exo-env/bin/activate
+
+# Now clone and install exo in the virtual environment
+git clone https://github.com/exo-explore/exo.git
+cd exo
+pip install -e .
+```
+
+![[Pasted image 20241223124609.png]]
+
+lol zero.
 
 
 
