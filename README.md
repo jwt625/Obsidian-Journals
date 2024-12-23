@@ -2,7 +2,7 @@ Notes of fun projects.
 
 # Obsidian community plugins
 
-Advanced Tables
-Dataview
-TimeStamper
+- Advanced Tables
+- Dataview
+- TimeStamper
 
