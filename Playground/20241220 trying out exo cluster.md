@@ -78,9 +78,9 @@ cd exo
 pip install -e .
 ```
 
-![[Pasted image 20241223124609.png]]
+lol zero from the intel macbook.
+![[Pasted image 20241223125118.png]]
 
-lol zero.
 
 
 
