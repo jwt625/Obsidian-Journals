@@ -64,6 +64,8 @@ TODO and Reading list:
 - https://phbd.xyz/
 - three.js god: https://bruno-simon.com/
 - Advanced machining at MIT: https://x.com/randallmbriggs/status/1864410334636986746
+- https://falstad.com/mathphysics.html
+
 
 
 ## Fab
@@ -79,7 +81,8 @@ Electroplating:
 - Thread to collect people trying to get silicon further away from their circuits for various reasons (mainly loss and parasitic capacitance). Keep running into this topic and struggling to find those papers: https://x.com/jwt0625/status/1812682883808850122
 - Gelsight: https://x.com/jwt0625/status/1863488042667020578
 - Ranging and dual comb: https://x.com/jwt0625/status/1867465010420887652
-	
+- Pictures of fiber fixture: https://x.com/jwt0625/status/1871585183914471804
+- iphone 7 back cam teardown: https://x.com/jwt0625/status/1870708454496883096
 
 # TODO
 
