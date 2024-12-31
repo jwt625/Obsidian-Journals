@@ -176,3 +176,41 @@ https://github.com/facebookresearch/sam2/blob/main/notebooks/image_predictor_exa
 Ran thru the whole notebook, everything is working!
 Should read thru it tmw.
 
+
+# Installing SAM2 on new mac mini
+
+2024-12-30T21:18:21-08:00
+
+```bash
+git clone https://github.com/facebookresearch/sam2.git && cd sam2
+pip3 install -e .
+```
+
+Seems to run fine.
+
+Damn I really need the NAS to access all the pictures.
+
+`pip install -e ".[notebooks]"`
+
+2024-12-30T21:21:50-08:00
+
+Downloading check point...
+
+2024-12-30T21:31:49-08:00
+Done. Running example note book `automatic_mask_generator_example.ipynb`.
+
+It took 38 s on the example image:
+![[Pasted image 20241230213338.png]]
+- it also complained about torch is using CPU.
+- hmm...
+
+The next step ran out of memory..
+
+2024-12-30T21:44:23-08:00
+Testing the predictor, seems to run much faster:
+![[Pasted image 20241230214443.png]]
+
+Good to know a mask from previous iteration could be used again.
+
+
+
