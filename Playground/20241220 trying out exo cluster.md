@@ -61,7 +61,7 @@ Verification:
 
 Now three nodes:
 ![[Pasted image 20241223124750.png]]
-## Installation on old macbook pro
+# Installation on old macbook pro
 2024-12-23T12:44:04-08:00
 
 Had to do a venv otherwise pip takes forever:

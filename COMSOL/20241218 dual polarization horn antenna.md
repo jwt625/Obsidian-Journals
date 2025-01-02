@@ -4,6 +4,8 @@ Reference:
 - https://x.com/jwt0625/status/1869325104888549886
 - https://www.ainfostore.com/lb-osj-07120-sf-open-boundary-quad-ridged-dual-polarization-horn-antenna-0-7-12-ghz-12db-gain-sma-female
 
+# Extract the geom
+
 Threshold & extract seems to work fine:
 ![[Pasted image 20241218192634.png]]
 
@@ -26,6 +28,7 @@ Conversion from pixel to mm:
 - 258.2 mm
 - 0.5922 mm per pixel
 
+# Import and small adjustment
 2024-12-18T21:24:40-08:00
 Added in COMSOL, and did minor fix. Very similar to the vivaldi antenna:
 ![[Pasted image 20241218212454.png]]
@@ -35,3 +38,9 @@ Added in COMSOL, and did minor fix. Very similar to the vivaldi antenna:
 Original freqs:
 - range(2[GHz],0.5[GHz],6.5[GHz])
 
+# Published
+
+
+https://x.com/jwt0625/status/1869625856190198067
+
+![[Ey_6p5GHz_20241218.gif]]
