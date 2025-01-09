@@ -79,3 +79,7 @@ Edited the shaft to be three phase using onshape:
 ![[Pasted image 20250108232727.png]]
 Started printing about 1 h ago. Small parts not sticking well
 
+2025-01-09T00:42:59-08:00
+Seems to be working fine!
+![[Pasted image 20250109004305.png]]
+Really should have printed an extra stick for poking the ring resonator.
