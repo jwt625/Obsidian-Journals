@@ -1,9 +1,11 @@
+
+# Version 1, standing 1D
 2024-10-10T22:00:26-07:00
 First version geom:
 ![[Pasted image 20241010220040.png]]
 ![[Pasted image 20241010220046.png]]
 
-# Material properties
+## Material properties
 Looking up 3D printed PLA:
 - https://static.igem.org/mediawiki/2015/2/24/CamJIC-Specs-Strength.pdf
 ![[Pasted image 20241010220142.png]]
@@ -52,4 +54,28 @@ Tried using steel ball. Does not help much. The meander helps more:
 ![[Pasted image 20241014215038.png]]
 
 Surprisingly not a big difference. The steel ball is not doing much. Maybe should just keep pushing down the frequency.
+
+# Version 2, circular
+2024-12-22
+
+Did not take any notes at the time.
+
+![[test_ring_20241222.gif]]
+
+Tweet:
+https://x.com/jwt0625/status/1870885083592478749
+
+# Traveling wave actuators
+2025-01-08T21:00:16-08:00
+Planning to do three rods pushed up by a wavy wheel.
+Hmm the wavy wheel might not work...
+Probably should do a three phase engine like aarrangement
+Yes something like this but three phase:
+![[Pasted image 20250108210305.png]]
+- from: https://makerworld.com/en/models/677354?from=search#profileId-605509
+
+2025-01-08T23:26:38-08:00
+Edited the shaft to be three phase using onshape:
+![[Pasted image 20250108232727.png]]
+Started printing about 1 h ago. Small parts not sticking well
 
