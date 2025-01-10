@@ -83,3 +83,23 @@ Started printing about 1 h ago. Small parts not sticking well
 Seems to be working fine!
 ![[Pasted image 20250109004305.png]]
 Really should have printed an extra stick for poking the ring resonator.
+- 2025-01-09T20:05:39-08:00: added this morning
+
+2025-01-09T20:05:25-08:00
+Made an adapter:
+![[Pasted image 20250109200529.png]]
+
+Yes it's working. However not working so well.
+Should actually calculate the phase offset
+- there are 32 unit cells in total
+	- if three UCs are 2pi, then total is 16x2pi = 32pi
+	- azimuthal mode number = 16, probably too high
+- azimuthal mode number = 3 means 6pi phase total
+- 0.375 x pi rad phase offset
+- **67.5 deg**
+
+2025-01-09T20:58:36-08:00
+Going to redesign and reprint the shaft.
+- printed, 67.5 deg phase offset. Did not work much better.
+- Probably need to adjust the motor speed.
+- And fix things better
