@@ -22,6 +22,13 @@ AWG:
 		- https://opg.optica.org/ao/fulltext.cfm?uri=ao-10-11-2395&id=72960
 
 
+## Laser
+https://history.aip.org/exhibits/laser/index.html
+https://journals.aps.org/pr/abstract/10.1103/PhysRev.112.1940
+https://www.hrl.com/news/2020/05/11/hrl-laboratories-celebrates-60th-anniversary-of-first-laser
+![[Pasted image 20250110224441.png]]
+
+
 ## Fiber
 
 Colladon, D. On the reflections of a ray of light inside a parabolic liquid stream. Comptes Rendus 15, 800–802 (1842)
@@ -35,7 +42,18 @@ Kao1966: Dielectric-fibre surface waveguides for optical frequencies
 
 CK Kao Nobel prize speech:
 - https://www.nobelprize.org/prizes/physics/2009/kao/lecture/
-- 
+
+## Planar lightwave circuit
+Doerr and Okamoto
+
+## SOI
+- Soref1986: [All-silicon active and passive guided-wave components for λ = 1.3 and 1.6 µm](https://doi.org/10.1109/JQE.1986.1073057)
+
+### Products:
+- intel light peak: https://www.facebook.com/watch/?v=277370301433
+
+
+
 ## Coupling methods
 
 
@@ -50,12 +68,44 @@ Tapered fiber:
 - Gröblacher2013: Highly efficient coupling from an optical fiber to a nanoscale silicon optomechanical cavity
 	- https://doi.org/10.1063/1.4826924
 
+Edge coupler:
+- https://ieeexplore.ieee.org/document/6895281
+
+
 Review
 - Marchetti2019: Coupling strategies for silicon photonics integrated chips (Invited) https://opg.optica.org/prj/fulltext.cfm?uri=prj-7-2-201&id=404538
+- Edge coupler: https://www.mdpi.com/2076-3417/10/4/1538
 
+Commentary:
+- Rickman2014: [The commercialization of silicon photonics](https://www.nature.com/articles/nphoton.2014.175)
+- Jones2012: [Myths and rumours of silicon photonics](https://www.nature.com/articles/nphoton.2012.66)
+- Hochberg2010: [Towards fabless silicon photonics](https://www.nature.com/articles/nphoton.2010.172)
 
 
 # Integration
 
 Heidel2016: A Review of Electronic-Photonic Heterogeneous Integration at DARPA
 - https://ieeexplore.ieee.org/document/7486128
+
+# Ref
+
+[Maxwell1865](https://royalsocietypublishing.org/doi/pdf/10.1098/rstl.1865.0008)
+
+# Cover image
+List of source:
+- Colladon1842
+- Hopkins1954
+- 
+- Maiman1960 (https://www.hrl.com/news/2020/05/11/hrl-laboratories-celebrates-60th-anniversary-of-first-laser)
+- Berreman1965
+- Tien1971
+- Soref1986
+- 
+- Ilchenko1999
+- Cai2000
+- Waldhäusl1997
+- Roelkens2005
+- 
+- Doerr2008
+- Murakowski2024
+
