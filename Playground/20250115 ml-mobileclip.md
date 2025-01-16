@@ -1,6 +1,8 @@
 
 # Install
 2025-01-15T22:04:25-08:00
+Ref: https://github.com/apple/ml-mobileclip
+
 
 Not going to use conda.
 
@@ -37,6 +39,43 @@ Installing `wget`:
 Downloading:
 ![[Pasted image 20250115221040.png]]
 
+Seems it ran fine.
+
+
+Extra packages:
+- pip install torch
+- pip install pillow
+- pip install torchvision
+- pip install timm
+- pip install open_clip_torch
+
+2025-01-15T22:32:37-08:00
+Got the test script running:
+
+![[Pasted image 20250115223243.png]]
+
+Ok what does this script do and what is next?
+
+Damn it works:
+![[Pasted image 20250115224237.png]]
+![[Pasted image 20250115224245.png]]
+- The image is me holding a compound bow
+
+# Processing and searching
+2025-01-15T23:14:44-08:00
+Done processing:
+![[Pasted image 20250115231504.png]]
+- tested one folder from 2019
+
+## Search
+`pip install scikit-learn`
+
+2025-01-15T23:22:39-08:00
+
+Yes search is also working!!
+![[Pasted image 20250115232226.png]]
+
+Going to index all folders under photos.
 
 
 
