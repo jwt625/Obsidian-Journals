@@ -76,6 +76,11 @@ Yes search is also working!!
 ![[Pasted image 20250115232226.png]]
 
 Going to index all folders under photos.
+2025-01-15T23:31:09-08:00
+Started. Going to see how long it takes.
+There's probably more than 10k images. Right now it seems to be doing ~ 3 images per second. It will take ~ 1 h.
+2025-01-16T00:39:43-08:00
+Broke a while ago because of a file opening error. Added try catch and restarted.
 
 
 
