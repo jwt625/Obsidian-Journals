@@ -82,6 +82,9 @@ There's probably more than 10k images. Right now it seems to be doing ~ 3 images
 2025-01-16T00:39:43-08:00
 Broke a while ago because of a file opening error. Added try catch and restarted.
 
+2025-01-16T08:44:47-08:00
+Done indexing. Search is now ~ 11s on all 14k photons from the last 10 years.
+
 
 
 
