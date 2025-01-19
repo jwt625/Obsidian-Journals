@@ -31,3 +31,10 @@ Stability criteria:
 - https://link.springer.com/book/10.1007/978-3-031-01712-4
 - going to calculate and verify this
 
+1D transmission line example:
+![[Pasted image 20250119123215.png]]
+
+2025-01-19T13:07:08-08:00
+Hell yeah it is working. I'm a dumb ass, the coupling should be shifted so that it would actually propagate.
+![[Pasted image 20250119130729.png]]
+Going to do 2D after lunch.
