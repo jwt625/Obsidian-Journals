@@ -66,9 +66,9 @@ Going to only work with TE polarization (E is in-plane).
 2025-01-19T22:08:54-08:00
 Got it working an hour or two ago.
 main expressions:
-- `B2 + (test!$F$1 / (test!$F$2 * n!B2)) * (Hz_2D!B3 - Hz_2D!B2)`
-- `B2 - (test!$F$1 / (test!$F$2 * n!B2)) * (Hz_2D!C2 - Hz_2D!B2)`
-- `B2 + (test!$F$1 ) * ((Ex_2D!B2 - Ex_2D!B1) / test!$F$2 - (Ey_2D!B2 - Ey_2D!A2) / test!$F$2)`
+- Ex: `B2 + (test!$F$1 / (test!$F$2 * n!B2)) * (Hz_2D!B3 - Hz_2D!B2)`
+- Ey: `B2 - (test!$F$1 / (test!$F$2 * n!B2)) * (Hz_2D!C2 - Hz_2D!B2)`
+- Hz: `B2 + (test!$F$1 ) * ((Ex_2D!B2 - Ex_2D!B1) / test!$F$2 - (Ey_2D!B2 - Ey_2D!A2) / test!$F$2)`
 
 Results from a line source in 50x50 grid:
 - `SIN(2 * PI() * test!$F$6 * test!$F$7 * test!$F$1)`
