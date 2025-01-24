@@ -109,3 +109,48 @@ List of source:
 - Doerr2008
 - Murakowski2024
 
+
+
+# Adding interactive plot
+
+2025-01-23T23:51:32-08:00
+After some back and forth, end up using plotly.
+
+Example:
+```
+  
+
+# %%
+
+import plotly.graph_objs as go
+
+from plotly.subplots import make_subplots
+
+  
+
+fig = make_subplots()
+
+fig.add_trace(go.Scatter(x=[1,2,3], y=[4,5,6]))
+
+fig.update_layout(
+
+sliders=[{
+
+"steps": [{"args": [{"y": [i, i+1, i+2]}], "label": i} for i in range(10)]
+
+}]
+
+)
+
+  
+
+fig.write_html("../_includes/plot.html", include_plotlyjs="cdn")
+
+# %%
+```
+
+- needed to use plotlyjs from CDN.
+
+To include the generated html:
+- `{% include plot.html %}`
+
