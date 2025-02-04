@@ -21,6 +21,7 @@ Using beam envelop instead. DOF = 1.4M.
 Maybe the angle is too big.
 ![[Pasted image 20250202112955.png]]
 
-Damn, not seeing any of these fancy interference.
+Damn, not seeing any of these fancy interference. Gave up.
+
 
 
