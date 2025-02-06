@@ -1,3 +1,5 @@
+
+# Blink it
 2025-01-08T23:28:13-08:00
 Manual:
 - https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/
@@ -28,4 +30,19 @@ See also
 - https://github.com/limengdu/SeeedStudio-XIAO-ESP32S3-Sense-camera/tree/main/take_photos
 Opening serial monitor in arduino IDE is `Cmd + Shift + M`.
 - see Card Mount Failed. Makes sense.
+
+# Wifi
+2025-02-05T22:46:49-08:00
+Fuck it's already been a month.
+
+Following
+- https://wiki.seeedstudio.com/xiao_esp32s3_wifi_usage/#scan-nearby-wifi-networks
+- `File > Examples > WiFi > WiFiScan
+Seems to run fine?
+![[Pasted image 20250205230831.png]]
+2025-02-05T23:14:58-08:00
+Oh ok I need to open the Serial monitor:
+![[Pasted image 20250205231510.png]]
+
+
 
