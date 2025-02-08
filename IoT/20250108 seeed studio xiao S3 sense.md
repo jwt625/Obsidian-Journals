@@ -44,5 +44,7 @@ Seems to run fine?
 Oh ok I need to open the Serial monitor:
 ![[Pasted image 20250205231510.png]]
 
+2025-02-05T23:25:13-08:00
+Continued with connecting to wifi, and it worked.
 
 
