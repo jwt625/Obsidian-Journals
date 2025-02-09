@@ -48,3 +48,155 @@ Oh ok I need to open the Serial monitor:
 Continued with connecting to wifi, and it worked.
 
 
+## How do I check the version of the ESP32?
+2025-02-07T23:16:53-08:00
+
+Asked Mistral ai's Le Chat. It is fast af.
+```
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+  Serial.println("ESP32 Version: " + String(ESP.getChipModel()));
+  Serial.println("SDK Version: " + String(ESP.getSdkVersion()));
+}
+
+void loop() {
+  // Nothing to do here
+}
+
+```
+
+Got:
+```Sketch uses 303164 bytes (9%) of program storage space. Maximum is 3342336 bytes.
+Global variables use 20316 bytes (6%) of dynamic memory, leaving 307364 bytes for local variables. Maximum is 327680 bytes.
+esptool.py v4.8.1
+Serial port /dev/cu.usbmodem31201
+Connecting...
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)
+Crystal is 40MHz
+MAC: 24:58:7c:e2:a8:04
+```
+- However these are always there I guess lol whenever I recompile
+
+Going to continue the examples.
+
+## Loudness detection
+2025-02-07T23:19:06-08:00
+
+https://wiki.seeedstudio.com/xiao_esp32s3_sense_mic/#detection-of-sound-loudness
+
+Error: `Compilation error: I2S.h: No such file or directory`
+
+Fixed by using the second version:
+```
+#include <ESP_I2S.h>
+
+I2SClass I2S;
+
+  
+
+void setup() {
+
+// Open serial communications and wait for port to open:
+
+// A baud rate of 115200 is used instead of 9600 for a faster data rate
+
+// on non-native USB ports
+
+Serial.begin(115200);
+
+while (!Serial) {
+
+; // wait for serial port to connect. Needed for native USB port only
+
+}
+
+  
+
+// setup 42 PDM clock and 41 PDM data pins
+
+I2S.setPinsPdmRx(42, 41);
+
+  
+
+// start I2S at 16 kHz with 16-bits per sample
+
+if (!I2S.begin(I2S_MODE_PDM_RX, 16000, I2S_DATA_BIT_WIDTH_16BIT, I2S_SLOT_MODE_MONO)) {
+
+Serial.println("Failed to initialize I2S!");
+
+while (1); // do nothing
+
+}
+
+}
+
+  
+
+void loop() {
+
+// read a sample
+
+int sample = I2S.read();
+
+  
+
+if (sample && sample != -1 && sample != 1) {
+
+Serial.println(sample);
+
+}
+
+}
+```
+
+Port info:
+![[Pasted image 20250207233213.png]]
+
+Yes got the python code to read the serial port:
+
+```
+  
+
+import serial
+
+import time
+
+  
+
+# Configure the serial port (replace 'COM3' with your serial port)
+
+ser = serial.Serial('/dev/cu.usbmodem31201', 9600, timeout=1)
+
+  
+
+# Give some time for the serial connection to initialize
+
+time.sleep(2)
+
+  
+
+try:
+
+while True:
+
+if ser.in_waiting > 0:
+
+line = ser.readline().decode('utf-8').strip()
+
+print(line)
+
+except KeyboardInterrupt:
+
+print("Serial communication stopped.")
+
+finally:
+
+ser.close()
+```
+
+
+
+
+
