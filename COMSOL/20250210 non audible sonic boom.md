@@ -93,3 +93,13 @@ Sweeping the slope of change:
 
 2025-02-11T01:15:35-08:00
 I should go sleep...
+
+
+2025-02-11T08:37:40-08:00
+Tried making the medium isotropic near the source, still getting more power down.
+
+![[Pasted image 20250211083839.png]]
+
+![[Pasted image 20250211083850.png]]
+
+Going to do a ray tracing.
