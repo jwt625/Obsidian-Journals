@@ -5,7 +5,7 @@ Motivation:
 - https://x.com/bscholl/status/1888939430833975765
 ![[Pasted image 20250210235325.png]]
 
-
+# Air properties
 Going to get the air density distribution.
 From chatGPT:
 ![[Pasted image 20250210235342.png]]
@@ -21,6 +21,7 @@ Also need speed of sound
 ![[Pasted image 20250211000154.png]]
 - hmm does not change much
 
+# Pressure acoustics
 Ok no varying properties, seems fine:
 ![[Pasted image 20250211000607.png]]
 
@@ -101,5 +102,31 @@ Tried making the medium isotropic near the source, still getting more power down
 ![[Pasted image 20250211083839.png]]
 
 ![[Pasted image 20250211083850.png]]
+- Two more possibilities:
+	- this is sound pressure, not power
+	- far field calculation is wrong for anisotropic media
+
+# Discrete ray tracing
 
 Going to do a ray tracing.
+Colored by time:
+![[Pasted image 20250211085724.png]]
+
+Back to pressure acoustics, added isotropic shell before FF calculation:
+![[Pasted image 20250211090306.png]]
+
+![[Pasted image 20250211090317.png]]
+
+The above is 3 kHz, this is 1 kHz:
+![[Pasted image 20250211090414.png]]
+6 kHz:
+![[Pasted image 20250211090616.png]]
+
+Changed back to anisotropic, plotting intensity:
+![[Pasted image 20250211092201.png]]
+
+# Continuous ray tracing
+![[Pasted image 20250211095757.png]]
+
+
+
