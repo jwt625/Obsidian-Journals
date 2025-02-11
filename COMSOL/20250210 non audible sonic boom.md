@@ -54,4 +54,42 @@ Also seems independent of frequency. This is 5 kHz:
 ![[Pasted image 20250211001921.png]]
 
 
+2025-02-11T00:28:50-08:00
+Ok got the radiation pattern:
+- 5 kHz
+![[Pasted image 20250211002856.png]]
+- hmm why??
+- 8 kHz:
+![[Pasted image 20250211003012.png]]
+- ???
+- Could it be the radiator size?
+	- changed to be 4x smaller, still get the same radiation pattern.
+	- maybe it is the mesh... Going to do 2x finer.
+- okay yeah it is the mesh:
+![[Pasted image 20250211003225.png]]
 
+At 1 kHz:
+![[Pasted image 20250211003311.png]]
+- god damn it, why??
+![[Pasted image 20250211003502.png]]
+Zero angle is to the right. Why is no wave going upward??
+
+2025-02-11T00:36:15-08:00
+Checking properties:
+![[Pasted image 20250211003623.png]]
+- `acpr.c`
+![[Pasted image 20250211003650.png]]
+- `acpr.rho`
+Both looks correct.
+
+2025-02-11T01:00:13-08:00
+
+Ok just realized this polar plot in dB is confusing...
+![[Pasted image 20250211010030.png]]
+
+
+Sweeping the slope of change:
+![[Pasted image 20250211011533.png]]
+
+2025-02-11T01:15:35-08:00
+I should go sleep...
