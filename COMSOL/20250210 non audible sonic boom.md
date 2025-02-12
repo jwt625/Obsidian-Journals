@@ -127,6 +127,23 @@ Changed back to anisotropic, plotting intensity:
 
 # Continuous ray tracing
 ![[Pasted image 20250211095757.png]]
+Color by elevation angle:
+![[Pasted image 20250211222901.png]]
 
 
+2025-02-11T22:27:29-08:00
+Hmm somehow fixed by increasing the velocity change:
+![[Pasted image 20250211222740.png]]
+![[Pasted image 20250211222751.png]]
+Streamline really matches the ray optics sim:
+![[Pasted image 20250211231601.png]]
+
+
+FF looks like a mess:
+![[Pasted image 20250211222810.png]]
+![[Pasted image 20250211222828.png]]
+
+
+Wider rectangle:
+![[Pasted image 20250211232157.png]]
 
