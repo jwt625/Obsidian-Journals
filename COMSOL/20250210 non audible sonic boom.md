@@ -148,3 +148,37 @@ FF looks like a mess:
 ![[Pasted image 20250211232157.png]]
 Same as the rays
 ![[Pasted image 20250211232549.png]]
+
+# Hacking freq domain sim by 
+2025-02-12T21:28:37-08:00
+Ran this earlier this afternoon.
+See thread: https://x.com/jwt0625/status/1889859722976862557
+v = 0.3c:
+![[Pasted image 20250212213902.png]]
+v=0.7c:
+![[Pasted image 20250212213911.png]]
+
+epsilon at v=0.5c:
+![[Pasted image 20250212213923.png]]
+
+
+Expression for the velocity angular distribution:
+- `1/2* (-2 *v1 *cos(x) + sqrt(4 *v^2 - 2* v1^2 + 2 *v1^2 * cos(2*x)) )`
+- v is the speed of light and v1 is the speed of the source
+- x is the angular range
+![[Pasted image 20250212213842.png]]
+
+
+
+
+
+# Numerical & changing refractive index
+2025-02-12T21:05:47-08:00
+
+Asked chatGPT to write a program for the naive calculation of the radiated field:
+![[Pasted image 20250212210618.png]]
+- Hmm not sure if this makes sense or not...
+Oh made a mistake, field should be 1/r instead of 1/r^2...
+![[Pasted image 20250212210944.png]]
+v = 0.7 c:
+![[Pasted image 20250212212148.png]]
