@@ -144,6 +144,7 @@ FF looks like a mess:
 ![[Pasted image 20250211222828.png]]
 
 
-Wider rectangle:
+2025-02-11T23:25:31-08:00, wider rectangle:
 ![[Pasted image 20250211232157.png]]
-
+Same as the rays
+![[Pasted image 20250211232549.png]]
