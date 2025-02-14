@@ -182,3 +182,23 @@ Oh made a mistake, field should be 1/r instead of 1/r^2...
 ![[Pasted image 20250212210944.png]]
 v = 0.7 c:
 ![[Pasted image 20250212212148.png]]
+
+
+
+# Further playing with n = 1/r
+
+2025-02-13T23:50:19-08:00
+
+To plot the rays colored by release angle:
+- `at(0, arg(kx+1i*ky) )`
+![[Pasted image 20250213235507.png]]
+
+Ok let's try 3D.
+
+![[Pasted image 20250214000526.png]]
+![[Pasted image 20250214000747.png]]
+
+![[Pasted image 20250214001440.png]]
+
+![[test 1.gif]]
+
