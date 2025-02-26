@@ -3,6 +3,8 @@
 
 2025-02-25T09:22:42-08:00
 Following https://github.com/behretj/LostFound
+- see also https://github.com/ddshan/hand_object_detector
+
 
 Got conda...
 
@@ -94,6 +96,26 @@ Maybe the model should be downloaded from somewhere?
 Seems like the detector is from a different repo:
 - https://github.com/behretj/LostFound/tree/main/thirdparty/detector
 - ok make sense because it is third party
+- the original repo has the lib folder:
+	- https://github.com/ddshan/hand_object_detector/tree/e6eec712a498ec7844b97893c8d012cea1a71e09
+- going to clone it and copy over
+
+Back to installing... New error:
+![[Pasted image 20250226005032.png]]
+
+Ugh stupid me, should be running with python3.10. Resolved.
+Seems fine:
+![[Pasted image 20250226005123.png]]
+
+Holy hell yeah the import now runs (inside `run_demo.py`):
+![[Pasted image 20250226005204.png]]
+
+Now no data:
+![[Pasted image 20250226005420.png]]
+
+
+
+
 
 
 
