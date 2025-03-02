@@ -139,6 +139,27 @@ Got `Dependency Cruiser Extension` :
 - `npm install vite-plugin-glsl --save-dev
 - 
 
+# Trying to add a thin lens
+
+2025-03-01T14:51:10-08:00
+![[Pasted image 20250301145125.png]]
+Broken. Already fixed a bunch of errors. Lens radius is also changing beam radius.
+- I think this is likely due to the event listener. Since the cursor drag still only changes the beam size, and the lens size and beam size could be different. It is just the slider is also changing the beam size.
+
+2025-03-01T15:27:17-08:00
+![[Pasted image 20250301152652.png]]
+We are both dumb fuck.
+
+
+2025-03-01T15:24:01-08:00
+Ok fixed the appearance of the lens:
+![[Pasted image 20250301152410.png]]
+
+2025-03-01T18:22:21-08:00
+Ok I got it work about 1h ago. Turns out I should be updating it in real space in shape.js.
+- see https://x.com/jwt0625/status/1896012120304861340
+![[Pasted image 20250301182321.png]]
+
 
 
 # 2D FD-BPM
