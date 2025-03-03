@@ -161,6 +161,21 @@ Ok I got it work about 1h ago. Turns out I should be updating it in real space i
 ![[Pasted image 20250301182321.png]]
 
 
+# Thick spherical lens
+
+2025-03-01T19:45:09-08:00
+How do we propagate different refractive index?
+
+2025-03-02T20:01:40-08:00
+I don't think wave propagation method is going to work for this.
+
+2025-03-02T23:41:03-08:00
+Found weird numerical issue? The old FFT+WPM+FFT decays faster when there are more z grids
+With `const NH = Math.round(N / 4)` (original):
+![[Pasted image 20250302234159.png]]
+
+With `const NH = Math.round(N*2)`:
+![[Pasted image 20250302234251.png]]
 
 # 2D FD-BPM
 
@@ -178,6 +193,31 @@ Funny this TM would be what people call TE in 3D waveguides.
 
 ![[Pasted image 20250301125731.png]]
 ![[Pasted image 20250301125817.png]]
+![[Pasted image 20250302200210.png]]
+
+Jump to ref. 27:
+![[Pasted image 20250302200302.png]]
+
+Also should read FFT-BPM:
+- Thylén1989: Theory and Applications of the Beam Propagation Method:
+	- https://opg.optica.org/abstract.cfm?uri=GWOE-1989-SB1
+	- no access, also not on sci-hub
+- Thylén1982: The beam propagation method: an analysis of its applicability
+	- https://link.springer.com/article/10.1007/bf00619865
+	- this one is good and fundamental, from the same person
+![[Pasted image 20250302203230.png]]
+![[Pasted image 20250302203238.png]]
+
+2025-03-02T23:43:25-08:00
+Spent the whole night debugging it. Found it works better with much larger domain... Maybe because the source gets cutoff too sharply.
+Domain = 300 (increased by 10x):
+![[Pasted image 20250302234447.png]]
+
+3000:
+![[Pasted image 20250302234516.png]]
+- should update the source.
+
+
 
 ## Going inside reference
 2025-03-01T13:16:35-08:00
