@@ -197,6 +197,9 @@ Funny this TM would be what people call TE in 3D waveguides.
 
 Jump to ref. 27:
 ![[Pasted image 20250302200302.png]]
+- paraxial approx: https://ocw.mit.edu/courses/6-974-fundamentals-of-photonics-quantum-electronics-spring-2006/871c32e6e4a44cbb1546741ef06f0f2f_parax_wav_eq_gau.pdf
+![[Pasted image 20250304001927.png]]
+
 
 Also should read FFT-BPM:
 - Thylén1989: Theory and Applications of the Beam Propagation Method:
@@ -216,6 +219,81 @@ Domain = 300 (increased by 10x):
 3000:
 ![[Pasted image 20250302234516.png]]
 - should update the source.
+- 2025-03-04T00:40:01-08:00
+- updated the source to a more smooth gaussian. Did not help.
+- found that reducing the grid resolution helps...
+
+n = 7 instead of 10:
+![[Pasted image 20250304005050.png]]
+Increase domain size by 10x vs decrease dz manually in BPM by 10x:
+![[Pasted image 20250304004914.png]]
+![[Pasted image 20250304005024.png]]
+
+## Debug BPM convergence
+
+2025-03-04T01:04:14-08:00
+Use python to check Beam Prop stability:
+![[Pasted image 20250304010423.png]]
+![[Pasted image 20250304010430.png]]
+This sucks.
+
+2025-03-04T21:10:32-08:00
+Ok fixed the code and now it is actually propagating:
+![[Pasted image 20250304211040.png]]
+Why is it blowing up??
+
+Increase domain size from 2^7 to 2^8 made it worse:
+![[Pasted image 20250304211113.png]]
+- This looks exactly like the GLSL simulation.
+- So I guess it is good news
+
+Asking ChatGPT to adapt it into RK4:
+- https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods
+
+RK4, no longer diverging!
+![[Pasted image 20250304211958.png]]
+Smaller beam:
+![[Pasted image 20250304212025.png]]
+
+Add phase for focusing is working as well:
+![[Pasted image 20250304212216.png]]
+- damn okay chatGPT is good
+
+Changing the x grid size is somehow changing the beam behavior or defocusing:
+Nx = 2^9:
+![[Pasted image 20250304212528.png]]
+
+Nx = 2^7:
+![[Pasted image 20250304212551.png]]
+At least RK4 is doing its job.
+
+Ok back to bpm.frag:
+Naive:
+![[Pasted image 20250304221127.png]]
+
+RK4:
+![[Pasted image 20250304221154.png]]
+
+It is much better, but still not enough...
+
+Meanwhile, the python version could run 2000 steps no problem:
+![[Pasted image 20250304221338.png]]
+
+And even 10k steps:
+![[Pasted image 20250304221536.png]]
+
+Ok stupid chatGPT were not computing the intermediate fields properly:
+![[Pasted image 20250304222500.png]]
+- still using the old E field
+
+
+
+
+2025-03-03T22:55:51-08:00
+Going to read 
+![[Pasted image 20250303225601.png]]
+- ok this looks highly relevant.
+
 
 
 
