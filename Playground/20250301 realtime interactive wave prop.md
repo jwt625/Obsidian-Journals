@@ -287,6 +287,19 @@ Ok stupid chatGPT were not computing the intermediate fields properly:
 - still using the old E field
 
 
+## RK4 in GLSL
+2025-03-05T00:42:09-08:00
+Spent ~ 3 h ish, still not working. Compiles but not propagating.
+
+## Use 16 bit instead of 8 bit
+2025-03-05T00:42:37-08:00
+
+Going to try this instead.
+What is the original encoding?
+
+
+
+## Reading
 
 
 2025-03-03T22:55:51-08:00
