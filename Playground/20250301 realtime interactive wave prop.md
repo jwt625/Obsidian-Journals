@@ -333,6 +333,25 @@ n-=n_lens=1.1:
 ![[Pasted image 20250305222328.png]]
 Why??
 
+Here is n=1.001, Nx=2^9, domain size 30 um vs 60 um wide:
+![[Pasted image 20250305223741.png]]
+![[Pasted image 20250305223748.png]]
+
+I think o3-mini-high got it, 1/dx^2
+![[Pasted image 20250305223823.png]]
+i.e., do not over-mesh along x.
+
+2025-03-05T22:38:57-08:00
+ok the fucking lens seems to be working:
+![[Pasted image 20250305223907.png]]
+Let's try to make the lens clip the beam:
+![[Pasted image 20250305224319.png]]
+idk maybe this is how it should look like.
+![[Pasted image 20250305224356.png]]
+This is some album cover shit lol.
+![[Pasted image 20250305224826.png]]
+
+
 
 
 ## Reading
