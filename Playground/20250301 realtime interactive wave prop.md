@@ -298,6 +298,42 @@ Going to try this instead.
 What is the original encoding?
 
 
+## Continue in python, adding n distribution
+2025-03-05T22:09:20-08:00
+Adding lens seems working. However beam is not affected by it:
+![[Pasted image 20250305220935.png]]
+- oh n0 was set to 1.5...
+Updated:
+![[Pasted image 20250305221553.png]]
+
+Now the propagation is diverging:
+![[Pasted image 20250305221609.png]]
+
+Even setting the n_lens to 1.0 still cause divergence:
+![[Pasted image 20250305221654.png]]
+However if they are both high (n0=1.5 and n_lens=1.55) then no divergence:
+![[Pasted image 20250305221738.png]]
+- however it looks like the lens is not doing anything?
+
+n0=n_lens=1.35:
+![[Pasted image 20250305221837.png]]
+n0=1.35, n_lens=1.55:
+![[Pasted image 20250305221930.png]]
+No difference.
+- they look different on two separate monitors lol.
+The lens is probably too small and thin to make a difference. n_lens=2.5 made a difference:
+![[Pasted image 20250305222107.png]]
+
+### Divergence test:
+n0=n_lens=1.001:
+![[Pasted image 20250305222303.png]]
+n0=n_lens=1.01:
+![[Pasted image 20250305222316.png]]
+n-=n_lens=1.1:
+![[Pasted image 20250305222328.png]]
+Why??
+
+
 
 ## Reading
 
