@@ -351,6 +351,48 @@ idk maybe this is how it should look like.
 This is some album cover shit lol.
 ![[Pasted image 20250305224826.png]]
 
+2025-03-05T23:15:54-08:00
+Implemented an S bend:
+![[Pasted image 20250305231601.png]]
+
+2025-03-05T23:24:53-08:00
+Implemented eigen mode source:
+![[Pasted image 20250305232501.png]]
+- why so many strips?
+- let's try narrower waveguide:
+![[Pasted image 20250305232542.png]]
+fucking hell how is this working I'm in tears...
+
+Ok it is time to import from GDS files.
+
+Testing straight WG:
+![[Pasted image 20250305233647.png]]
+Hmm seems like it is exciting multiple modes.
+Narrower waveguide is better (0.5 um):
+![[Pasted image 20250305233718.png]]
+
+2025-03-05T23:58:43-08:00
+Trying to increase z step size, convergence problem again
+![[Pasted image 20250305235854.png]]
+- this is Nx = 2^9, and dz = 4\*dx, domain size 100 um
+- However 3\*dx is fine, and looks identical to dz=dx:
+![[Pasted image 20250306000003.png]]
+Need to fix the mode source:
+![[Pasted image 20250306000042.png]]
+2025-03-06T00:17:19-08:00
+Fixed:
+![[Pasted image 20250306001721.png]]
+
+Yeah now this looks like fundamental mode:
+![[Pasted image 20250306001806.png]]
+1 um wide:
+![[Pasted image 20250306001818.png]]
+
+Going to continue with GDS import tmw.
+
+
+
+
 
 
 
