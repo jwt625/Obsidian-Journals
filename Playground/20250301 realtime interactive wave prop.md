@@ -428,6 +428,12 @@ Also should figure out better treatment of discrete boundary:
 2025-03-07T00:17:26-08:00
 
 An MMI should still work fine. Let's try MMI.
+2025-03-07T00:40:57-08:00
+Yes!
+![[Pasted image 20250307004421.png]]
+![[Pasted image 20250307004059.png]]
+I'm surprised how well o3-mini-high is doing.
+
 
 
 
