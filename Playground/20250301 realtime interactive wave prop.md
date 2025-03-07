@@ -298,7 +298,7 @@ Going to try this instead.
 What is the original encoding?
 
 
-## Continue in python, adding n distribution
+# Continue in python, adding n distribution
 2025-03-05T22:09:20-08:00
 Adding lens seems working. However beam is not affected by it:
 ![[Pasted image 20250305220935.png]]
@@ -324,7 +324,7 @@ No difference.
 The lens is probably too small and thin to make a difference. n_lens=2.5 made a difference:
 ![[Pasted image 20250305222107.png]]
 
-### Divergence test:
+## Divergence test:
 n0=n_lens=1.001:
 ![[Pasted image 20250305222303.png]]
 n0=n_lens=1.01:
@@ -390,13 +390,50 @@ Yeah now this looks like fundamental mode:
 
 Going to continue with GDS import tmw.
 
+2025-03-06T22:38:16-08:00
+Fixed bug in slab mode source, not it looks better, and got option to excite higher order modes:
+![[Pasted image 20250306223835.png]]
+
+Look at all these modes with a 4 um wide waveguide:
+![[Pasted image 20250306223915.png]]
+
+2025-03-06T23:23:39-08:00
+Actually found some bugs about the slab mode, now fixed. Not sure why it was working before:
+![[Pasted image 20250306232357.png]]
+
+
+## Adding PML
+2025-03-06T23:37:25-08:00
+magnitude = 5, too high:
+![[Pasted image 20250306233801.png]]
+
+Reduced to 1 worked fine:
+![[Pasted image 20250306233816.png]]
+
+Final, comparing between with and without PML:
+![[Pasted image 20250306233831.png]]
+![[Pasted image 20250306233841.png]]
+
+2025-03-07T00:13:13-08:00
+Found the wave is decaying when dz is too high.
+This is dz=2\*dx vs dz=3\*dx:
+![[Pasted image 20250307001354.png]]
+![[Pasted image 20250307001338.png]]
+
+Ok going to use 2dx instead of 3dx from now on.
+Also should figure out better treatment of discrete boundary:
+![[Pasted image 20250307001547.png]]
+- maybe it is time to read Vassallo1992 again.
+- 
+2025-03-07T00:17:26-08:00
+
+An MMI should still work fine. Let's try MMI.
 
 
 
 
 
-
-## Reading
+# Reading
 
 
 2025-03-03T22:55:51-08:00
