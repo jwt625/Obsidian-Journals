@@ -435,8 +435,50 @@ Yes!
 I'm surprised how well o3-mini-high is doing.
 
 
+Next
+- package shit better
+- import from gds
+- should I switch to javascript god damn it
+
+## Repo cleanup
+2025-03-07T23:18:32-08:00
+
+o3-mini-high recommended:
+```
+my_bpm/
+├── my_bpm/                    # Main package directory
+│   ├── __init__.py            # Package initializer (could expose key functions)
+│   ├── core.py                # Core BPM propagation routines (RK4, PML, etc.)
+│   ├── refractive_index.py    # Functions to generate refractive index distributions (lens, waveguide, MMI, etc.)
+│   ├── mode_solver.py         # Functions for slab mode source calculation (including slab_mode_source)
+│   └── pml.py                 # (Optional) PML helper functions if you want to separate these out
+├── tests/                     # Test suite directory (using pytest, for example)
+│   ├── __init__.py
+│   ├── test_refractive_index.py  # Tests for functions in refractive_index.py
+│   ├── test_mode_solver.py       # Tests for mode_solver.py functions
+│   └── test_core.py              # Tests for core BPM propagation functions
+├── examples/                  # Example scripts (for interactive demos, etc.)
+│   ├── example_mmi.py         # Example: generating an MMI splitter and launching a mode
+│   └── example_waveguide.py   # Example: propagating in a waveguide or lens structure
+├── setup.py                   # Setup script for installation via pip
+├── requirements.txt           # Dependencies
+└── README.md                  # Project documentation and usage instructions
+
+```
+
+2025-03-07T23:48:36-08:00
+Done. Tests seem to run fine:
+![[Pasted image 20250307234843.png]]
+![[Pasted image 20250307234852.png]]
 
 
+
+## Star coupler
+2025-03-07T22:44:17-08:00
+
+Let's try to make a star coupler.
+- https://photonics.intec.ugent.be/download/phd_200.pdf
+- they used **[CAMFR](https://github.com/demisjohn/CAMFR)**
 
 
 # Reading
