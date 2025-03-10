@@ -24,7 +24,9 @@ Ramp2020: https://doi.org/10.1063/5.0002160
 Han2020: https://doi.org/10.1038/s41467-020-17053-3
 Peairs2020: https://doi.org/10.1103/PhysRevApplied.14.061001
 Mirhosseini2020: https://doi.org/10.1038/s41586-020-3038-6
+Stockill2022: https://doi.org/10.1038/s41467-022-34338-x
 Jiang2023: https://doi.org/10.1038/s41567-023-02129-w
+Weaver2023: https://doi.org/10.1038/s41565-023-01515-y
 Yoon2023: https://doi.org/10.1364/OPTICA.474022
 vanThiel2025: https://doi.org/10.1038/s41567-024-02742-3
 
@@ -33,6 +35,8 @@ vanThiel2025: https://doi.org/10.1038/s41567-024-02742-3
 
 Arnold2020: https://doi.org/10.1038/s41467-020-18269-z
 Brubaker2022: https://doi.org/10.1103/PhysRevX.12.021062
+Delaney2022: https://doi.org/10.1038/s41586-022-04720-2
+Zhao2023: https://doi.org/10.1364/OPTICA.479162
 
 
 # Electro-optics
@@ -42,6 +46,7 @@ McKenna2020: https://doi.org/10.1364/OPTICA.397235
 Holzgrafe2020: https://doi.org/10.1364/OPTICA.397513
 Hease2020: https://doi.org/10.1103/PRXQuantum.1.020315
 Xu2021: https://doi.org/10.1038/s41467-021-24809-y
+Wang2022: https://doi.org/10.1038/s41534-022-00664-7
 Sahu2023: https://doi.org/10.1126/science.adg3812
 
 
