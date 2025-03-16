@@ -301,4 +301,9 @@ On the viewer side:
 
 2025-03-15T23:32:29-07:00
 
+Existing issues:
+- New tab gets also added as child node of the previous node. Should exclude new tab?
+	- how should we handle this? The new tab could be because the user saw something in the previously active tab. Should we allow loops?
+- the status is never closed. Tab closing is not properly updated. When the address change, the node status should also be updated.
+	- should we track multiple sessions on the same tab and same address if the user moved back and forth?
 
