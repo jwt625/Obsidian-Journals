@@ -307,3 +307,13 @@ Existing issues:
 - the status is never closed. Tab closing is not properly updated. When the address change, the node status should also be updated.
 	- should we track multiple sessions on the same tab and same address if the user moved back and forth?
 
+2025-03-15T23:53:40-07:00
+What the hell is the difference between
+`chrome.tabs.getCurrent(tab => resolve(tab?.id));`
+and
+`chrome.tabs.getCurrent(tab => resolve(tab.id));`
+- Answer (o3-mini-high): The difference is that using `tab?.id` employs the optional chaining operator, which safely returns `undefined` if `tab` is null or undefined, while `tab.id` assumes that `tab` exists. If `tab` were null or undefined, `tab.id` would throw an error.
+
+
+
+
