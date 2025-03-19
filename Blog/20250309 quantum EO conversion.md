@@ -29,6 +29,7 @@ Jiang2023: https://doi.org/10.1038/s41567-023-02129-w
 Weaver2023: https://doi.org/10.1038/s41565-023-01515-y
 Yoon2023: https://doi.org/10.1364/OPTICA.474022
 Meesala2024: https://doi.org/10.1038/s41567-024-02409-z
+Meesala2024: https://doi.org/10.1103/PhysRevX.14.031055
 vanThiel2025: https://doi.org/10.1038/s41567-024-02742-3
 
 
@@ -48,8 +49,9 @@ Holzgrafe2020: https://doi.org/10.1364/OPTICA.397513
 Hease2020: https://doi.org/10.1103/PRXQuantum.1.020315
 Xu2021: https://doi.org/10.1038/s41467-021-24809-y
 Wang2022: https://doi.org/10.1038/s41534-022-00664-7
+Sahu2022: https://doi.org/10.1038/s41467-022-28924-2
 Sahu2023: https://doi.org/10.1126/science.adg3812
-
+Arnold2025: https://doi.org/10.1038/s41567-024-02741-4
 
 
 
