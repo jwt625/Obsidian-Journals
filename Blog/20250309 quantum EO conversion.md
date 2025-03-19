@@ -16,21 +16,29 @@ Han2021: Microwave-optical quantum frequency conversion
 
 Vainsencher2016: https://doi.org/10.1063/1.4955408
 Balram2016: https://doi.org/10.1038/nphoton.2016.46
+- https://rdcu.be/ed8hb
 Jiang2019: https://doi.org/10.1364/OPTICA.6.000845
 Shao2019: https://doi.org/10.1364/OPTICA.6.001498
 Forsch2020: https://doi.org/10.1038/s41567-019-0673-7
+- https://rdcu.be/ed8hF
 Jiang2020: https://doi.org/10.1038/s41467-020-14863-3
 Ramp2020: https://doi.org/10.1063/5.0002160
 Han2020: https://doi.org/10.1038/s41467-020-17053-3
 Peairs2020: https://doi.org/10.1103/PhysRevApplied.14.061001
+- https://clelandlab.uchicago.edu/pdf/peairs_optomech_prapp_2020.pdf
 Mirhosseini2020: https://doi.org/10.1038/s41586-020-3038-6
+- https://rdcu.be/ed8ig
 Stockill2022: https://doi.org/10.1038/s41467-022-34338-x
 Jiang2023: https://doi.org/10.1038/s41567-023-02129-w
+- https://rdcu.be/ed8iu
 Weaver2023: https://doi.org/10.1038/s41565-023-01515-y
+- https://rdcu.be/ed8gy
 Yoon2023: https://doi.org/10.1364/OPTICA.474022
 Meesala2024: https://doi.org/10.1038/s41567-024-02409-z
+- https://rdcu.be/ed8iA
 Meesala2024: https://doi.org/10.1103/PhysRevX.14.031055
 vanThiel2025: https://doi.org/10.1038/s41567-024-02742-3
+- https://rdcu.be/ed8iK
 
 
 # Electro-optomechanics
