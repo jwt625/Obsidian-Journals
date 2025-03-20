@@ -25,3 +25,16 @@ Hmm there's definitely shit inside this html but not sure why I do not see anyth
 ![[Pasted image 20250320003654.png]]
 
 Going to ask chat.
+
+2025-03-20T00:48:57-07:00
+ok chat found it has `np.int32` in it that is breaking the html:
+![[Pasted image 20250320004928.png]]
+
+Fixed:
+![[Pasted image 20250320004942.png]]
+
+Ok going to check the LNSOI one.
+2025-03-20T00:59:04-07:00
+Got it running and showing, but it suchs:
+![[Pasted image 20250320005912.png]]
+
