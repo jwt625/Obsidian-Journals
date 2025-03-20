@@ -37,4 +37,9 @@ Ok going to check the LNSOI one.
 2025-03-20T00:59:04-07:00
 Got it running and showing, but it suchs:
 ![[Pasted image 20250320005912.png]]
+Also all the circles are missing
+![[Pasted image 20250320010317.png]]
+
+2025-03-20T01:04:10-07:00
+Going to stop here for now. Should try with gdsfactory next.
 
