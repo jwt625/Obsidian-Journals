@@ -74,6 +74,20 @@ Zhu2020: https://doi.org/10.1364/OPTICA.397967
 Kumar2023: https://doi.org/10.1038/s41586-023-05740-2
 
 
+
+# Building the interactive plot
+2025-03-20T22:54:05-07:00
+
+Going to start with piezo-optomechanical approach first.
+Already cleaned up the table and converted to json.
+
+2025-03-21T00:54:19-07:00
+Done. See: https://jwt625.github.io/QFC-plot/
+
+
+
+
+
 # Test frame
 
 ```custom-frames
