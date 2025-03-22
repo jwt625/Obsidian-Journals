@@ -85,6 +85,9 @@ Already cleaned up the table and converted to json.
 Done. See: https://jwt625.github.io/QFC-plot/
 
 
+2025-03-21T23:02:01-07:00
+Migrate this document, at least the references part, to github repo: https://github.com/jwt625/QFC-plot
+
 
 
 
