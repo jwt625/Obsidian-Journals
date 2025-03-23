@@ -442,3 +442,33 @@ Holy fuck I got an image:
 ## Here is the infinite monitor:
 ![[Pasted image 20250322010829.png]]
 ok I'm going to sleep.
+
+2025-03-22T08:48:25-07:00
+One picture is ~ 1 MB.
+My NAS is 8 TB 8 4. It could last 1 year with one picture per second:
+![[Pasted image 20250322085036.png]]
+
+So 10 sec per picture would be fine for 10 years!
+
+# Better camera
+2025-03-22T19:26:34-07:00
+The images suck. Asked for better cameras:
+Below is a comparison table with a few options:
+
+| **Option**    | **Sensor** | **Resolution (MP)** | **Max Image Resolution** | **Approx. Price** | **Notes**                                                                                                                                                  |
+| ------------- | ---------- | ------------------- | ------------------------ | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1 (Default)   | OV2640     | ~2                  | Up to UXGA (1600×1200)   | ~$8–$10           | The default sensor; moderate image quality and widely supported.                                                                                           |
+| 2 (Upgrade)   | OV5640     | ~5                  | 2592×1944                | ~$12–$15          | Offers higher resolution and better image quality; compatible with the ESP32 camera interface.                                                             |
+| 3 (Advanced)* | OV4689     | ~8                  | Up to 3840×2160 (4K)     | ~$20–$30          | A significant upgrade in resolution. _Typically available in MIPI CSI form factor, so using it may require extra adapter hardware and custom driver work._ |
+
+How to improve the default camera:
+Here’s a quick comparison table:
+
+|**Approach**|**Pros**|**Cons**|
+|---|---|---|
+|**Tuning Sensor Settings**|No hardware changes; can be adjusted via firmware|May be limited by sensor’s inherent performance|
+|**Supplemental IR Lighting**|Improves brightness without visible light|Requires additional components and proper placement|
+|**Upgrading the Sensor (e.g. OV5640)**|Better overall image quality and low-light performance|May require adjustments in wiring, pin configuration, or code|
+
+
+
