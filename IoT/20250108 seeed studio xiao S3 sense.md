@@ -471,4 +471,10 @@ Here’s a quick comparison table:
 |**Upgrading the Sensor (e.g. OV5640)**|Better overall image quality and low-light performance|May require adjustments in wiring, pin configuration, or code|
 
 
+# New camera
+2025-03-23T09:31:18-07:00
+Tried changing settings. No big diff.
+Thinking about OV5640.
+- ordered two:
+![[Pasted image 20250323212001.png]]
 
