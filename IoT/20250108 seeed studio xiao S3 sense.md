@@ -478,3 +478,63 @@ Thinking about OV5640.
 - ordered two:
 ![[Pasted image 20250323212001.png]]
 
+# Power reduction
+2025-03-24T21:24:05-07:00
+
+Asking for a proposal in cursor (cursor is amazing):
+
+The idea of this project is so that I could wear the camera on my head and take pictures when I'm at home to help me track stuff I've touched and moved. Hence the capturing is very regular (60s per capture right now), and it will need to be battery powered. Now reevaluate the options and make a proposal on which ones to implement and in what order.
+
+Ah, this context helps a lot! For a head-mounted, battery-powered camera taking regular shots every 60s, here's my prioritized recommendation:
+
+Priority 1 - Immediate Impact:
+1. WiFi Power Management
+- The current HTTP server setup keeps WiFi active constantly
+- Switch to a "wake-up → connect → send → disconnect → sleep" cycle
+- This alone could significantly extend battery life since WiFi is one of the biggest power draws
+1. Sleep Modes
+- Between 60s captures, put both the camera and ESP32 into deep sleep
+- Wake up, take photo, send it, then sleep again
+- The actual active time needed per cycle might be just 2-3 seconds
+Priority 2 - Optimization:
+1. Processing Efficiency
+- Evaluate if SVGA resolution is actually needed for identifying objects
+- Consider dropping to VGA or even lower resolution
+- Reduce JPEG quality if the current setting is overkill for object identification
+- These changes would reduce processing time and transmission time
+1. Operation Modes
+- Add a "home mode" vs "away mode"
+- Home mode: regular 60s captures
+- Away mode: deep sleep to preserve battery
+- Could be triggered by a simple button press or proximity to a specific WiFi network
+Lower Priority:
+1. Hardware Considerations
+- Add battery voltage monitoring to warn you when charge is low
+- Consider using an efficient voltage regulator if not already present
+I deliberately excluded:
+- Motion detection (since you want regular intervals)
+- Batch processing (since real-time tracking is likely important)
+- External triggers (since you want automated, regular captures)
+Would you like me to detail the implementation approach for any of these priorities? The WiFi ower management + sleep modes combination would be the most impactful place to start.
+
+
+2025-03-24T21:57:55-07:00
+
+Installing PlatformIO IDE so that I could run it in vscode/cursor instead of arduino IDE.
+
+2025-03-24T22:11:25-07:00
+seems like it broke the ai chat... Opening a different folder the ai would work fine.
+
+2025-03-24T22:15:57-07:00
+ok it works when I open a new chat...
+
+Hmm cannot open it:
+- **Command 'PlatformIO: PlatformIO Home' resulted in an error**
+- command 'platformio-ide.showHome' not found
+- 
+
+Maybe this is a cursor thing. Going to test in VSCode...
+
+Hmm same error in vscode:
+![[Pasted image 20250324221947.png]]
+Fuck it I'll run it in arduino IDE.
