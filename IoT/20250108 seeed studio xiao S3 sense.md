@@ -538,3 +538,14 @@ Maybe this is a cursor thing. Going to test in VSCode...
 Hmm same error in vscode:
 ![[Pasted image 20250324221947.png]]
 Fuck it I'll run it in arduino IDE.
+
+2025-03-24T22:42:06-07:00
+Back to arduino IDE. Fixed a few "bugs"
+- fixed the server address and port number.
+- Added an upload window so that it does not go to sleep too fast and I have to time the reset button for reupload..
+
+2025-03-24T22:50:54-07:00
+It is running.
+![[Pasted image 20250324225123.png]]
+I really need to start building it physically onto my head.
+
