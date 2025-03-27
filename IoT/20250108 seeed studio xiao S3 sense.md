@@ -577,7 +577,45 @@ Done:
 Wait they are overlapping. Fixed. Read the warnings you dummy.
 ![[Pasted image 20250326231456.png]]
 
+2025-03-26T23:28:47-07:00
+hmm wait I should just make it to be clipped onto my shirt.
+Maybe could use some magnets. Let's get some small magnets,
 
+Magnets ordered.
+
+2025-03-26T23:52:04-07:00
+Hmm I also would want to make it take a picture immediately when I hit a button. Let me ask.
+2025-03-27T00:11:34-07:00
+Still cannot connect to it, wtf:
+- it used to be:
+![[Pasted image 20250327001142.png]]
+- now cannot find this port.
+nonsense. Going to try the white usb-c cable instead of thunderbolt-5 cable.
+- still not showing up.
+
+2025-03-27T00:39:54-07:00
+Restarted the computer, no help.
+This fixed it:
+1. Press and hold BOTH buttons simultaneously:
+- Use one finger to press and hold the B button
+- Use another finger to press and hold the RST button
+- Make sure you're pressing both buttons firmly
+1. While still holding BOTH buttons, plug the USB cable back into your computer
+2. Keep holding BOTH buttons for about 2 seconds after plugging in the cable
+
+![[Pasted image 20250327004043.png]]
+
+why tf is the camera no longer working:
+```
+E (5207) cam_hal: cam_dma_config(301): frame buffer malloc failed
+E (5207) cam_hal: cam_config(390): cam_dma_config failed
+E (5207) gdma: gdma_disconnect(314): no peripheral is connected to the channel
+E (5214) camera: Camera config failed with error 0xffffffff
+Camera init failed with error 0xffffffff
+```
+
+2025-03-27T01:12:42-07:00
+Also just realized the print blocks both buttons...
 
 
 
