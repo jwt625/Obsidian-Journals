@@ -549,3 +549,35 @@ It is running.
 ![[Pasted image 20250324225123.png]]
 I really need to start building it physically onto my head.
 
+2025-03-26T21:59:04-07:00
+I should test how long it could last with the power bank.
+And mount this thing onto my glasses.
+These pictures are actually only 30 kB.
+- 5 TB could already last 300 years
+
+Should have some script to identify if the image is interesting?
+wow outdoor it looks like shit (at 10 pm).
+
+Dimensions for printing a case:
+- 18 mm wide
+- 22 mm tall
+- 10 mm thick not including the camera
+- camera bottom is 14 mm from the bottom
+- usb type c connector could be as thick as 12 x 6 mm
+
+2025-03-26T22:20:02-07:00
+okay I guess people have the seeed xiao models:
+![[Pasted image 20250326222012.png]]
+
+2025-03-26T23:13:01-07:00
+Done:
+![[Pasted image 20250326231303.png]]
+![[Pasted image 20250326231314.png]]
+![[Pasted image 20250326231335.png]]
+Wait they are overlapping. Fixed. Read the warnings you dummy.
+![[Pasted image 20250326231456.png]]
+
+
+
+
+

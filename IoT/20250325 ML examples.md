@@ -19,4 +19,15 @@ Asked to visualize some samples in the dataset:
 ![[Pasted image 20250326002505.png]]
 ![[Pasted image 20250326002516.png]]
 
+These LLMs/agents are really damn smart
+![[Pasted image 20250326002902.png]]
+
+Fucking stupid finder. I want to always see the hidden files:
+```
+defaults write com.apple.finder AppleShowAllFiles -bool true
+killall Finder
+
+```
+
+Ok great.
 
