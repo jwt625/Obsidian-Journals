@@ -616,6 +616,35 @@ Camera init failed with error 0xffffffff
 
 2025-03-27T01:12:42-07:00
 Also just realized the print blocks both buttons...
+- removed...
 
+2025-03-27T08:38:38-07:00
+Same error:
+E (5207) cam_hal: cam_dma_config(301): frame buffer malloc failed
+E (5207) cam_hal: cam_config(390): cam_dma_config failed
+E (5207) gdma: gdma_disconnect(314): no peripheral is connected to the channel
+E (5214) camera: Camera config failed with error 0xffffffff
 
+This vid is informative:
+- [# XIAO ESP32S3 Sense - Tiny ESP32 Camera](https://www.youtube.com/watch?v=qNzlytUdB_Q&ab_channel=DroneBotWorkshop)
+![[Pasted image 20250327084322.png]]
 
+Why is his image so much better??
+- is it this line: `config.jpeg_quality = 12;`
+Camera replacement near 36 min mark.
+
+https://github.com/espressif/arduino-esp32/issues/6209
+
+Added more debug:
+```
+Total heap: 351308
+Free heap: 313688
+PSRAM size: 0
+Free PSRAM: 0
+
+```
+
+Fuck now I remember this...
+1. Go to Tools > Board > "XIAO ESP32S3"
+2. Go to Tools > PSRAM and select "Enabled"
+3. Go to Tools > Flash Mode and select "QIO 80MHz"
