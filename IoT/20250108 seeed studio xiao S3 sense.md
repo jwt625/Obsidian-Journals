@@ -648,3 +648,16 @@ Fuck now I remember this...
 1. Go to Tools > Board > "XIAO ESP32S3"
 2. Go to Tools > PSRAM and select "Enabled"
 3. Go to Tools > Flash Mode and select "QIO 80MHz"
+
+
+# New camera is here!
+2025-03-29T14:13:45-07:00
+
+Why tf is the image mirrored:
+![[image_20250329_141042.jpg]]
+- does look better than before, although still ~ 40 KB.
+
+It is getting to 70 C.. It is not even streaming... IR image taken. I need to figure out a wireless solution for this stupid IR camera.
+ Need to find a heatsink for it.
+ 
+
