@@ -118,6 +118,7 @@ Ok I had to run this freaking line of code:
 It took 6 hours to train. Forgot to update yesterday morning.
 ![[Pasted image 20250403210536.png]]
 
+# Trying my own images
 Should try the training data preparation with COLMAP.
 Stupid freaking python.
 - ` /opt/homebrew/anaconda3/envs/colmap_env/bin/python colmap_gradio.py`
@@ -147,6 +148,69 @@ Also why are the png files 10x larger than heic??
 2025-04-03T23:22:22-07:00
 innolight & servo adapter
 ![[Pasted image 20250403232241.png]]
+
+# Deploy online interactive viewer
+
+2025-04-03T23:32:02-07:00
+ASked chatGPT for options:
+- https://github.com/antimatter15/splat?tab=readme-ov-file
+	- looks pretty good
+- https://github.com/mkkellogg/GaussianSplats3D
+	- hmm this seems more general, and three.js based
+
+Going to try the three.js based one.
+- holy it almost froze my computer..
+
+2025-04-04T00:23:00-07:00
+
+The default scene is from
+```
+const url = new URL(
+    params.get("url") || "train.splat",
+    "https://huggingface.co/cakewalk/splat-data/resolve/main/"
+);
+
+```
+
+Converting ply to splat:
+- `python convert.py your_model.ply --output your_model.splat`
+- installed `plyfile`
+- converted
+
+2025-04-04T00:29:15-07:00
+Ok got it rendered locally. However it looks worse. The spherical harmonic order is lower?
+![[Pasted image 20250404004137.png]]
+Yes it is because of the spherical harmonics order.
+It is from this section in `convert.py`:
+```
+SH_C0 = 0.28209479177387814
+
+color = np.array(
+[
+0.5 + SH_C0 * v["f_dc_0"],
+0.5 + SH_C0 * v["f_dc_1"],
+0.5 + SH_C0 * v["f_dc_2"],
+1 / (1 + np.exp(-v["opacity"])),
+]
+)
+```
+
+ugh files are also too big:
+- https://docs.github.com/en/repositories/working-with-files/managing-large-files
+- the splat is only 20.9 MB though
+- going to ignore the ply file.
+
+2025-04-04T01:04:04-07:00
+Deployed. Took a while for the pages to actually run and become active:
+- https://jwt625.github.io/splat/
+Looks like crap though because of zeroth order only.
+![[Pasted image 20250404010453.png]]
+
+
+
+
+
+
 
 
 
