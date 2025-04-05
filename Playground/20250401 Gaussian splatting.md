@@ -173,9 +173,11 @@ const url = new URL(
 ```
 
 Converting ply to splat:
-- `python convert.py your_model.ply --output your_model.splat`
+- `python3 convert.py your_model.ply --output your_model.splat`
 - installed `plyfile`
+- `python3 convert.py innolight.ply --output test.splat`
 - converted
+- 
 
 2025-04-04T00:29:15-07:00
 Ok got it rendered locally. However it looks worse. The spherical harmonic order is lower?
@@ -205,6 +207,63 @@ Deployed. Took a while for the pages to actually run and become active:
 - https://jwt625.github.io/splat/
 Looks like crap though because of zeroth order only.
 ![[Pasted image 20250404010453.png]]
+
+## Make the webGL rendering with 3rd order spherical harmonics
+2025-04-04T21:48:40-07:00
+Updated `convert.py`
+Now the splat file is ~150 MB.
+Need to figure out large file on github.
+- `git lfs install`
+	- error
+	- `brew install git-lfs`
+	- ok now the above runs
+- `git lfs track "*.splat"`
+
+2025-04-04T21:55:41-07:00
+What is this bullshit
+![[Pasted image 20250404215546.png]]
+
+Going to create a new repo.
+2025-04-04T22:03:46-07:00
+Done.
+- https://github.com/jwt625/splat-lfs
+2025-04-04T22:14:31-07:00
+Hmm github page not working,  likely because it is using the small pointer file. Piece of shit git LFS.
+Going to host the splat on hugging face.
+
+2025-04-04T22:35:13-07:00
+Tried loading the -v2 that has up to 3rd SH. Froze my browser. Fuck.
+
+2025-04-04T23:06:12-07:00
+Testing up to 0~1 SH.
+- `python3 convert.py innolight.ply --output test.splat --sh_order 1`
+
+2025-04-04T23:08:43-07:00
+ok even this freeze the browser. It must be the rendering.
+
+2025-04-04T23:28:25-07:00
+ok actually read and understood convert.py.
+
+## How does the rendering work?
+
+2025-04-05T00:24:11-07:00
+Still trying to understand the rendering
+- https://github.com/ArthurBrussee/brush/blob/main/crates/brush-render/src/gaussian_splats.rs
+- ok here is the actual rendering part: https://github.com/ArthurBrussee/brush/blob/main/crates/brush-render/src/shaders/project_visible.wgsl
+- I see the same SH_C0 coefficient, great.
+- there are some magic numbers. Reference:
+	- https://jcgt.org/published/0002/02/06/
+	- ![[Pasted image 20250405003404.png]]
+Ok thank you o3-mini-high:
+![[Pasted image 20250405003905.png]]
+Useful stuff from the paper:
+![[Pasted image 20250405004133.png]]
+![[Pasted image 20250405004257.png]]
+![[Pasted image 20250405004311.png]]
+
+2025-04-05T00:47:51-07:00
+Now the wgsl code makes more sense. Can I just use this wgsl, or get a glsl version?
+Will continue after sleep.
 
 
 
