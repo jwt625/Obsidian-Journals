@@ -662,3 +662,13 @@ It is getting to 70 C.. It is not even streaming... IR image taken. I need to fi
  Need to find a heatsink for it.
  
 
+# Power draw test
+2025-04-05T09:44:14-07:00
+I have been wearing it for more than a week.
+Used a CPU heat sink mount as the holder and heat sink.
+It is drawing 0.9 W when sleeping!
+And 1.35 W when active.
+This is bullshit.
+The main change is the button press.
+![[Pasted image 20250405094633.png]]
+
