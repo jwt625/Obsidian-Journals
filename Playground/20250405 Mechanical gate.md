@@ -53,4 +53,9 @@ difference() {
 
 ```
 
+2025-04-05T22:32:06-07:00
+![[Pasted image 20250405223206.png]]
+not working very well:
+- probably printed the channel too tight, takes quite some force & can't really cascade because of the force would accumulate too fast & would not continue triggering without me pushing on the whole chain
+
 

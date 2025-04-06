@@ -266,6 +266,12 @@ Now the wgsl code makes more sense. Can I just use this wgsl, or get a glsl vers
 Will continue after sleep.
 
 
+# Reference:
+Original paper: https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/
+nerfstudio: https://docs.nerf.studio/nerfology/methods/splat.html
+
+
+
 
 
 
