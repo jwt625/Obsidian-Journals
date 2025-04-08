@@ -481,6 +481,15 @@ Let's try to make a star coupler.
 - they used **[CAMFR](https://github.com/demisjohn/CAMFR)**
 
 
+# WebGPU
+
+2025-04-07T23:47:17-07:00
+Got some recommendation from o4-mini.
+The Brush tool used in [[20250401 Gaussian splatting]] was using webGPU for rendering. Maybe should understand it and use it for a browser based viewer.
+
+Will follow this next:
+- https://chatgpt.com/c/67f4bb1d-e188-8011-805b-263e3518e52f
+
 # Reading
 
 

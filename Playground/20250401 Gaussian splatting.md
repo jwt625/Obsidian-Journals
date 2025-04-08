@@ -265,6 +265,24 @@ Useful stuff from the paper:
 Now the wgsl code makes more sense. Can I just use this wgsl, or get a glsl version?
 Will continue after sleep.
 
+2025-04-07T23:49:28-07:00
+uh fuck is this going to force me to learn Rust lol
+- https://www.reddit.com/r/webgpu/comments/10v5w53/why_is_the_webgpu_shading_language_wgsl_syntax/
+
+
+
+## Rendering from ply
+
+2025-04-07T22:42:46-07:00
+Reading main.js and found it could directly load from ply file
+- http://localhost:8080/?url=https://huggingface.co/datasets/jwt625/splat/resolve/main/innolight.ply
+
+Also watching the compute shader 101:
+- https://www.youtube.com/watch?v=DZRn_jNZjbw
+
+Reading:
+- https://webgpufundamentals.org/webgpu/lessons/webgpu-wgsl.html
+
 
 # Reference:
 Original paper: https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/
