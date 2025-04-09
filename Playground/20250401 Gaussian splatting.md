@@ -283,6 +283,111 @@ Also watching the compute shader 101:
 Reading:
 - https://webgpufundamentals.org/webgpu/lessons/webgpu-wgsl.html
 
+2025-04-08T22:39:17-07:00
+Saw Jonathan Stephens is using https://www.cloudcompare.org/main.html
+- https://www.simulation.openfields.fr/index.php/cloudcompare-downloads/7-cloudcompare-macos-binaries
+
+2025-04-09T00:01:22-07:00
+Reading rust code from Brush-render
+in `project_visible.wgsl`:
+- the SH coefficients:
+```
+
+struct ShCoeffs {
+    b0_c0: vec3f,
+
+    b1_c0: vec3f,
+    b1_c1: vec3f,
+    b1_c2: vec3f,
+
+    b2_c0: vec3f,
+    b2_c1: vec3f,
+    b2_c2: vec3f,
+    b2_c3: vec3f,
+    b2_c4: vec3f,
+
+    b3_c0: vec3f,
+    b3_c1: vec3f,
+    b3_c2: vec3f,
+    b3_c3: vec3f,
+    b3_c4: vec3f,
+    b3_c5: vec3f,
+    b3_c6: vec3f,
+
+    b4_c0: vec3f,
+    b4_c1: vec3f,
+    b4_c2: vec3f,
+    b4_c3: vec3f,
+    b4_c4: vec3f,
+    b4_c5: vec3f,
+    b4_c6: vec3f,
+    b4_c7: vec3f,
+    b4_c8: vec3f,
+}
+
+```
+- `fn sh_coeffs_to_color` 
+
+Where the SH coeffs are read:
+- `project_visible.wgsl`
+```
+fn num_sh_coeffs(degree: u32) -> u32 {
+    return (degree + 1) * (degree + 1);
+}
+```
+```
+
+    var sh = ShCoeffs();
+    sh.b0_c0 = read_coeffs(&base_id);
+
+    if sh_degree >= 1 {
+        sh.b1_c0 = read_coeffs(&base_id);
+        sh.b1_c1 = read_coeffs(&base_id);
+        sh.b1_c2 = read_coeffs(&base_id);
+
+        if sh_degree >= 2 {
+            sh.b2_c0 = read_coeffs(&base_id);
+            sh.b2_c1 = read_coeffs(&base_id);
+            sh.b2_c2 = read_coeffs(&base_id);
+            sh.b2_c3 = read_coeffs(&base_id);
+            sh.b2_c4 = read_coeffs(&base_id);
+
+            if sh_degree >= 3 {
+                sh.b3_c0 = read_coeffs(&base_id);
+                sh.b3_c1 = read_coeffs(&base_id);
+                sh.b3_c2 = read_coeffs(&base_id);
+                sh.b3_c3 = read_coeffs(&base_id);
+                sh.b3_c4 = read_coeffs(&base_id);
+                sh.b3_c5 = read_coeffs(&base_id);
+                sh.b3_c6 = read_coeffs(&base_id);
+
+                if sh_degree >= 4 {
+                    sh.b4_c0 = read_coeffs(&base_id);
+                    sh.b4_c1 = read_coeffs(&base_id);
+                    sh.b4_c2 = read_coeffs(&base_id);
+                    sh.b4_c3 = read_coeffs(&base_id);
+                    sh.b4_c4 = read_coeffs(&base_id);
+                    sh.b4_c5 = read_coeffs(&base_id);
+                    sh.b4_c6 = read_coeffs(&base_id);
+                    sh.b4_c7 = read_coeffs(&base_id);
+                    sh.b4_c8 = read_coeffs(&base_id);
+                }
+            }
+        }
+    }
+```
+
+2025-04-09T00:33:16-07:00
+Ran out of my patience for today...
+Going to check rerun instead.
+- following: https://rerun.io/docs/getting-started/installing-viewer
+2025-04-09T01:06:16-07:00
+damn it just works:
+![[Pasted image 20250409010621.png]]
+I need to go to sleep...
+Continue rendering tomorrow!
+
+
 
 # Reference:
 Original paper: https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/
