@@ -672,3 +672,64 @@ This is bullshit.
 The main change is the button press.
 ![[Pasted image 20250405094633.png]]
 
+2025-04-09T20:12:27-07:00
+This fucking thing stopped working. Time to also debug the thermal/power issue.
+Restart server failed with `OSError: [Errno 48] Address already in use`.
+Hmm. Going to restart cursor.
+- nope, the same
+Debugging:
+- `lsof -i :8080`
+- kill the process: `kill -9 <PID>`
+2025-04-09T20:18:30-07:00
+ok fixed.
+2025-04-09T20:20:39-07:00
+Hmm actually similar sleep power than before.
+![[Pasted image 20250409202151.png]]
+Ok 0.8 W is bullshit.
+
+4o suggests:
+```
+// Before esp_deep_sleep_start()
+esp_camera_deinit();
+
+// Actively power down camera (if PWDN used)
+digitalWrite(PWDN_GPIO_NUM, 1);
+pinMode(PWDN_GPIO_NUM, OUTPUT);
+
+// Shut down serial
+Serial.end();
+
+// Optionally configure GPIOs
+for (int i = 0; i < 40; i++) {
+  if (i != 0 && i != 1) { // avoid strapping pins and UART0
+    pinMode(i, INPUT_PULLDOWN);
+  }
+}
+
+```
+
+
+2025-04-09T20:36:20-07:00
+ok implemented these and now power dropped to 0.55 W. Still too high?
+![[Pasted image 20250409203634.png]]
+
+2025-04-09T20:50:36-07:00
+Added the set GPIO pin down. Power got higher..., now 0.78 ~ 1.2 W. Bullshit
+![[Pasted image 20250409205112.png]]
+- it is also taking images every 10 s.
+2025-04-09T21:06:05-07:00
+Reverted back.
+Connected to powerbank instead of mac. Fuck why is it drawing 0.9 W now??
+
+2025-04-09T21:39:09-07:00
+Ok seems like a no brainer to use the battery pin
+![[Pasted image 20250409213920.png]]
+
+## Switch to LiPo battery
+2025-04-09T22:06:49-07:00
+Got the battery working. Damn should have done this earlier.
+Why does the cam sometimes turn into a horror movie:
+![[Pasted image 20250409220647.png]]
+- how do I know how much battery is left?
+
+
