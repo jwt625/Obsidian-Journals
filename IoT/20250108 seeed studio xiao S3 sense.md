@@ -731,5 +731,17 @@ Got the battery working. Damn should have done this earlier.
 Why does the cam sometimes turn into a horror movie:
 ![[Pasted image 20250409220647.png]]
 - how do I know how much battery is left?
+- 2025-04-09T22:10:21-07:00
+	- measured 4.06 V now. We'll see how it's doing after 2 h.
+- 2025-04-09T23:43:30-07:00
+	- 3.97 V, seems fine?
+- 2025-04-10T23:22:01-07:00
+	- 3.77 V. Pretty amazing
+
+
+
+
+
+
 
 
