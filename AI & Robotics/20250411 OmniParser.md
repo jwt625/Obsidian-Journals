@@ -2,8 +2,12 @@
 
 Reference:
 - https://github.com/microsoft/OmniParser
+- 2025-04-11T21:07:53-07:00 seems like there is a newer one:
+- https://huggingface.co/microsoft/OmniParser-v2.0/blob/main/README.md
 
-```
+
+
+```shell
 cd OmniParser
 conda create -n "omni" python==3.12
 conda activate omni
@@ -18,7 +22,7 @@ Successfully installed PyJWT-2.10.1 Shapely-2.1.0 accelerate-1.6.0 aiofiles-23.2
 
 2025-04-11T20:35:32-07:00
 Downloading model:
-```
+```shell
 for f in icon_detect/{train_args.yaml,model.pt,model.yaml} icon_caption/{config.json,generation_config.json,model.safetensors}; do huggingface-cli download microsoft/OmniParser-v2.0 "$f" --local-dir weights; done
    mv weights/icon_caption weights/icon_caption_florence
 ```
@@ -40,7 +44,7 @@ Seems to import yolo fine.
 
 2025-04-11T20:50:08-07:00
 ok the actual parse part is not working
-```
+```python
   
 
 dino_labled_img, label_coordinates, parsed_content_list = get_som_labeled_img(image_path, som_model, BOX_TRESHOLD = BOX_TRESHOLD,
@@ -59,5 +63,36 @@ Going to try vLLM as suggested by hugging face.
 2025-04-11T20:54:13-07:00
 - `pip install vllm`
 - ok it is installing another whole bunch of crap
+```
+Successfully installed airportsdata-20250224 blake3-1.0.4 cloudpickle-3.1.1 compressed-tensors-0.9.2 datasets-3.5.0 depyf-0.18.0 dill-0.3.8 diskcache-5.6.3 dnspython-2.7.0 email-validator-2.2.0 fastapi-cli-0.0.7 fsspec-2024.12.0 gguf-0.10.0 hf-xet-1.0.3 httptools-0.6.4 interegular-0.3.3 lark-1.2.2 llguidance-0.7.14 lm-format-enforcer-0.10.11 mistral_common-1.5.4 msgspec-0.19.0 multiprocess-0.70.16 openai-1.72.0 outlines-0.1.11 outlines_core-0.1.26 partial-json-parser-0.2.1.1.post5 prometheus-fastapi-instrumentator-7.1.0 prometheus_client-0.21.1 pycountry-24.6.1 python-dotenv-1.1.0 python-json-logger-3.3.0 rich-toolkit-0.14.1 sentencepiece-0.2.0 tiktoken-0.9.0 torchaudio-2.6.0 uvloop-0.21.0 vllm-0.8.3 watchfiles-1.0.5 xxhash-3.5.0
+```
+
+Tokenizer not working with this simple test:
+```python
+tokenizer = AutoTokenizer.from_pretrained("microsoft/OmniParser")
+print(tokenizer)
+```
+
+how the fuck am I supposed to use a model from huggingface??
+- https://www.youtube.com/watch?v=ntz160EnWIc
+- ok let's try this ancient example from 2022.
+- seems to run fine:
+```python
+from transformers import pipeline
+classifier = pipeline("sentiment-analysis")
+```
+- it even detected and is using mps.
+![[Pasted image 20250411211110.png]]
+holy shit how is this so easy.
+
+Ok checking Pmniparser videos
+- https://www.youtube.com/watch?v=SO67lDhkvJg
+
+Need huggingface-cli login. Need token.
+
+Damn last time I generated a token was for stable-diffusion
+![[Pasted image 20250411212403.png]]
+
+
 
 
