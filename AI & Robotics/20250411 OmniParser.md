@@ -93,6 +93,57 @@ Need huggingface-cli login. Need token.
 Damn last time I generated a token was for stable-diffusion
 ![[Pasted image 20250411212403.png]]
 
+2025-04-11T21:26:22-07:00
+logged in.
+Downloading:
+- first part is the same as before: 
+```shell
+ for f in icon_detect/{train_args.yaml,model.pt,model.yaml} icon_caption/{config.json,generation_config.json,model.safetensors}; 
+ do huggingface-cli download microsoft/OmniParser-v2.0 "$f" --local-dir weights; done
+```
+
+2025-04-11T21:31:32-07:00
+ok trying `python3 gradio_demo.py` again.
+- ok missed this rename step: `mv weights/icon_caption weights/icon_caption_florence`
+
+2025-04-11T21:36:35-07:00
+Getting the same "bool" is not iterable error.
+
+Fucking cuda man, changed to mps:
+![[Pasted image 20250411213759.png]]
+- ugh ok still the same errors.
+
+2025-04-11T21:41:57-07:00
+ok quickly read the gradio_demo.py. It is basically calling the process function, in which it is calling the same two functions `check_ocr_box` and `get_som_labeled_img` that are used in the ipynb.
+
+2025-04-11T21:50:47-07:00
+Hell yeah fixed it!!!!
+- `inputs["pixel_values"] = inputs["pixel_values"].half()`
+- added to the `utils.py`
+![[Pasted image 20250411215114.png]]
+
+Time for comsol.
+- it is so freaking slow though
+- damn taking way longer than the word example (~< 1 min)
+
+2025-04-11T22:00:23-07:00
+it fucking froze my M4 pro mini. Pathetic.
+```
+image size: (1474, 928) WARNING ⚠️ NMS time limit 2.050s exceeded 0: 832x1280 250 icons, 50678.0ms Speed: 8479.7ms preprocess, 50678.0ms inference, 2422.7ms postprocess per image at shape (1, 3, 832, 1280) len(filtered_boxes): 239 90
+```
+
+Going to run on just a subset...
+- let's try the teams example first.
+	- still taking more than 2 min and computer is getting glitchy...
+- going to try this smaller comsol
+![[Screenshot 2025-04-11 at 22.04.54.png]]
+2025-04-11T22:08:28-07:00
+ok it worked:
+![[Pasted image 20250411220830.png]]
+
+
+
+
 
 
 
