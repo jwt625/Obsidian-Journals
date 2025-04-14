@@ -392,6 +392,19 @@ Continue rendering tomorrow!
 Gosh why can't I fold a message in chatGPT. This is stupid.
 
 
+# Coherent laser
+2025-04-13T19:54:29-07:00
+![[image_20250413_191411.jpg]]
+- body cam POV lol
+
+Colmap: 
+- `colmap-gradio` repo
+- `/opt/homebrew/anaconda3/envs/colmap_env/bin/python colmap_gradio.py`
+- 2025-04-13T19:55:56-07:00
+	- ok running
+2025-04-13T20:29:57-07:00
+- done. Jesus that took forever (35 min). It better be good.
+
 
 # Reference:
 Original paper: https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/
