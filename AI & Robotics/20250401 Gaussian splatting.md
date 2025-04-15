@@ -405,6 +405,11 @@ Colmap:
 2025-04-13T20:29:57-07:00
 - done. Jesus that took forever (35 min). It better be good.
 
+2025-04-14T22:20:37-07:00
+Started second round. COLMAP running. 128 images.
+2025-04-14T22:41:18-07:00
+Done. 20 min. Not bad.
+
 
 # Reference:
 Original paper: https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/
