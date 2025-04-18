@@ -391,8 +391,48 @@ Continue rendering tomorrow!
 2025-04-10T23:03:37-07:00
 Gosh why can't I fold a message in chatGPT. This is stupid.
 
+2025-04-17T22:50:18-07:00
+Back on this again. Damn it has been a whole week.
+Asked cursor to add comments to `main.js`
+```
+1. getProjectionMatrix: Creates a 3D-to-2D projection matrix using camera parameters
 
-# Coherent laser
+2. getViewMatrix: Creates a view matrix from camera position and rotation
+
+3. multiply4: Performs matrix multiplication on two 4x4 matrices
+
+4. invert4: Computes the inverse of a 4x4 matrix
+
+5. rotate4: Applies rotation to a 4x4 matrix around a specified axis
+
+6. translate4: Applies translation to a 4x4 matrix
+
+7. createWorker: Sets up a WebGL worker for processing 3D data
+
+8. main: The main function that initializes and runs the 3D viewer
+
+9. resize: Handles window resize events
+
+10. frame: The main render loop
+
+11. isPly: Checks if data is in PLY format
+
+12. selectFile: Handles file selection and loading
+
+13. preventDefault: Prevents default browser behavior
+```
+
+
+
+
+
+
+
+
+
+# Captures
+
+## Coherent laser
 2025-04-13T19:54:29-07:00
 ![[image_20250413_191411.jpg]]
 - body cam POV lol
@@ -406,14 +446,27 @@ Colmap:
 - done. Jesus that took forever (35 min). It better be good.
 
 2025-04-14T22:20:37-07:00
-Started second round. COLMAP running. 128 images.
+Started second round after removing the inner cover.
+COLMAP running. 128 images.
 2025-04-14T22:41:18-07:00
 Done. 20 min. Not bad.
 
 
 # Reference:
 Original paper: https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/
+- https://github.com/graphdeco-inria/gaussian-splatting
+Brush: 
+- https://www.youtube.com/watch?v=VM6trBcPlaU
+- https://github.com/ArthurBrussee/brush
 nerfstudio: https://docs.nerf.studio/nerfology/methods/splat.html
+Efficient Spherical Harmonic Evaluation: https://jcgt.org/published/0002/02/06/
+SH related:
+- [Plenoxels: Radiance Fields Without Neural Networks](https://openaccess.thecvf.com/content/CVPR2022/html/Fridovich-Keil_Plenoxels_Radiance_Fields_Without_Neural_Networks_CVPR_2022_paper.html)
+	- https://alexyu.net/plenoxels/
+	- wow this is almost 3DGS![[Pasted image 20250417233120.png]]
+	- trilinear interp is important
+- [Instant neural graphics primitives with a multiresolution hash encoding](https://dl.acm.org/doi/10.1145/3528223.3530127)
+
 
 
 
