@@ -204,3 +204,17 @@ Damn it ran on the first run:
 
 Modified to download the full size media into a local folder and include the local path in the json as well.
 
+# Automate tag and section title generation
+2025-04-19T00:01:29-07:00
+
+Tested deepseek api. Why am I only doing this now instead of earlier??
+- See playground/20250418_deepseek_api
+![[Pasted image 20250419000240.png]]
+
+- I should really merge playground and obsidian journals...
+
+Next is to 
+- [] move the files automatically. Maybe just spin up the selenium from the blog folder?
+- [] automate the folder name better, use same method used in the md generation script
+- [] add tweet url, maybe?
+- [] automatically insert the tags and section titles
