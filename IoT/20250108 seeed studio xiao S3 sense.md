@@ -739,6 +739,17 @@ Why does the cam sometimes turn into a horror movie:
 	- 3.77 V. Pretty amazing
 
 
+## wifi connection failed
+2025-04-22T22:11:00-07:00
+hmm not sure why:
+![[Pasted image 20250422221112.png]]
+Maybe I should just restart the wifi?
+Going to try re-flash it first.
+2025-04-22T22:12:34-07:00
+hmm fixed. Why??
+Maybe some memory got corrupted.
+![[Pasted image 20250422221247.png]]
+
 
 
 
