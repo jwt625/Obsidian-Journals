@@ -2197,6 +2197,47 @@ Results are in: /Users/wentaojiang/Documents/3DGS/20250420_spectra_physics_navig
 2025-04-22T23:17:43-07:00
 Reading
 - https://webgl2fundamentals.org/webgl/lessons/webgl-fundamentals.html
+2025-04-24T23:52:54-07:00
+This is kind of boring, I just finished reading one article about resizing the canvas...
+
+
+# Capturing rig
+2025-04-24T23:54:08-07:00
+Also called dolly.
+These look tempting:
+- https://www.walmart.com/ip/Shootvilla-Half-Circle-Video-Camera-Slider-Track-180-Curve-for-professional-Load-10-kg/7076707360
+- https://www.walmart.com/ip/SHOOTVILLA-Curve-360-Curved-Circular-Camera-Slider/7114967174
+- I don't wanna pay freaking 500 bucks for this.
+- Let's try sendcutsend it
+![[Pasted image 20250424235536.png]]
+
+![[Pasted image 20250424235545.png]]
+
+Seems like we will need three main parts:
+- the arc / rail, the support, and the cart.
+- I can't tell about the mounting point
+- How do we do the other DoF, gooseneck? Would it be too big? Feels like it would.
+
+For the cart:
+- 625 series ball bearings
+- mounting: Standard 1/4"-20 or 3/8"-16 screw (depending on usage) for attaching camera, phone mount, or ball head.
+- How would I lock the cart?
+- cam levers:
+- ![[Pasted image 20250425001303.png]]
+
+
+2025-04-25T00:08:27-07:00
+I guess you can just buy these:
+![[Pasted image 20250425000834.png]]
+- I don't need 20 pcs of it...
+
+For the other DOF, Open Scan is a good example:
+![[Pasted image 20250425001039.png]]
+
+
+
+
+
 
 
 
