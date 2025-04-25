@@ -2193,6 +2193,12 @@ Results are in: /Users/wentaojiang/Documents/3DGS/20250420_spectra_physics_navig
 
 
 
+# I should actually sit down and learn webgl
+2025-04-22T23:17:43-07:00
+Reading
+- https://webgl2fundamentals.org/webgl/lessons/webgl-fundamentals.html
+
+
 
 # Reference:
 Original paper: https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/
