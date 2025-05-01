@@ -2233,6 +2233,7 @@ I guess you can just buy these:
 
 For the other DOF, Open Scan is a good example:
 ![[Pasted image 20250425001039.png]]
+- https://openscan.eu/pages/openscan-mini
 
 
 
