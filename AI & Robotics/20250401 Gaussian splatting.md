@@ -432,6 +432,10 @@ Asked cursor to add comments to `main.js`
 
 # Captures
 
+Code:
+- gradio: `/opt/homebrew/anaconda3/envs/colmap_env/bin/python colmap_gradio.py`
+
+
 ## 20250413 Coherent laser
 2025-04-13T19:54:29-07:00
 ![[image_20250413_191411.jpg]]
@@ -2190,6 +2194,77 @@ I20250420 00:31:55.591017 11898994 timer.cc:91] Elapsed time: 0.350 [minutes]
 COLMAP reconstruction completed successfully!
 Results are in: /Users/wentaojiang/Documents/3DGS/20250420_spectra_physics_navigator_J40-X30SC/sparse/0
 ```
+
+
+## 20250502 bluefors
+2025-05-02T19:32:50-07:00
+Got data from BF1 from [LINQS](https://linqs.stanford.edu/).
+
+2025-05-02T19:43:49-07:00 started colmap 1.5 min ago.
+2025-05-02T20:19:42-07:00 Done 5 min ago. Not bad.
+2025-05-02T20:22:41-07:00
+hmm only two pictures...
+Going to rerun colmap
+Installing using brew: `brew install colmap`
+2025-05-02T20:30:58-07:00
+Reading: https://colmap.github.io/tutorial.html
+![[Screenshot 2025-05-02 at 20.33.10.png]]
+
+2025-05-02T21:12:16-07:00
+No good match. Redo extraction and matching
+![[Pasted image 20250502211222.png]]
+
+Matching:
+![[Pasted image 20250502211325.png]]
+
+A lot of warnings:
+![[Pasted image 20250502211347.png]]
+
+2025-05-02T22:34:19-07:00
+Took almost one hour:
+![[Pasted image 20250502223424.png]]
+Ugh the reconstruction still sucks:
+![[Pasted image 20250502223521.png]]
+
+2025-05-02T22:38:47-07:00
+Seems like there are too many key points:
+![[Pasted image 20250502223853.png]]
+
+2025-05-02T22:48:56-07:00
+Redo extraction and matching:
+![[Pasted image 20250502224919.png]]
+![[Pasted image 20250502224903.png]]
+
+Ughhhhh
+![[Pasted image 20250502224944.png]]
+
+Is this still too many?
+![[Pasted image 20250502225043.png]]
+
+There are quite some matching pairs:
+![[Pasted image 20250502225157.png]]
+Some matches do not make sense:
+![[Pasted image 20250502225238.png]]
+
+2025-05-02T22:54:40-07:00
+Gave up for now.
+
+
+
+## 20250504 wirebodner
+2025-05-04T16:55:39-07:00
+Started colmap. Using gradio instead of colmap gui.
+2025-05-04T16:57:46-07:00
+sequential only found two pairs. Running exhaustive now.
+
+
+
+
+
+
+
+
+
 
 
 
