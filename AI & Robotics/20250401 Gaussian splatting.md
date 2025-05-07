@@ -2249,6 +2249,11 @@ Some matches do not make sense:
 2025-05-02T22:54:40-07:00
 Gave up for now.
 
+2025-05-04T22:59:29-07:00
+Rerunning colmap in gradio.
+- 2025-05-04T23:04:57-07:00
+- nah similar results, only two images usable
+- maybe it is Felix's fancy iphone pro camera?
 
 
 ## 20250504 wirebodner
@@ -2256,6 +2261,9 @@ Gave up for now.
 Started colmap. Using gradio instead of colmap gui.
 2025-05-04T16:57:46-07:00
 sequential only found two pairs. Running exhaustive now.
+2025-05-04T22:32:17-07:00
+Checked again after dinner. Now there are 90 images successfully processed.
+Maybe I should chose sequential for the dilfridge pictures?
 
 
 
