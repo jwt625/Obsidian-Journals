@@ -79,3 +79,22 @@ Finished assembling both leader and follower!
 ![[signal-2024-11-03-225415_002.jpeg]]
 
 
+
+# Simulation
+2025-05-09T00:22:54-07:00
+![[Pasted image 20250509002255.png]]
+
+`/usr/local/bin/python3 -m pip install mujoco-python-viewer`
+
+2025-05-09T00:26:51-07:00
+
+Have to run the sim with:
+- `mjpython simulation.py`
+
+holy shit it's working?
+![[Pasted image 20250509002707.png]]
+
+Next should try `teleoperate_simulated_robot.py`
+
+Reading:
+- https://www.waveshare.com/wiki/Bus_Servo_Adapter_(A)
