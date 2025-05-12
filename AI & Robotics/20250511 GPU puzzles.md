@@ -88,6 +88,12 @@ hmm is it because of the `os.environ['NUMBA_CUDA_PTX_VERSION'] = '80'`, the Cuda
 ok it is just something to simplify a class definition:
 ![[Pasted image 20250511223943.png]]
 
+2025-05-12T00:24:12-07:00
+Now it runs fine. Jesus fucking christ.
+However, some error at `problem.check()`. I gave up for now:
+![[Pasted image 20250512002507.png]]
+
+
 
 
 
