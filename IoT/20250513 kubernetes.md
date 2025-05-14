@@ -57,5 +57,31 @@ cursor totally got it:
 2025-05-13T23:30:42-07:00
 ![[Pasted image 20250513233042.png]]
 
+hmm the dashboard also looks different now:
+![[Pasted image 20250513233337.png]]
+![[Pasted image 20250513233351.png]]
+
+Is this making my internet slower?? Or maybe it is just the stanford bechtel.
+Lol I could also see it in the docker desktop:
+![[Pasted image 20250513233519.png]]
+
+2025-05-13T23:36:30-07:00
+![[Pasted image 20250513233631.png]]
+
+## addons
+2025-05-13T23:37:27-07:00
+
+![[Pasted image 20250513233723.png]]
+
+`metric-server` addon:
+![[Pasted image 20250513233913.png]]
+- hmm why is the API not available?
+- ok okay just have to wait:
+![[Pasted image 20250513233949.png]]
+
+
+
+
+
 
 
