@@ -80,6 +80,10 @@ Lol I could also see it in the docker desktop:
 ![[Pasted image 20250513233949.png]]
 
 
+2025-05-13T23:40:55-07:00
+Stopped minikube. It also updated in docker desktop:
+![[Pasted image 20250513234107.png]]
+
 
 
 
