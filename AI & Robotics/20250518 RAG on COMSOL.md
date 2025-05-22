@@ -203,6 +203,12 @@ Add new env to ipynb kernel: `python -m ipykernel install --user --name=rag-env2
 I'm building faiss from source... Ran into quite some error messages. 4o is pretty capable.
 ![[Pasted image 20250521235753.png]]
 
+2025-05-22T00:04:40-07:00
+Always needed `source ~/20250520_RAG_COMSOL/rag-env2/bin/activate`
+
+
+2025-05-22T08:45:10-07:00
+finally fixed... Now using faiss-gpu instead of cpu. I think it is built with numpy < 2.
 
 
 
