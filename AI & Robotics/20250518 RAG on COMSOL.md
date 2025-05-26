@@ -211,5 +211,9 @@ Always needed `source ~/20250520_RAG_COMSOL/rag-env2/bin/activate`
 finally fixed... Now using faiss-gpu instead of cpu. I think it is built with numpy < 2.
 
 
+2025-05-25T13:25:04-07:00
+Copying the index from the server to locally using `scp`.
+
+
 
 
