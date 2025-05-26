@@ -5,3 +5,4 @@ Already got a chat cli tool to ask ai questions. Should also get voice input wor
 
 `brew install portaudio`.
 
+
