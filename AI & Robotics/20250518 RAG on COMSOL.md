@@ -5550,6 +5550,8 @@ Yes, COMSOL's `.mph` files are actually ZIP archives in disguise. You can:
 
 
 2025-05-26T21:36:13-07:00
+repo is in /Applications/COMSOL62/Multiphysics/applications
+- on github: https://github.com/jwt625/comsol-mph-extraction
 Converted all mph files to .m files:
 ```
 === Conversion Complete ===
@@ -5575,5 +5577,341 @@ Failed files:
   ... and 188 more (see log file for details)
 ```
 
+
+
+2025-05-26T21:50:56-07:00
+ok the failed files are application files, not model files, or they are preview, not downloaded yet?:
+```
+ - /Applications/COMSOL62/Multiphysics/applications/Acoustics_Module/Aeroacoustics_and_Noise/doppler_shift.mph: error
+	err msg: Error while loading file: This is a COMSOL Application Libraries preview file.
+The application is available for download from the Application Libraries window in the COMSOL GUI
+  - /Applications/COMSOL62/Multiphysics/applications/Acoustics_Module/Automotive/test_bench_car_interior.mph: error
+	err msg: Error while loading file: This is a COMSOL Application Libraries preview file.
+The application is available for download from the Application Libraries window in the COMSOL GUI
+  - /Applications/COMSOL62/Multiphysics/applications/Acoustics_Module/Electroacoustic_Transducers/condenser_microphone.mph: error
+	err msg: Error while loading file: This is a COMSOL Application Libraries preview file.
+The application is available for download from the Application Libraries window in the COMSOL GUI
+  - /Applications/COMSOL62/Multiphysics/applications/Acoustics_Module/Nonlinear_Acoustics/acoustic_levitator.mph: error
+```
+
+## Training / fine tuning
+2025-05-26T22:28:48-07:00
+
+Learning from chat-o4-mini-high.
+
+To build a specialist COMSOL‐script writer via fine-tuning, you’ll want to turn your 1,700 “step-by-step” PDFs and their matching MATLAB .m scripts into a standard supervised fine-tuning (SFT) corpus, and then train (or fine-tune) a code-capable LLM on that data. Here’s a high-level recipe and the questions I need answered to refine it:
+
+2025-05-26T22:51:37-07:00
+Need to align and put pdfs into the corresponding folders first.
+
+Prompt:
+```
+take a look at folders inside mphs folders. They are extracted metadata and other info of comsol turorial model files. I have their corresponding pdfs in this folder /Applications/COMSOL62/Multiphysics/doc/help/wtpwebapps/ROOT/doc/pdfs. I need you to write zsh or python script to find which folder the pdf files are corresponding to.  
+Note the pdf files are named as e.g. models.woptics.orbital_angular_momentum.pdf, and you could search and grep the last section in the file name, orbital_angular_momentum, to find which folder it belongs to using file_list.txt: `cat file_list.txt| grep orbital_angular_momentum` returns: Wave_Optics_Module/Beam_Propagation/orbital_angular_momentum.mph. Similarly, 'ls ./mphs | grep orbital_angular_momentum' returns: Wave_Optics_Module_Beam_Propagation_orbital_angular_momentum, which is the folder the pdf should be going into.  
+Let me know if you have questions. If not, please go ahead implement this, and log it properly so that we know which pdfs got located and copied successfully.
+```
+
+2025-05-26T23:03:04-07:00
+Done:
+```
+2025-05-26 23:02:45,143 - INFO - SUMMARY
+2025-05-26 23:02:45,143 - INFO - ================================================================================
+2025-05-26 23:02:45,143 - INFO - Total PDF files processed: 1636
+2025-05-26 23:02:45,143 - INFO - Successfully matched: 1636
+2025-05-26 23:02:45,143 - INFO - Successfully copied: 1636
+2025-05-26 23:02:45,143 - INFO - Failed to match: 0
+2025-05-26 23:02:45,143 - INFO - Failed to copy: 0
+2025-05-26 23:02:45,143 - INFO - Success rate: 100.0%
+2025-05-26 23:02:45,144 - INFO - 
+Detailed log saved to: pdf_matching_log.txt
+```
+
+2025-05-26T23:12:32-07:00
+Okay there are freaking same name/sim with different modules:
+```
+
+Folders with multiple PDF files:
+2025-05-26 23:08:18,036 - INFO -   Heat_Transfer_Module_Tutorials,_Forced_and_Natural_Convection_heat_sink: ['models.heat.heat_sink.pdf', 'models.cfd.heat_sink.pdf']
+2025-05-26 23:08:18,036 - INFO -   Microfluidics_Module_Two-Phase_Flow_droplet_breakup: ['models.cfd.droplet_breakup.pdf', 'models.mfl.droplet_breakup.pdf']
+2025-05-26 23:08:18,036 - INFO -   Microfluidics_Module_Two-Phase_Flow_viscous_catenary: ['models.mfl.viscous_catenary.pdf', 'models.cfd.viscous_catenary.pdf']
+2025-05-26 23:08:18,036 - INFO -   Multibody_Dynamics_Module_Automotive_and_Aerospace_gearbox_vibration_noise: ['models.mbd.gearbox_vibration_noise.pdf', 'models.aco.gearbox_vibration_noise.pdf']
+2025-05-26 23:08:18,036 - INFO -   Particle_Tracing_Module_Fluid_Flow_acoustic_levitator: ['models.particle.acoustic_levitator.pdf', 'models.aco.acoustic_levitator.pdf']
+2025-05-26 23:08:18,036 - INFO -   Particle_Tracing_Module_Fluid_Flow_thermophoresis: ['models.heat.thermophoresis.pdf', 'models.cfd.thermophoresis.pdf', 'models.particle.thermophoresis.pdf']
+2025-05-26 23:08:18,036 - INFO -   Particle_Tracing_Module_Vacuum_Systems_rf_coupler: ['models.particle.rf_coupler.pdf', 'models.molec.rf_coupler.pdf']
+2025-05-26 23:08:18,036 - INFO -   Particle_Tracing_Module_Vacuum_Systems_s_bend_benchmark: ['models.particle.s_bend_benchmark.pdf', 'models.molec.s_bend_benchmark.pdf']
+2025-05-26 23:08:18,036 - INFO -   Polymer_Flow_Module_Verification_Examples_power_law_mixer: ['models.polymer.power_law_mixer.pdf', 'models.mixer.power_law_mixer.pdf']
+2025-05-26 23:08:18,036 - INFO -   RF_Module_Microwave_Heating_conical_dielectric_probe: ['models.heat.conical_dielectric_probe.pdf', 'models.rf.conical_dielectric_probe.pdf']
+2025-05-26 23:08:18,036 - INFO -   ... and 139 more
+```
+
+
+2025-05-26T23:17:35-07:00
+Rerun and now less folder has duplicate pdfs:
+
+```
+
+2025-05-26 23:17:16,051 - INFO - ================================================================================
+2025-05-26 23:17:16,051 - INFO - SUMMARY
+2025-05-26 23:17:16,051 - INFO - ================================================================================
+2025-05-26 23:17:16,051 - INFO - Total folders analyzed: 1908
+2025-05-26 23:17:16,051 - INFO - Folders with only .m files: 334
+2025-05-26 23:17:16,051 - INFO - Folders with both .m and PDF files: 1376
+2025-05-26 23:17:16,051 - INFO - Folders with only PDF files: 196
+2025-05-26 23:17:16,051 - INFO - Folders with neither .m nor PDF files: 2
+2025-05-26 23:17:16,051 - INFO - 
+2025-05-26 23:17:16,051 - INFO - PERCENTAGES:
+2025-05-26 23:17:16,051 - INFO - Only .m files: 17.5%
+2025-05-26 23:17:16,051 - INFO - Both .m and PDF: 72.1%
+2025-05-26 23:17:16,051 - INFO - Only PDF files: 10.3%
+2025-05-26 23:17:16,051 - INFO - Neither: 0.1%
+2025-05-26 23:17:16,051 - INFO - 
+```
+
+
+```
+
+Folders with multiple PDF files:
+2025-05-26 23:17:16,052 - INFO -   ACDC_Module_Electromagnetics_and_Mechanics_piezoelectric_layered: ['models.compmat.piezoelectric_layered.pdf', 'models.acdc.piezoelectric_layered.pdf']
+2025-05-26 23:17:16,052 - INFO -   Acoustics_Module_Tutorials,_Thermoviscous_Acoustics_pressure_reciprocity_calibration_coupler: ['models.aco.pressure_reciprocity_calibration_coupler.pdf', 'models.lgp.pressure_reciprocity_calibration_coupler.pdf']
+2025-05-26 23:17:16,052 - INFO -   Battery_Design_Module_Batteries,_General_orange_battery: ['models.echem.orange_battery.pdf', 'models.edecm.orange_battery.pdf', 'models.battery.orange_battery.pdf', 'models.fce.orange_battery.pdf']
+2025-05-26 23:17:16,052 - INFO -   Battery_Design_Module_General_Electrochemistry_cyclic_voltammetry_1d: ['models.echem.cyclic_voltammetry_1d.pdf', 'models.edecm.cyclic_voltammetry_1d.pdf', 'models.fce.cyclic_voltammetry_1d.pdf', 'models.battery.cyclic_voltammetry_1d.pdf']
+2025-05-26 23:17:16,052 - INFO -   Battery_Design_Module_General_Electrochemistry_diffuse_double_layer: ['models.echem.diffuse_double_layer.pdf', 'models.battery.diffuse_double_layer.pdf', 'models.edecm.diffuse_double_layer.pdf', 'models.fce.diffuse_double_layer.pdf']
+2025-05-26 23:17:16,052 - INFO -   Battery_Design_Module_General_Electrochemistry_impedance_spectroscopy: ['models.fce.impedance_spectroscopy.pdf', 'models.echem.impedance_spectroscopy.pdf', 'models.edecm.impedance_spectroscopy.pdf', 'models.battery.impedance_spectroscopy.pdf']
+2025-05-26 23:17:16,052 - INFO -   Battery_Design_Module_General_Electrochemistry_microdisk_voltammetry: ['models.battery.microdisk_voltammetry.pdf', 'models.fce.microdisk_voltammetry.pdf', 'models.edecm.microdisk_voltammetry.pdf', 'models.echem.microdisk_voltammetry.pdf']
+2025-05-26 23:17:16,052 - INFO -   CAD_Import_Module_Tutorial_Examples_exhaust_manifold_create_fluid_domain: ['models.cad.exhaust_manifold_create_fluid_domain.pdf', 'models.llrevit.exhaust_manifold_create_fluid_domain.pdf', 'models.llac.exhaust_manifold_create_fluid_domain.pdf', 'models.llcreop.exhaust_manifold_create_fluid_domain.pdf', 'models.llinventor.exhaust_manifold_create_fluid_domain.pdf', 'models.llse.exhaust_manifold_create_fluid_domain.pdf', 'models.llsw.exhaust_manifold_create_fluid_domain.pdf']
+2025-05-26 23:17:16,052 - INFO -   CAD_Import_Module_Tutorial_Examples_wheel_rim_defeature: ['models.llinventor.wheel_rim_defeature.pdf', 'models.cad.wheel_rim_defeature.pdf', 'models.llcreop.wheel_rim_defeature.pdf', 'models.llrevit.wheel_rim_defeature.pdf', 'models.llse.wheel_rim_defeature.pdf', 'models.llac.wheel_rim_defeature.pdf', 'models.llsw.wheel_rim_defeature.pdf']
+2025-05-26 23:17:16,052 - INFO -   CAD_Import_Module_Tutorial_Examples_wheel_rim_remove_details: ['models.llinventor.wheel_rim_remove_details.pdf', 'models.llrevit.wheel_rim_remove_details.pdf', 'models.cad.wheel_rim_remove_details.pdf', 'models.llcreop.wheel_rim_remove_details.pdf', 'models.llsw.wheel_rim_remove_details.pdf', 'models.llse.wheel_rim_remove_details.pdf', 'models.llac.wheel_rim_remove_details.pdf']
+2025-05-26 23:17:16,052 - INFO -   ... and 24 more
+2025-05-26 23:17:16,052 - INFO - 
+```
+
+
+
+2025-05-26T23:22:40-07:00
+Alright only 4 more:
+```
+
+2025-05-26 23:22:12,270 - INFO - ================================================================================
+2025-05-26 23:22:12,270 - INFO - ADDITIONAL STATISTICS
+2025-05-26 23:22:12,270 - INFO - ================================================================================
+2025-05-26 23:22:12,270 - INFO - Total .m files found: 1710
+2025-05-26 23:22:12,270 - INFO - Total PDF files found: 1619
+2025-05-26 23:22:12,270 - INFO - Folders with .m files: 1710
+2025-05-26 23:22:12,270 - INFO - Folders with PDF files: 1595
+2025-05-26 23:22:12,271 - INFO - Folders with multiple .m files: 0
+2025-05-26 23:22:12,271 - INFO - Folders with multiple PDF files: 4
+2025-05-26 23:22:12,271 - INFO - 
+Folders with multiple PDF files:
+2025-05-26 23:22:12,271 - INFO -   CAD_Import_Module_Tutorial_Examples_exhaust_manifold_create_fluid_domain: ['models.cad.exhaust_manifold_create_fluid_domain.pdf', 'models.llrevit.exhaust_manifold_create_fluid_domain.pdf', 'models.llac.exhaust_manifold_create_fluid_domain.pdf', 'models.llcreop.exhaust_manifold_create_fluid_domain.pdf', 'models.llinventor.exhaust_manifold_create_fluid_domain.pdf', 'models.llse.exhaust_manifold_create_fluid_domain.pdf', 'models.llsw.exhaust_manifold_create_fluid_domain.pdf']
+2025-05-26 23:22:12,271 - INFO -   CAD_Import_Module_Tutorial_Examples_wheel_rim_defeature: ['models.llinventor.wheel_rim_defeature.pdf', 'models.cad.wheel_rim_defeature.pdf', 'models.llcreop.wheel_rim_defeature.pdf', 'models.llrevit.wheel_rim_defeature.pdf', 'models.llse.wheel_rim_defeature.pdf', 'models.llac.wheel_rim_defeature.pdf', 'models.llsw.wheel_rim_defeature.pdf']
+2025-05-26 23:22:12,271 - INFO -   CAD_Import_Module_Tutorial_Examples_wheel_rim_remove_details: ['models.llinventor.wheel_rim_remove_details.pdf', 'models.llrevit.wheel_rim_remove_details.pdf', 'models.cad.wheel_rim_remove_details.pdf', 'models.llcreop.wheel_rim_remove_details.pdf', 'models.llsw.wheel_rim_remove_details.pdf', 'models.llse.wheel_rim_remove_details.pdf', 'models.llac.wheel_rim_remove_details.pdf']
+2025-05-26 23:22:12,271 - INFO -   CAD_Import_Module_Tutorial_Examples_wheel_rim_repair: ['models.llcreop.wheel_rim_repair.pdf', 'models.llac.wheel_rim_repair.pdf', 'models.llrevit.wheel_rim_repair.pdf', 'models.llse.wheel_rim_repair.pdf', 'models.cad.wheel_rim_repair.pdf', 'models.llsw.wheel_rim_repair.pdf', 'models.llinventor.wheel_rim_repair.pdf']
+2025-05-26 23:22:12,271 - INFO - 
+```
+
+Okay cursor is celebrating itself because these dups are intended:
+### Excellent Results! 🎉
+The improved PDF matching script has successfully resolved the module distinction issue:
+### Key Improvements:
+- Multiple PDF folders reduced: From 34 down to just 4 folders
+- Success rate: 99.0% (1619 out of 1636 PDFs matched and copied)
+- Proper module separation: Models like orange_battery are now correctly distributed to their respective module folders
+### Remaining 4 folders with multiple PDFs:
+These are all CAD Import Module examples with legitimate multiple variants for different CAD systems:
+1. exhaust_manifold_create_fluid_domain - 7 PDFs (different CAD systems: cad, llrevit, llac, llcreop, llinventor, llse, llsw)
+2. wheel_rim_defeature - 7 PDFs
+3. wheel_rim_remove_details - 7 PDFs
+4. wheel_rim_repair - 7 PDFs
+
+These multiple PDFs are intentional and correct because they represent the same model implemented for different CAD systems (Inventor, Revit, AutoCAD, SolidWorks, etc.).
+### Final Statistics:
+- Total folders: 1,908
+- Folders with both .m and PDF: Most folders now have proper pairing
+- Only 17 unmatched PDFs: Mostly from newer modules (nsm, llmatlab, llsimulink) and some subsurface flow duplicates
+The script now properly handles module distinctions and achieves near-perfect PDF-to-folder mapping! The remaining 4 folders with multiple PDFs are legitimate cases where the same model has variants for different CAD systems.
+
+### Final summary:
+```
+
+2025-05-26 23:22:12,269 - INFO - ================================================================================
+2025-05-26 23:22:12,269 - INFO - SUMMARY
+2025-05-26 23:22:12,269 - INFO - ================================================================================
+2025-05-26 23:22:12,269 - INFO - Total folders analyzed: 1908
+2025-05-26 23:22:12,269 - INFO - Folders with only .m files: 312
+2025-05-26 23:22:12,269 - INFO - Folders with both .m and PDF files: 1398
+2025-05-26 23:22:12,269 - INFO - Folders with only PDF files: 197
+2025-05-26 23:22:12,269 - INFO - Folders with neither .m nor PDF files: 1
+2025-05-26 23:22:12,269 - INFO - 
+```
+
+
+# Aligning pdf with the .m file
+2025-05-26T23:31:12-07:00
+
+Moving to the GPU machine.
+
+`pip install pdfminer.six`
+
+2025-05-27T23:20:58-07:00
+Testing performance:
+```
+⚡ LLM Performance Analysis
+============================================================
+🔍 Testing 5 sequential calls to hermes3-405b...
+   Call 1: 1.53s
+   Call 2: 0.99s
+   Call 3: 1.38s
+   Call 4: 0.90s
+   Call 5: 0.93s
+
+📊 Sequential Results:
+   Success rate: 5/5 (100.0%)
+   Average time: 1.15s per call
+   Calls per minute: 52.3
+   Time for 381 segments: 7.3 minutes
+
+🔍 Testing 10 parallel calls to hermes3-405b (max 3 workers)...
+
+📊 Parallel Results:
+   Total time: 6.00s
+   Success rate: 10/10 (100.0%)
+   Average call time: 1.33s
+   Effective calls per second: 1.67
+   Time for 381 segments: 3.8 minutes
+
+🔍 Testing different models for speed...
+
+   Testing llama3.3-70b-instruct-fp8...
+🔍 Testing 3 sequential calls to llama3.3-70b-instruct-fp8...
+   Call 1: 5.38s
+   Call 2: 3.79s
+   Call 3: 3.54s
+
+📊 Sequential Results:
+   Success rate: 3/3 (100.0%)
+   Average time: 4.24s per call
+   Calls per minute: 14.2
+   Time for 381 segments: 26.9 minutes
+
+   Testing qwen25-coder-32b-instruct...
+🔍 Testing 3 sequential calls to qwen25-coder-32b-instruct...
+   Call 1: 1.77s
+   Call 2: 1.74s
+   Call 3: 1.95s
+
+📊 Sequential Results:
+   Success rate: 3/3 (100.0%)
+   Average time: 1.82s per call
+   Calls per minute: 33.0
+   Time for 381 segments: 11.5 minutes
+
+   Testing hermes3-70b...
+🔍 Testing 3 sequential calls to hermes3-70b...
+   Call 1: 0.52s
+   Call 2: 0.46s
+   Call 3: 0.45s
+
+📊 Sequential Results:
+   Success rate: 3/3 (100.0%)
+   Average time: 0.48s per call
+   Calls per minute: 126.3
+   Time for 381 segments: 3.0 minutes
+
+   Testing hermes3-405b...
+🔍 Testing 3 sequential calls to hermes3-405b...
+   Call 1: 1.17s
+   Call 2: 0.85s
+   Call 3: 0.86s
+
+📊 Sequential Results:
+   Success rate: 3/3 (100.0%)
+   Average time: 0.96s per call
+   Calls per minute: 62.5
+   Time for 381 segments: 6.1 minutes
+
+📊 Model Performance Comparison:
+   hermes3-70b: 0.48s/call (126.3 calls/min)
+   hermes3-405b: 0.96s/call (62.5 calls/min)
+   qwen25-coder-32b-instruct: 1.82s/call (33.0 calls/min)
+   llama3.3-70b-instruct-fp8: 4.24s/call (14.2 calls/min)
+
+🚀 Fastest model: hermes3-70b
+   Time for 381 segments: 3.0 minutes
+
+🔍 Testing batch processing (multiple segments per call)...
+   Batch processing 5 segments: 6.19s
+   Time per segment: 1.24s
+   Estimated time for 381 segments: 7.9 minutes
+   Response preview: Here is the analysis of the 5 COMSOL code segments as a JSON array:
+
+```json
+[
+    {"id": 1, "description": "Creates rectangle geometry", "category": "geometry"},
+    {"id": 2, "description": "Sets re...
+
+🎯 Performance Optimization Recommendations:
+============================================================
+1. 🚀 Switch to faster model: hermes3-70b
+2. 🔄 Use parallel processing with 3-5 workers
+3. 💰 Limit LLM calls to first 50 segments, use patterns for rest
+4. ⚡ Reduce max_tokens to 300-500 for faster responses
+```
+
+## 🏆 Key Performance Results
+### Model Speed Comparison
+1. 🚀 hermes3-70b: 0.48s/call (126.3 calls/min) - FASTEST
+2. hermes3-405b: 0.96s/call (62.5 calls/min) - Current choice
+3. qwen25-coder-32b-instruct: 1.82s/call (33.0 calls/min)
+4. llama3.3-70b-instruct-fp8: 4.24s/call (14.2 calls/min) - SLOWEST
+### Processing Time for 381 Segments
+- hermes3-70b: 3.0 minutes ⚡
+- hermes3-405b: 6.1 minutes
+- qwen25-coder-32b-instruct: 11.5 minutes
+- llama3.3-70b-instruct-fp8: 26.9 minutes 🐌
+### Parallel Processing Benefits
+- Sequential hermes3-405b: 7.3 minutes
+- Parallel hermes3-405b (3 workers): 3.8 minutes ⚡ 48% faster!
+## 💡 Surprising Discovery
+hermes3-70b is 2x faster than hermes3-405b while likely maintaining very good quality since it's still a Hermes model. The 405B version isn't giving us 2x better results to justify 2x slower speed.
+## 🎯 Optimization Strategy
+Based on these results, here's the optimal approach:
+1. Switch to hermes3-70b - 2x speed improvement
+2. Add parallel processing - Additional 48% speed improvement
+3. Combined effect: ~3x total speedup (from 7.3 → ~2.4 minutes per model)
+
+2025-05-27T23:32:20-07:00
+testing
+```bash
+cd /home/ubuntu/GitHub/comsol-mph-extraction && source comsol-env/bin/activate && python llm_assisted_alignment.py --mphs_dir mphs --output_dir test_runs/run_02_hermes70b_parallel --max_models 1
+```
+
+# Finetune attempt
+2025-05-28T22:59:58-07:00
+Damn it generated a setup.sh and it ran fine.
+
+```
+# 1. Quick test with 1000 samples on CodeLlama-34B (30 minutes)
+source finetune-env/bin/activate && python finetune_setup.py \
+  --data_dir production_run_01_complete_dataset \
+  --output_dir test_comsol_34b \
+  --model_name unsloth/CodeLlama-34b-Instruct-hf \
+  --gpus 4,5 \
+  --max_samples 1000 \
+  --epochs 1
+
+# 2. If satisfied, run full training on Llama-3.3-70B
+source finetune-env/bin/activate && python finetune_setup.py \
+  --data_dir production_run_01_complete_dataset \
+  --output_dir comsol_llama70b_production \
+  --model_name unsloth/Llama-3.3-70B-Instruct \
+  --gpus 4,5,6,7 \
+  --epochs 1
+```
+
+@now
+Holy shit it is running??
+![[Pasted image 20250528233919.png]]
+- went thru freaking 20 min of different errors.
+- `python finetune_setup_minimal.py --data_dir ../production_run_01_complete_dataset --max_samples 1000`
 
 
