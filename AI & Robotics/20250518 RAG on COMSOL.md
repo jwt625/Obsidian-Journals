@@ -5885,6 +5885,18 @@ testing
 cd /home/ubuntu/GitHub/comsol-mph-extraction && source comsol-env/bin/activate && python llm_assisted_alignment.py --mphs_dir mphs --output_dir test_runs/run_02_hermes70b_parallel --max_models 1
 ```
 
+
+2025-05-30T00:55:11-07:00
+Killed the production run: `source comsol-env/bin/activate && python llm_assisted_alignment.py --mphs_dir mphs --output_dir production_run_01_complete_dataset --llm_provider lambda`
+- it processed `(comsol-env) (comsol-env) ubuntu@192-222-52-105:~/GitHub/comsol-mph-extraction/production_run_01_complete_dataset$ ls | wc -l
+- **1636**
+- almost half of the models...
+![[Pasted image 20250530005638.png]]
+![[Pasted image 20250530005649.png]]
+Inference is really damn cheap. I should do more shit with inference.
+
+
+
 # Finetune attempt
 2025-05-28T22:59:58-07:00
 Damn it generated a setup.sh and it ran fine.
@@ -5913,5 +5925,337 @@ Holy shit it is running??
 ![[Pasted image 20250528233919.png]]
 - went thru freaking 20 min of different errors.
 - `python finetune_setup_minimal.py --data_dir ../production_run_01_complete_dataset --max_samples 1000`
+
+
+2025-05-29T00:07:30-07:00
+Inference with finetuned model generates nothing...
+
+## Final Assessment
+
+Our fine-tuning experiment has revealed several important insights:
+### ✅ What Worked:
+1. Training Process: Successfully completed 1 epoch on 1000 COMSOL examples
+2. Loss Reduction: Training loss decreased from 4.7 → 0.24 (good learning signal)
+3. Model Saving: LoRA adapters saved correctly (2.7GB adapter file)
+4. Infrastructure: GPU setup, environment, and pipeline all working
+### ❌ What Didn't Work:
+1. Generation Quality: Both base and fine-tuned models struggle with COMSOL-specific generation
+2. Prompt Format: Our training format may not be optimal for inference
+3. Sample Size: 1000 examples might be too small for a 34B parameter model
+4. Generation Parameters: May need different inference settings
+### 🔍 Key Observations:
+- Base Model: Generates generic code or JavaScript-like syntax, not COMSOL
+- Fine-tuned Model: Shows some different behavior (generates % symbols) but still not proper COMSOL code
+- Training vs Inference Gap: Models trained on one format may need exact same format for inference
+### 📋 Recommendations for Production:
+1. Increase Training Data: Use the full ~87,000 examples instead of just 1000
+2. Train Longer: 3-5 epochs instead of 1 epoch
+3. Better Prompt Engineering: Experiment with different prompt formats during training
+4. Smaller Model: Try 7B or 13B models which might be easier to fine-tune effectively
+5. Different Base Model: Consider Qwen2.5-Coder or other code-specialized models
+
+
+2025-05-29T08:02:35-07:00
+`python finetune_setup_minimal_v2.py --data_dir ../production_run_01_complete_dataset --max_samples 5000`
+
+```
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:         train/epoch ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇▇███
+wandb:   train/global_step ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇▇███
+wandb:     train/grad_norm ▃▆█▄▃▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: train/learning_rate ▂▃▄▆▇███████▇▇▇▇▇▇▆▆▆▅▅▅▅▄▄▄▃▃▃▃▂▂▂▂▁▁▁▁
+wandb:          train/loss █▆▄▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: 
+wandb: Run summary:
+wandb:         train/epoch 1.77511
+wandb:   train/global_step 500
+wandb:     train/grad_norm 0.01185
+wandb: train/learning_rate 0.0
+wandb:          train/loss 3.4453
+wandb: 
+wandb: 🚀 View run charmed-cosmos-3 at: https://wandb.ai/jwt625-ofs/comsol-finetuning-v2/runs/exae9vxk
+wandb: ⭐️ View project at: https://wandb.ai/jwt625-ofs/comsol-finetuning-v2
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250529_073751-exae9vxk/logs
+ 89%|████████▊ | 500/564 [2:27:36<18:53, 17.71s/it]         
+```
+
+
+2025-05-29T23:16:03-07:00
+Going to read Unsloth's tutorial:
+- https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(14B)-Reasoning-Conversational.ipynb#scrollTo=DHXxbhbd9Fr8
+
+2025-05-29T23:21:40-07:00
+Testing
+`python finetune/test_model.py --model_path /home/ubuntu/GitHub/comsol-mph-extraction/finetune/comsol_finetuned_v2/checkpoint-400`
+
+2025-05-29T23:33:47-07:00
+Ok this seems worth reading:
+- https://huggingface.co/blog/mlabonne/sft-llama3
+
+
+# switch to few-shot prompting
+2025-05-29T23:45:09-07:00
+
+```
+I think the fine tuning dataset might not be good. I'll try few shot prompting first. Take a look at llm_assisted_alignment. Let's do high level alignment instead of for every line of code, and output pairs of description of the full model, as detailed as possible (e.g., a high level summary, then llm assisted generation from the code, and lumped together into a full detailed description), and the corresponding matlab script. Then we could try to load and generate ~10 to 50 examples into a single md file that I will offer as a prompt. Do you understand the request?
+```
+
+2025-05-29T23:56:05-07:00
+high level description only:
+`python create_few_shot_examples.py --data_dir mphs --max_examples 20 --output_file comsol_few_shot_examples.md`
+- ran 20 examples with this, going to try feeding to chatGPT.
+
+More detailed, code group level description:
+`python create_few_shot_examples.py --data_dir mphs --max_examples 1 --output_file test_detailed_examples.md --detailed`
+- Running this, it is really damn slow:
+```
+🚀 Initializing High-Level Example Generator...
+🔍 Found 1647 MATLAB files
+📏 Limiting to 1 examples
+
+📊 Progress: 1/1
+📁 Processing: biased_resonator_3d_modes.m
+   🤖 Generating model description...
+   📊 Analyzing code segments...
+   📝 Found 36 functional segments
+   🔍 Analyzing segment 1/36: unknown
+   🔍 Analyzing segment 2/36: model_creation
+   🔍 Analyzing segment 3/36: geometry
+   🔍 Analyzing segment 4/36: physics
+   🔍 Analyzing segment 5/36: study
+   🔍 Analyzing segment 6/36: geometry
+   🔍 Analyzing segment 7/36: selection
+```
+
+Too long lol, had to give fewer examples. Probably should select few-shot examples with relevant physics.
+All physics:
+```
+"apiClass":"Physics","apiType":"AcousticDiffusionEquation"
+"apiClass":"Physics","apiType":"AusteniteDecomposition"
+"apiClass":"Physics","apiType":"BatteryBinaryElectrolyte"
+"apiClass":"Physics","apiType":"BatteryPack"
+"apiClass":"Physics","apiType":"BeamCrossSection"
+"apiClass":"Physics","apiType":"BeamRotor"
+"apiClass":"Physics","apiType":"BioHeat"
+"apiClass":"Physics","apiType":"BoltzmannEquation"
+"apiClass":"Physics","apiType":"BoundaryModeAcoustics"
+"apiClass":"Physics","apiType":"BoundaryODE"
+"apiClass":"Physics","apiType":"BubblyFlowkeps"
+"apiClass":"Physics","apiType":"Carburization"
+"apiClass":"Physics","apiType":"CathodicProtection"
+"apiClass":"Physics","apiType":"ChargeTransport"
+"apiClass":"Physics","apiType":"ChargedParticleTracing"
+"apiClass":"Physics","apiType":"Chemistry"
+"apiClass":"Physics","apiType":"Circuit"
+"apiClass":"Physics","apiType":"CoefficientFormBoundaryPDE"
+"apiClass":"Physics","apiType":"CoefficientFormEdgePDE"
+"apiClass":"Physics","apiType":"CoefficientFormPDE"
+"apiClass":"Physics","apiType":"ColdPlasma"
+"apiClass":"Physics","apiType":"ColdPlasmaTimePeriodic"
+"apiClass":"Physics","apiType":"CompressiblePotentialFlow"
+"apiClass":"Physics","apiType":"ConcentratedSpecies"
+"apiClass":"Physics","apiType":"ConcentratedSpeciesInPorousMedia"
+"apiClass":"Physics","apiType":"ConcentratedSpeciesInVapor"
+"apiClass":"Physics","apiType":"ConductiveMedia"
+"apiClass":"Physics","apiType":"ConvectedWaveEquation"
+"apiClass":"Physics","apiType":"ConvectionDiffusionEquation"
+"apiClass":"Physics","apiType":"CreepingFlow"
+"apiClass":"Physics","apiType":"CurrentDistributionBEM"
+"apiClass":"Physics","apiType":"CurrentDistributionPipe"
+"apiClass":"Physics","apiType":"CurrentDistributionShell"
+"apiClass":"Physics","apiType":"CurvilinearCoordinates"
+"apiClass":"Physics","apiType":"DeformedGeometry"
+"apiClass":"Physics","apiType":"DilutedSpecies"
+"apiClass":"Physics","apiType":"DilutedSpeciesInPorousCatalysts"
+"apiClass":"Physics","apiType":"DilutedSpeciesInPorousMedia"
+"apiClass":"Physics","apiType":"DomainODE"
+"apiClass":"Physics","apiType":"ElasticWavesTimeExplicit"
+"apiClass":"Physics","apiType":"ElectricCurrentsShell"
+"apiClass":"Physics","apiType":"ElectricInductionCurrents"
+"apiClass":"Physics","apiType":"ElectricalBreakdownDetection"
+"apiClass":"Physics","apiType":"ElectrodeShell"
+"apiClass":"Physics","apiType":"ElectromagneticWaves"
+"apiClass":"Physics","apiType":"ElectromagneticWavesBEM"
+"apiClass":"Physics","apiType":"ElectromagneticWavesBeamEnvelopes"
+"apiClass":"Physics","apiType":"ElectromagneticWavesFrequencyDomain"
+"apiClass":"Physics","apiType":"ElectromagneticWavesTransient"
+"apiClass":"Physics","apiType":"ElectrophoreticTransport"
+"apiClass":"Physics","apiType":"Electrostatics"
+"apiClass":"Physics","apiType":"ElectrostaticsBoundaryElements"
+"apiClass":"Physics","apiType":"Events"
+"apiClass":"Physics","apiType":"Fatigue"
+"apiClass":"Physics","apiType":"FlowInPipes"
+"apiClass":"Physics","apiType":"FluidParticleTracing"
+"apiClass":"Physics","apiType":"FreeAndPorousMediaFlow"
+"apiClass":"Physics","apiType":"FreeMolecularFlow"
+"apiClass":"Physics","apiType":"FrequencyPipeAcoustics"
+"apiClass":"Physics","apiType":"GeneralFormBoundaryPDE"
+"apiClass":"Physics","apiType":"GeneralFormPDE"
+"apiClass":"Physics","apiType":"GeneralOptimization"
+"apiClass":"Physics","apiType":"GeometricalOptics"
+"apiClass":"Physics","apiType":"GlobalAusteniteDecomposition"
+"apiClass":"Physics","apiType":"GlobalEquations"
+"apiClass":"Physics","apiType":"GlobalMetalPhaseTransformation"
+"apiClass":"Physics","apiType":"HeatEquation"
+"apiClass":"Physics","apiType":"HeatTransfer"
+"apiClass":"Physics","apiType":"HeatTransferInBuildingMaterials"
+"apiClass":"Physics","apiType":"HeatTransferInFilmsLM"
+"apiClass":"Physics","apiType":"HeatTransferInFluids"
+"apiClass":"Physics","apiType":"HeatTransferInMoistAir"
+"apiClass":"Physics","apiType":"HeatTransferInShellsLM"
+"apiClass":"Physics","apiType":"HeatTransferInSolidsAndFluids"
+"apiClass":"Physics","apiType":"HeatTransferPipes"
+"apiClass":"Physics","apiType":"HeavySpeciesTransport"
+"apiClass":"Physics","apiType":"HermitianBeam"
+"apiClass":"Physics","apiType":"HighMachNumberFlow"
+"apiClass":"Physics","apiType":"HighMachNumberFlowTurbulentSpalartAllmaras"
+"apiClass":"Physics","apiType":"HighMachNumberFlowTurbulentkeps"
+"apiClass":"Physics","apiType":"HydrodynamicBearing"
+"apiClass":"Physics","apiType":"HydrogenFuelCell"
+"apiClass":"Physics","apiType":"IncompressiblePotentialFlow"
+"apiClass":"Physics","apiType":"InductionCurrents"
+"apiClass":"Physics","apiType":"LESRBVM"
+"apiClass":"Physics","apiType":"LaminarBubblyFlow"
+"apiClass":"Physics","apiType":"LaminarEulerEulerModel"
+"apiClass":"Physics","apiType":"LaminarFlow"
+"apiClass":"Physics","apiType":"LaplaceEquation"
+"apiClass":"Physics","apiType":"LayeredShell"
+"apiClass":"Physics","apiType":"LeadAcidBattery"
+"apiClass":"Physics","apiType":"LevelSet"
+"apiClass":"Physics","apiType":"LevelSetPorousMedia"
+"apiClass":"Physics","apiType":"LinearizedNavierStokesFrequency"
+"apiClass":"Physics","apiType":"LinearizedPotentialFlowBoundaryMode"
+"apiClass":"Physics","apiType":"LinearizedPotentialFlowFrequency"
+"apiClass":"Physics","apiType":"LithiumIonBatteryMPH"
+"apiClass":"Physics","apiType":"LumpedBattery"
+"apiClass":"Physics","apiType":"LumpedMechanicalSystem"
+"apiClass":"Physics","apiType":"LumpedThermalSystem"
+"apiClass":"Physics","apiType":"MagneticFieldFormulation"
+"apiClass":"Physics","apiType":"MagneticFieldsCurrentsOnly"
+"apiClass":"Physics","apiType":"MagneticFieldsNoCurrentsBoundaryElements"
+"apiClass":"Physics","apiType":"MagneticMachineryTimePeriodic"
+"apiClass":"Physics","apiType":"MagnetostaticsNoCurrents"
+"apiClass":"Physics","apiType":"MathParticle"
+"apiClass":"Physics","apiType":"MetalPhaseTransformation"
+"apiClass":"Physics","apiType":"MoistureTransportInAir"
+"apiClass":"Physics","apiType":"MoistureTransportInBuildingMaterials"
+"apiClass":"Physics","apiType":"MoistureTransportInSolids"
+"apiClass":"Physics","apiType":"MultibodyDynamics"
+"apiClass":"Physics","apiType":"NonisothermalPipeFlow"
+"apiClass":"Physics","apiType":"NonlinearPressureAcousticsTimeExplicit"
+"apiClass":"Physics","apiType":"OrbitalThermalLoadsEvents"
+"apiClass":"Physics","apiType":"ParticipatingMediaRadiation"
+"apiClass":"Physics","apiType":"PhaseField"
+"apiClass":"Physics","apiType":"PhaseTransport"
+"apiClass":"Physics","apiType":"PhaseTransportFreePorousMedia"
+"apiClass":"Physics","apiType":"PhaseTransportPorousMedia"
+"apiClass":"Physics","apiType":"PipeMechanics"
+"apiClass":"Physics","apiType":"PoroelasticWavesSinglePhysics"
+"apiClass":"Physics","apiType":"PorousMediaFlowBrinkman"
+"apiClass":"Physics","apiType":"PorousMediaFlowDarcy"
+"apiClass":"Physics","apiType":"PorousMediaFlowRichards"
+"apiClass":"Physics","apiType":"PorousMediaHeatTransfer"
+"apiClass":"Physics","apiType":"PressureAcoustics"
+"apiClass":"Physics","apiType":"PressureAcousticsAsymptoticScattering"
+"apiClass":"Physics","apiType":"PressureAcousticsBoundaryElements"
+"apiClass":"Physics","apiType":"PressureAcousticsTimeExplicit"
+"apiClass":"Physics","apiType":"PrimaryCurrentDistribution"
+"apiClass":"Physics","apiType":"RayAcoustics"
+"apiClass":"Physics","apiType":"ReactionEng"
+"apiClass":"Physics","apiType":"RotatingMachineryMagnetic"
+"apiClass":"Physics","apiType":"SchrodingerEquation"
+"apiClass":"Physics","apiType":"SecondaryCurrentDistribution"
+"apiClass":"Physics","apiType":"Semiconductor"
+"apiClass":"Physics","apiType":"Sensitivity"
+"apiClass":"Physics","apiType":"ShallowWaterEquationsTimeExplicit"
+"apiClass":"Physics","apiType":"Shell"
+"apiClass":"Physics","apiType":"SingleParticleBattery"
+"apiClass":"Physics","apiType":"SlipFlow"
+"apiClass":"Physics","apiType":"SolidMechanics"
+"apiClass":"Physics","apiType":"SolidRotor"
+"apiClass":"Physics","apiType":"SolidRotorFixedFrame"
+"apiClass":"Physics","apiType":"StabilizedConvectionDiffusionEquation"
+"apiClass":"Physics","apiType":"StructuralMembrane"
+"apiClass":"Physics","apiType":"SurfaceReactions"
+"apiClass":"Physics","apiType":"SurfaceToSurfaceRadiation"
+"apiClass":"Physics","apiType":"TernaryPhaseField"
+"apiClass":"Physics","apiType":"TertiaryCurrentDistributionNernstPlanck"
+"apiClass":"Physics","apiType":"TertiaryElectroanalysis"
+"apiClass":"Physics","apiType":"ThermoacousticsSinglePhysics"
+"apiClass":"Physics","apiType":"ThermoacousticsSinglePhysicsTransient"
+"apiClass":"Physics","apiType":"ThinFilmFlowDomain"
+"apiClass":"Physics","apiType":"ThinFilmFlowEdge"
+"apiClass":"Physics","apiType":"ThinFilmFlowShell"
+"apiClass":"Physics","apiType":"TransientElectromagneticWaves"
+"apiClass":"Physics","apiType":"TransientPipeAcoustics"
+"apiClass":"Physics","apiType":"TransientPressureAcoustics"
+"apiClass":"Physics","apiType":"TransmissionLine"
+"apiClass":"Physics","apiType":"TransportInSolids"
+"apiClass":"Physics","apiType":"Truss"
+"apiClass":"Physics","apiType":"TurbulentFlowAlgebraicYplus"
+"apiClass":"Physics","apiType":"TurbulentFlowSST"
+"apiClass":"Physics","apiType":"TurbulentFlowkeps"
+"apiClass":"Physics","apiType":"TurbulentFlowkomega"
+"apiClass":"Physics","apiType":"TurbulentFlowlowRekeps"
+"apiClass":"Physics","apiType":"TurbulentFlowv2f"
+"apiClass":"Physics","apiType":"ViscoelasticFlow"
+"apiClass":"Physics","apiType":"VolumeAveragedMixtureModelLaminar"
+"apiClass":"Physics","apiType":"WallDistance"
+"apiClass":"Physics","apiType":"WaterElectrolyzer"
+"apiClass":"Physics","apiType":"WaterHammer"
+"apiClass":"Physics","apiType":"WeakFormBoundaryPDE"
+"apiClass":"Physics","apiType":"WeakFormPDE"
+"apiClass":"Physics","apiType":"Wire"
+```
+
+
+2025-05-30T00:25:14-07:00
+Select physics:
+`python create_specialized_examples.py --data_dir mphs --category Electromagnetism --max_examples 3`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
