@@ -452,13 +452,239 @@ https://docs.oracle.com/en-us/iaas/compute-cloud-at-customer/topics/compute/5-la
 
 https://docs.oracle.com/en-us/iaas/compute-cloud-at-customer/topics/compute/7-connect-to-your-instance.htm#_7-connect-to-your-instance
 
+2025-06-01T12:39:04-07:00
+![[Pasted image 20250601123905.png]]
+
+2025-06-01T12:51:25-07:00
+logged in:
+` ssh -i ~/.ssh/oracle_cloud_key ubuntu@146.235.193.141`
 
 
+```
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-1025-oracle x86_64)
+* Documentation: https://help.ubuntu.com
+* Management: https://landscape.canonical.com
+* Support: https://ubuntu.com/pro
+
+System information as of Sun Jun 1 19:50:42 UTC 2025
+System load: 0.08 Processes: 112
+Usage of /: 4.9% of 44.96GB Users logged in: 0
+Memory usage: 26% IPv4 address for ens3: 10.0.0.208
+Swap usage: 0%
+
+Expanded Security Maintenance for Applications is not enabled.
+0 updates can be applied immediately.
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+New release '24.04.2 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+The programs included with the Ubuntu system are free software; the exact distribution terms for each program are described in the individual files in /usr/share/doc/*/copyright.
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law.
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+```
 
 
+2025-06-01T12:58:10-07:00
+Going to SSH with cursor, and bring the project and context there:
+
+# Project: Jekyll Blog Chatbot with RAG
+
+## Overview
+Adding an interactive chatbot to an existing Jekyll blog (jwt625.github.io) hosted on GitHub Pages. The chatbot will use RAG (Retrieval Augmented Generation) to answer questions based on blog content.
+
+## Infrastructure
+- Frontend: Existing Jekyll blog on GitHub Pages
+- Backend: Oracle Cloud Free Tier VM
+- LLM: DeepSeek API
+- Authentication: Supabase (Free Tier)
+- Database: PostgreSQL (on Oracle VM)
+- Vector DB: ChromaDB (on Oracle VM)
+
+## Core Features
+1. Chat interface integrated into Jekyll blog
+2. User authentication
+3. Conversation logging
+4. RAG capabilities over blog content
+5. Semantic search
+
+## Technical Stack
+- Backend Framework: FastAPI
+- Database: PostgreSQL + ChromaDB
+- Web Server: Nginx
+- SSL: Let's Encrypt
+- Python Requirements:
+  - FastAPI
+  - Uvicorn
+  - SQLAlchemy
+  - psycopg2-binary
+  - chromadb
+  - python-jose
+  - passlib
+  - python-multipart
+
+## Project Structure
+```
+`/home/ubuntu/chatbot/`
+├── app/
+│  ├── init.py
+│  ├── main.py
+│  ├── config.py
+│  ├── database.py
+│  └── api/
+│     ├── init.py
+│     ├── auth.py
+│     ├── chat.py
+│     └── users.py
+├── alembic/
+│  └── versions/
+├── tests/
+├── requirements.txt
+└── alembic.ini
+
+```
 
 
+## Current Status
+- Oracle Cloud VM is set up
+- SSH access is configured
+- Ready to begin backend infrastructure setup
 
+## Next Steps
+1. Initial server setup and security
+2. Install dependencies
+3. Configure PostgreSQL and ChromaDB
+4. Set up Python environment
+5. Deploy FastAPI application
+6. Configure Nginx and SSL
+7. Implement authentication
+8. Develop chat interface
+9. Integrate with Jekyll blog
+
+## Security Requirements
+- JWT-based authentication
+- HTTPS encryption
+- Rate limiting
+- Input validation
+- Secure API key storage
+- Regular backups
+
+## Database Schema (PostgreSQL)
+```sql
+CREATE TABLE conversations (
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    user_id UUID REFERENCES auth.users(id),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW()),
+    title TEXT
+);
+
+CREATE TABLE messages (
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    conversation_id UUID REFERENCES conversations(id),
+    content TEXT,
+    role TEXT CHECK (role IN ('user', 'assistant')),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc', NOW())
+);
+```
+
+## Free Tier Services Being Used
+1. Oracle Cloud VM (Always Free)
+   - 4 ARM-based Compute instances (24 GB RAM total)
+   - 200 GB storage
+2. Supabase (Free Tier)
+   - Authentication
+   - 500MB PostgreSQL database
+   - 50,000 monthly active users
+3. GitHub Pages (Free)
+   - Static site hosting
+
+## Goals
+1. Minimize reliance on paid services
+2. Maintain data privacy
+3. Ensure scalability
+4. Implement proper logging and monitoring
+5. Future extension for image search capabilities
+
+
+# Backend chat server
+2025-06-01T13:20:42-07:00
+Installing shit on the oracle instance.
+
+Current backend status:
+
+The basic structure is now set up. Here's what we've accomplished:
+1. Installed system dependencies (Python, PostgreSQL, Nginx)
+2. Created virtual environment
+3. Set up project structure
+4. Created core application files:
+- requirements.txt with all dependencies
+- config.py for environment settings
+- database.py for SQLAlchemy setup
+- main.py with FastAPI application
+- Basic directory structure for the project
+
+Would you like me to proceed with:
+1. Setting up PostgreSQL configuration
+2. Creating the database and user
+3. Setting up the initial migration with Alembic
+4. Or something else?
+
+
+2025-06-01T14:04:51-07:00
+Done setting up the git repo.
+FastAPI server running
+```
+ubuntu@instance-20250601-1223:~$ cd /home/ubuntu/chatbot && source venv/bin/activate && uvicorn app.main:app --host 0.0.0.0 --port 8000
+INFO:     Started server process [9955]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+
+```
+
+
+2025-06-01T14:17:30-07:00
+lost connection. Going to reboot it.
+
+2025-06-01T19:19:35-07:00
+Reboot done. Got a haircut and food.
+Setup 4 GB swap since the oracle cloud free tier only has 1 GB memory.
+
+Serve RAG:
+`cd /home/ubuntu/chatbot && source venv/bin/activate && uvicorn app.main:app --host 0.0.0.0 --port 8000`
+
+```
+============================================ warnings summary =============================================
+
+venv/lib/python3.10/site-packages/pydantic/_internal/_config.py:271
+
+/home/ubuntu/chatbot/venv/lib/python3.10/site-packages/pydantic/_internal/_config.py:271: PydanticDeprecat
+
+edSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2
+
+.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.5/migration/
+
+warnings.warn(DEPRECATION_MESSAGE, DeprecationWarning)
+
+  
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+
+========================================= short test summary info ==========================================
+
+FAILED tests/rag/test_ingestion.py::test_fetch_content_from_github - AssertionError: assert <Mock name='mock
+
+.text' id='136254739074640'> == '---\nlayout: post\ntitle: Test ...
+
+FAILED tests/rag/test_ingestion.py::test_update_content_success - AssertionError: assert 'error' == 'success
+
+'
+
+================================= 2 failed, 10 passed, 1 warning in 19.11s =================================
+```
 
 
 
