@@ -687,6 +687,206 @@ FAILED tests/rag/test_ingestion.py::test_update_content_success - AssertionError
 ```
 
 
+2025-06-01T20:22:58-07:00
+RAG test with just the most recent post:
+`curl -X POST http://localhost:8000/rag/update -H "Content-Type: application/json" -d '{"most_recent_only": true}'`
+
+2025-06-01T20:35:23-07:00
+RAG/update endpoint working:
+```bash
+(venv) ubuntu@instance-20250601-1223:~/chatbot$ source venv/bin/activate && uvicorn app.main:app --host 0.0.0.0 --port 8000 --log-level debug
+2025-06-02 03:32:47,854 - app.rag.ingestion - INFO - Initializing ContentIngester
+2025-06-02 03:32:47,882 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-06-02 03:32:48,394 - app.rag.ingestion - INFO - Connected to ChromaDB collection: blog_content
+2025-06-02 03:32:48,394 - app.rag.text_processing - INFO - TextProcessor initialized with chunk_size=500, chunk_overlap=100
+INFO:     Started server process [8423]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2025-06-02 03:33:32,138 - app.rag.ingestion - INFO - Starting content update
+2025-06-02 03:33:32,262 - app.rag.ingestion - INFO - Fetching files from: https://api.github.com/repos/jwt625/jwt625.github.io/contents/_posts
+2025-06-02 03:33:32,457 - httpx - INFO - HTTP Request: GET https://api.github.com/repos/jwt625/jwt625.github.io/contents/_posts "HTTP/1.1 200 OK"
+2025-06-02 03:33:32,459 - app.rag.ingestion - INFO - Found 74 blog posts
+2025-06-02 03:33:32,459 - app.rag.ingestion - INFO - Selected most recent post: 2025-05-26-weekly-OFS-48.md
+2025-06-02 03:33:32,459 - app.rag.ingestion - INFO - Downloading: 2025-05-26-weekly-OFS-48.md from https://raw.githubusercontent.com/jwt625/jwt625.github.io/master/_posts/2025-05-26-weekly-OFS-48.md
+2025-06-02 03:33:32,560 - httpx - INFO - HTTP Request: GET https://raw.githubusercontent.com/jwt625/jwt625.github.io/master/_posts/2025-05-26-weekly-OFS-48.md "HTTP/1.1 200 OK"
+2025-06-02 03:33:32,561 - app.rag.ingestion - INFO - Processing 1 posts
+2025-06-02 03:33:32,562 - app.rag.ingestion - INFO - Processing post: 2025-05-26-weekly-OFS-48.md
+2025-06-02 03:33:32,562 - app.rag.text_processing - INFO - Processing post: 2025-05-26-weekly-OFS-48.md
+2025-06-02 03:33:32,565 - app.rag.text_processing - INFO - Generated 41 chunks for post: 2025-05-26-weekly-OFS-48.md
+2025-06-02 03:33:32,566 - app.rag.ingestion - INFO - Generated 41 chunks for post: 2025-05-26-weekly-OFS-48.md
+2025-06-02 03:33:32,566 - app.rag.ingestion - INFO - Upserting 41 chunks to ChromaDB
+2025-06-02 03:34:01,951 - app.rag.ingestion - INFO - Successfully stored chunks in ChromaDB
+2025-06-02 03:34:01,982 - app.rag.ingestion - INFO - Updated 1 posts with 41 chunks
+INFO:     127.0.0.1:51742 - "POST /rag/update HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36820 - "GET /rag/status HTTP/1.1" 200 OK
+```
+
+
+Query example:
+`curl -X POST http://localhost:8000/rag/search -H "Content-Type: application/json" -d '{"query": "What was discussed about quantum computing?", "limit": 3}'`
+
+2025-06-01T21:27:43-07:00
+Holy shit inserted 2600+ chunks, took quite a while, 23 min:
+```
+2025-06-02 03:56:54,983 - app.rag.ingestion - INFO - Upserting 2641 chunks to ChromaDB
+2025-06-02 04:19:04,530 - app.rag.ingestion - INFO - Successfully stored chunks in ChromaDB
+2025-06-02 04:19:04,599 - app.rag.ingestion - INFO - Updated 74 posts with 2641 chunks
+INFO:     127.0.0.1:49836 - "POST /rag/update HTTP/1.1" 200 OK
+
+```
+
+2025-06-01T21:53:57-07:00
+deepseek api tested.
+
+Run fastAPI with debug:
+`source venv/bin/activate && uvicorn app.main:app --host 0.0.0.0 --port 8000 --log-level debug`
+
+2025-06-01T22:15:41-07:00
+RAG tested:
+
+```json
+{
+    "answer": "Based on the provided context, here are the latest developments in quantum cryptography, specifically focusing on **post-quantum cryptography (PQC)** and NIST standards:\n\n1. **NIST Standardization Timeline**:\n   - NIST initiated a call for proposals in **2017** to identify quantum-resistant cryptographic algorithms.\n   - In **2022**, NIST selected **4 algorithms** for standardization.\n   - The standards were officially released in **2024**, marking a significant milestone in PQC adoption [This week's outside five sigma (#38) (Date: Unknown)].\n\n2. **Deployment in Industry**:\n   - Some of these quantum-resistant algorithms have already been deployed in real-world applications, such as **AWS (Amazon Web Services)** [This week's outside five sigma (#38) (Date: Unknown)].\n   - The urgency stems from the \"**harvest now, decrypt later**\" threat, where attackers collect encrypted data today to decrypt it later using quantum computers.\n\n3. **Key References**:\n   - **FIPS 203 (ML-KEM)**: A standardized PQC algorithm already implemented in AWS cloud services. A presentation titled *\"Building Post-Quantum Cloud Services: Deploying FIPS 203:ML-KEM at AWS\"* discusses its deployment [This week's outside five sigma (#38) (Date: Unknown)].\n   - **NIST Workshop**: Further guidance on Key Encapsulation Mechanisms (KEMs) is available through NIST events like the *\"Workshop on Guidance for KEMs\"* [This week's outside five sigma (#38) (Date: Unknown)].\n\n### Limitations:\n- The context does not provide details on the **technical workings** of the selected algorithms (e.g., lattice-based, hash-based).\n- No information is given about other quantum cryptography advancements (e.g., quantum key distribution (QKD)).\n\nFor deeper insights, you may explore the linked NIST resources and AWS documentation cited in the blog. Let me know if you'd like help summarizing those as well!",
+    "context_used": [
+        {
+            "content": "- EverBright - [EB-FCP-300-135-0976-0.5-V](https://v4.cecdn.yun300.cn/100001_2205175052/EB-FCP-300-105-0976-0.5-V.pdf) ![20250311_154748_0.jpg](/assets/images/2025/20250108_20250318/20250311_154748_0.jpg) ![20250311_154748_1.jpg](/assets/images/2025/20250108_20250318/20250311_154748_1.jpg) # Post-Quantum Cryptography and NIST Standards In addition to the recent quantum computing news from the big players, there are also relatively quiet and recent development in post-quantum encryption.",
+            "metadata": {
+                "categories": "OFS",
+                "chunk_index": "55",
+                "header": "{\"cover\": \"/assets/images/2025/20250108_20250318/20250308_164713_1.jpg\", \"overlay_image\": \"/assets/images/2025/20250108_20250318/20250308_164713_1.jpg\", \"show_overlay_excerpt\": false, \"overlay_filter\": 0.5}",
+                "post_name": "2025-03-17-weekly-OFS-38.md",
+                "tags": "Electroreception, Laser_Doppler_Vibrometry, Pulse_Tube_Cryocooler, Super_resolution_Microscopy, Expansion_Microscopy, Quantum_Frequency_Conversion, Silicon_Carbide_Waveguide, Lithium_Niobate, Optical_Modulator, Photonics, Chu_Harrington_Limit, Graphene_Electrode, Superconducting_Nanowire_SPD, Quantum_Computing, Trapped_Ion_Qubit, Post_Quantum_Cryptography, ADC, Microfluidics, Structured_Light, Optical_Machine_Gun, Micro_Transfer_Printing, Nanofab, Plasmonic_Modulator, MEMS_Switch, Vortex_Beam, Low_Coherence_Light_Source, 2D_Metal, Soft_Gripper, Robotics, Near_Infrared_Spectroscopy, Annular_Core_Fiber",
+                "title": "This week's outside five sigma (#38)",
+                "toc": "True",
+                "toc_sticky": "True",
+                "total_chunks": "100",
+                "url": "https://github.com/jwt625/jwt625.github.io/blob/master/_posts/2025-03-17-weekly-OFS-38.md",
+                "use_math": "True"
+            },
+            "distance": 0.6276986002922058
+        },
+        {
+            "content": "- EverBright - [EB-FCP-300-135-0976-0.5-V](https://v4.cecdn.yun300.cn/100001_2205175052/EB-FCP-300-105-0976-0.5-V.pdf) ![20250311_154748_0.jpg](/assets/images/2025/20250108_20250318/20250311_154748_0.jpg) ![20250311_154748_1.jpg](/assets/images/2025/20250108_20250318/20250311_154748_1.jpg) # Post-Quantum Cryptography and NIST Standards In addition to the recent quantum computing news from the big players, there are also relatively quiet and recent development in post-quantum encryption. It's relevant today because you could \"harvest now, decrypt later\". NIST had a call for proposal in 2017, selected 4 quantum-resistant algorithms for standardization in 2022, and released the standards in 2024. Some of them have already been deployed at e.g. AWS. I don't know how they work (yet), and just thought time flies and these are actually already in action. ![20250312_014831_0.jpg](/assets/images/2025/20250108_20250318/20250312_014831_0.jpg) ![20250312_014831_1.jpg](/assets/images/2025/20250108_20250318/20250312_014831_1.jpg) - Fig. 1 from [Building Post-Quantum Cloud Services: Deploying FIPS 203:ML-KEM at AWS](https://csrc.nist.gov/Presentations/2025/building-post-quantum-cloud-services) - See more at [NIST Workshop on Guidance for KEMs](https://csrc.nist.gov/events/2025/workshop-on-guidance-for-kems) - Fig. 2 from [Using Post-Quantum Cryptography on AWS - Appendix: PQC details - The QC risk](https://catalog.workshops.aws/using-pq-crypto-on-aws/en-US/800-appendix/2-qc-risk) ![20250312_015048_0.jpg](/assets/images/2025/20250108_20250318/20250312_015048_0.jpg) # Evolution of Analog-to-Digital Converters The first commercial ADC from 1954: 11 bit, 50 kHz sample rate, 150 lbs, 500 W, $8,500 \"ADC\" at similar frequency today: 24 bit, 192 kHz, <3 lbs, <2.5 W, ~$100 ![20250312_020421_0.jpg](/assets/images/2025/20250108_20250318/20250312_020421_0.jpg) ![20250312_020421_1.jpg](/assets/images/2025/20250108_20250318/20250312_020421_1.jpg) - Fig. 1: [The Data Conversion Handbook, 2005, Chapter 1](https://analog.com/en/resources/technical-books/data-conversion-handbook.html) - Fig. 2: [behringer - UMC404HD](https://behringer.com/product.html?modelCode=0805-AAT) - ([datasheet](https://fullcompass.com/common/files/24700-BehringerUMC404HDDatasheet.pdf)) ![20250312_020614_0.jpg](/assets/images/2025/20250108_20250318/20250312_020614_0.jpg) # On-Chip Thermal Emission for MIR and LWIR Found an integrated \"incandescent light bulb\": heating an on-chip floating silicon nitride waveguide to >1000 C Efficiency is only ~1e-10 because it is radiating everywhere but hey you get broadband emission and some rare MIR and LWIR power on a chip. ![20250312_061310_0.jpg](/assets/images/2025/20250108_20250318/20250312_061310_0.jpg) ![20250312_061310_1.jpg](/assets/images/2025/20250108_20250318/20250312_061310_1.jpg) - Pruessner2025: [A waveguide thermal emitter](https://doi.org/10.1063/5.0252536) ![20250312_061412_0.jpg](/assets/images/2025/20250108_20250318/20250312_061412_0.jpg) ![20250312_061412_1.jpg](/assets/images/2025/20250108_20250318/20250312_061412_1.jpg) # Inertial Focusing in Microfluidics There is an effect called \"inertial focusing\" in inertial microfluidics, it involves multiple forces with different scalings, and let you control the focusing positions. ![20250313_013839_0.jpg](/assets/images/2025/20250108_20250318/20250313_013839_0.jpg) ![20250313_013839_1.jpg](/assets/images/2025/20250108_20250318/20250313_013839_1.jpg) - Wang2013: [Vortex-aided inertial microfluidic device for continuous particle separation with high size-selectivity, efficiency, and purity](https://doi.org/10.1063/1.4818906) - Zhou2013: [Fundamentals of inertial focusing in microchannels](https://doi.org/10.1039/C2LC41248A) - Looks fun but must be pretty ![20250313_014116_0.jpg](/assets/images/2025/20250108_20250318/20250313_014116_0.jpg) ![20250313_014116_1.jpg](/assets/images/2025/20250108_20250318/20250313_014116_1.jpg) - what the hell this is crazy: (Hydroporation employs microfluidic vortex shedding (\u00b5VS), a hydrodynamic phenomenon whereby oscillating fluid forces gently permeabilize the cell membrane, allowing delivery of gene editing payloads such as Cas9 ribonucleoprotein (RNP) complexes.) - Sytsma2025: [Scalable intracellular delivery via microfluidic vortex shedding enhances the function of chimeric antigen receptor T-cells](https://doi.org/10.1038/s41598-025-89070-5) ![20250313_043943_0.jpg](/assets/images/2025/20250108_20250318/20250313_043943_0.jpg) # High-Accuracy 3D Face Scanning with Structured Light This is what you need to scan someone's face with ~100 um RMSE at half a meter away. It is using structured light from three integrated fringe masks, carefully calibrated and projected with 120 deg phase offset (thus no need for mechanical projectors), plus some magic reconstruction, you get the high accuracy 3D face. (PAMPA: pre-aligned micro-projection array) ![20250313_035520_0.jpg](/assets/images/2025/20250108_20250318/20250313_035520_0.jpg) ![20250313_035520_1.jpg](/assets/images/2025/20250108_20250318/20250313_035520_1.jpg) - Guo2025: [Real-time high-accuracy 3D facial (micro) expression measurement based on pre-aligned micro-projection arrays](https://doi.org/10.1364/OE.555406) ![20250313_035632_0.jpg](/assets/images/2025/20250108_20250318/20250313_035632_0.jpg) - Is this the OG structured light paper? - Srinivasan1984: [Automated phase-measuring profilometry of 3-D diffuse objects](https://doi.org/10.1364/AO.23.003105) ![20250313_035746_0.jpg](/assets/images/2025/20250108_20250318/20250313_035746_0.jpg) ![20250313_035746_1.jpg](/assets/images/2025/20250108_20250318/20250313_035746_1.jpg) - They have an older version with just one mask and a stepper motor to shift its phase. They complain about its step size inconsistency and it needs feedback control. - Guo2024: [High accuracy, compact 3D face imaging method based on translational and online-switchable phase-shifting fringe projection](https://doi.org/10.1364/OE.513951) ![20250313_040406_0.jpg](/assets/images/2025/20250108_20250318/20250313_040406_0.jpg) ![20250313_040406_1.jpg](/assets/images/2025/20250108_20250318/20250313_040406_1.jpg) # Optical Machine Gun for Microparticle Acceleration BREAKING: shots fired just outside an ACF, multiple micro particles ejected at high speed. Full story coming up on the evening news. (They actually called it an \"optical machine gun\"... Images of the light beam outside the fiber is actually real, from fluorescence dye rhodamine B. ACF: annular-core capillary fiber) ![20250313_042819_0.jpg](/assets/images/2025/20250108_20250318/20250313_042819_0.jpg) ![20250313_042819_1.jpg](/assets/images/2025/20250108_20250318/20250313_042819_1.jpg) ![20250313_042819_2.jpg](/assets/images/2025/20250108_20250318/20250313_042819_2.jpg) - Du2025: [Capillary fiber-based optical machine gun for micro particle continuous shooting](https://doi.org/10.1364/OE.554337) - The \"high speed\" is about 1 mm/s. ![20250313_043535_0.jpg](/assets/images/2025/20250108_20250318/20250313_043535_0.jpg) ![20250313_043535_1.jpg](/assets/images/2025/20250108_20250318/20250313_043535_1.jpg) # Micro-Transfer Printing for Photonic Integration I've done some transfer print with PDMS myself. Pretty crazy how big of a piece (40 um x 1 mm) they could pick up and put down. I had no idea there's already a commercial micro-transfer printing tool (X-Celeprint \u00b5TP-100). ![20250313_160526_0.jpg](/assets/images/2025/20250108_20250318/20250313_160526_0.jpg) ![20250313_160526_1.jpg](/assets/images/2025/20250108_20250318/20250313_160526_1.jpg) - Vandekerckhove2025: [A scalable quadratic nonlinear silicon photonics platform with printable entangled photon-pair sources](https://arxiv.org/pdf/2503.08783) - No mention of how fast it can be done, but I do like the argument of \"PPLN devices would typically be only a small part of a larger ![20250313_160924_0.jpg](/assets/images/2025/20250108_20250318/20250313_160924_0.jpg) # Ultra-Wideband Plasmonic Electro-Optic Modulators A plasmonic + electro-optic polymer modulator with a bandwidth of, *checks notes*, 997 GHz! They have to use eight different sources based on electrical mixers to generate signals across the frequency range from 10 MHz to 1.14 THz I want to see their probing setup.. ![20250313_161912_0.jpg](/assets/images/2025/20250108_20250318/20250313_161912_0.jpg) - 10 um length, IL = 5.6 dB, Vpi*L = 234 V*um. - Horst2025: [Ultra-wideband MHz to THz plasmonic EO modulator](https://doi.org/10.1364/OPTICA.544016) - They must have some close friends at Virginia Diodes. ![20250313_162129_0.jpg](/assets/images/2025/20250108_20250318/20250313_162129_0.jpg) # MOEMS Optical Switching and Flexure Mechanics \"Mega\" structures like this on a chip for tiny photons make me yearn for mega flexure structures irl. ![20250314_015149_0.jpg](/assets/images/2025/20250108_20250318/20250314_015149_0.jpg) ![20250314_015149_1.jpg](/assets/images/2025/20250108_20250318/20250314_015149_1.jpg) - Heidari2025: [Reconfigurable electrostatically actuated 1 \u00d7 5 rotary MOEMS switch](https://doi.org/10.1364/OE.545403) - They have a nice table for \"Comparison of various switching mechanisms employing silicon nitride as the waveguide material\" ![20250314_015348_0.jpg](/assets/images/2025/20250108_20250318/20250314_015348_0.jpg) # High-Dimensional Structured Light and Vortex Beams You think you know about light? Think twice. (too many buzz words tbh, what the hell is a flying donut?? Why can't you be normal and call it radially polarized beam. Vortex beam? Could've called them quantum tornadoes in polarization space) ![20250314_020148_0.jpg](/assets/images/2025/20250108_20250318/20250314_020148_0.jpg) - He2022: [Towards higher-dimensional structured light](https://doi.org/10.1038/s41377-022-00897-3) - \"I added up a giant superposition of separable states (plane waves), and now the spatial and polarization dofs are non-separable, how surprising!\" ![20250314_020713_0.jpg](/assets/images/2025/20250108_20250318/2",
+            "metadata": {
+                "categories": "['OFS']",
+                "chunk_index": "106",
+                "header": "{'cover': '/assets/images/2025/20250108_20250318/20250308_164713_1.jpg', 'overlay_image': '/assets/images/2025/20250108_20250318/20250308_164713_1.jpg', 'show_overlay_excerpt': False, 'overlay_filter': 0.5}",
+                "post_name": "2025-03-17-weekly-OFS-38.md",
+                "tags": "['Electroreception', 'Laser_Doppler_Vibrometry', 'Pulse_Tube_Cryocooler', 'Super_resolution_Microscopy', 'Expansion_Microscopy', 'Quantum_Frequency_Conversion', 'Silicon_Carbide_Waveguide', 'Lithium_Niobate', 'Optical_Modulator', 'Photonics', 'Chu_Harrington_Limit', 'Graphene_Electrode', 'Superconducting_Nanowire_SPD', 'Quantum_Computing', 'Trapped_Ion_Qubit', 'Post_Quantum_Cryptography', 'ADC', 'Microfluidics', 'Structured_Light', 'Optical_Machine_Gun', 'Micro_Transfer_Printing', 'Nanofab', 'Plasmonic_Modulator', 'MEMS_Switch', 'Vortex_Beam', 'Low_Coherence_Light_Source', '2D_Metal', 'Soft_Gripper', 'Robotics', 'Near_Infrared_Spectroscopy', 'Annular_Core_Fiber']",
+                "title": "This week's outside five sigma (#38)",
+                "toc": "True",
+                "toc_sticky": "True",
+                "total_chunks": "120",
+                "url": "https://github.com/jwt625/jwt625.github.io/blob/master/_posts/2025-03-17-weekly-OFS-38.md",
+                "use_math": "True"
+            },
+            "distance": 0.7374597787857056
+        },
+        {
+            "content": "It's relevant today because you could \"harvest now, decrypt later\". NIST had a call for proposal in 2017, selected 4 quantum-resistant algorithms for standardization in 2022, and released the standards in 2024. Some of them have already been deployed at e.g. AWS. I don't know how they work (yet), and just thought time flies and these are actually already in action.",
+            "metadata": {
+                "categories": "OFS",
+                "chunk_index": "56",
+                "header": "{\"cover\": \"/assets/images/2025/20250108_20250318/20250308_164713_1.jpg\", \"overlay_image\": \"/assets/images/2025/20250108_20250318/20250308_164713_1.jpg\", \"show_overlay_excerpt\": false, \"overlay_filter\": 0.5}",
+                "post_name": "2025-03-17-weekly-OFS-38.md",
+                "tags": "Electroreception, Laser_Doppler_Vibrometry, Pulse_Tube_Cryocooler, Super_resolution_Microscopy, Expansion_Microscopy, Quantum_Frequency_Conversion, Silicon_Carbide_Waveguide, Lithium_Niobate, Optical_Modulator, Photonics, Chu_Harrington_Limit, Graphene_Electrode, Superconducting_Nanowire_SPD, Quantum_Computing, Trapped_Ion_Qubit, Post_Quantum_Cryptography, ADC, Microfluidics, Structured_Light, Optical_Machine_Gun, Micro_Transfer_Printing, Nanofab, Plasmonic_Modulator, MEMS_Switch, Vortex_Beam, Low_Coherence_Light_Source, 2D_Metal, Soft_Gripper, Robotics, Near_Infrared_Spectroscopy, Annular_Core_Fiber",
+                "title": "This week's outside five sigma (#38)",
+                "toc": "True",
+                "toc_sticky": "True",
+                "total_chunks": "100",
+                "url": "https://github.com/jwt625/jwt625.github.io/blob/master/_posts/2025-03-17-weekly-OFS-38.md",
+                "use_math": "True"
+            },
+            "distance": 0.7609630823135376
+        }
+    ]
+}
+```
+
+## Production?
+2025-06-01T22:22:08-07:00
+
+Here's what we've set up:
+
+1. Security Features:
+- Rate limiting (20 requests/minute)
+- API key authentication
+- JWT-based user authentication
+- Request validation
+- CORS protection
+- Trusted host middleware
+- Gzip compression
+
+2. Chat & Session Management:
+- User accounts and authentication
+- Chat sessions with history
+- Message persistence in PostgreSQL
+- Context tracking for each message
+- Conversation history in prompts
+
+3. Production Setup:
+- Logging with rotation
+- Error tracking with Sentry
+- Database connection pooling
+- Response compression
+- Disabled API docs in production
+1. Next Steps:
+
+To deploy this to production, you'll need to:
+
+1. Set up a production environment:
+```bash
+# Install production dependencies
+pip install gunicorn uvicorn[standard] psycopg2-binary sentry-sdk
+# Create production .env file
+cp .env.example .env.prod
+```
+
+2. Configure environment variables in .env.prod:
+```env
+POSTGRES_USER=your_prod_user
+POSTGRES_PASSWORD=your_secure_password
+POSTGRES_HOST=your_db_host
+POSTGRES_DB=your_prod_db
+JWT_SECRET_KEY=your_secure_jwt_key
+DEEPSEEK_API_KEY=your_deepseek_key
+SENTRY_DSN=your_sentry_dsn
+ALLOWED_HOSTS=your-domain.com
+```
+
+3. Set up a reverse proxy (e.g., Nginx):
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+    location / {
+        proxy_pass http://localhost:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+4. Run with production server:
+```bash
+gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+```
+
+5. Set up monitoring:
+- Configure Sentry for error tracking
+- Set up logging rotation
+- Monitor server resources
+
+1. Regular maintenance:
+- Database backups
+- Log rotation
+- Security updates
+- SSL certificate renewal
+
+Would you like me to help you implement any of these specific steps or provide more details about any part of the setup?
 
 
 
@@ -697,12 +897,26 @@ FAILED tests/rag/test_ingestion.py::test_update_content_success - AssertionError
 
 
 
+## Continue with claude code
+2025-06-06T00:18:00-07:00
+Damn claude code is good.
 
+lmao:
+```
+Bash(sleep 3 && curl -X POST "http://localhost:8000/rag/generate" -H "Content-Type:
+      application/json" -H "Authorization: Bearer $TOKEN" -d '{"query": "What are recen…)
+  ⎿ {
+      "detail": "Not authenticated"
+    }
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+100    83    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100   113  100    30  100    835  0:00:01  0:00:01 --:--:--    65
+100   113  100    30  100    83     14     39 53
+    0:00:02  0:00:02 --:--:--    53
 
-
-
-
-
+● The token expired! Let me get a fresh token and test again:
+```
 
 
 
