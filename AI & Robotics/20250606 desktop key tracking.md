@@ -29,3 +29,16 @@ Changed layout as well as added proper max session duration metric
 ![[Pasted image 20250607092541.png]]
 
 
+2025-06-07T12:02:16-07:00
+This query is art, I have no freaking idea what or why the hell it looks like this:
+```SQL
+histogram_quantile(1.0, sum by (le, app) (increase(app_session_duration_seconds_bucket[$__range])) * on(app) group_left() (sum by (app) (increase(app_session_duration_seconds_count[$__range])) > 0))
+```
+
+
+2025-06-07T15:53:08-07:00
+![[Pasted image 20250607155309.png]]
+
+This actually look quite regular, esp. the pulses into obsidian.
+
+

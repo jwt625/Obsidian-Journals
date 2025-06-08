@@ -921,11 +921,333 @@ Bash(sleep 3 && curl -X POST "http://localhost:8000/rag/generate" -H "Content-Ty
 
 
 
+## Firewall config
+2025-06-07T15:33:56-07:00
+locally it is working, but I cannot eevn ping the server.
+
+
+hmm:
+● Bash(sudo ufw allow 8000/tcp)
+  ⎿  Rules updated
+     Rules updated (v6)
+
+● Bash(sudo ufw --force enable)
+  ⎿  Firewall is active and enabled on system startup
+
+● Bash(sudo ufw status)
+  ⎿  Status: active
+
+     To                         Action      From
+     --                         ------      ----
+     8000/tcp                   ALLOW       Anywhere
+     8000/tcp (v6)              ALLOW       Anywhere (v6)
 
 
 
+ What You Need to Do in OCI Console:
+
+  1. Find your instance's VCN:
+    - Go to Compute → Instances → Your Instance
+    - Note the Virtual Cloud Network name
+  2. Configure Security List:
+    - Go to Networking → Virtual Cloud Networks → [Your VCN]
+    - Click Security Lists → Default Security List (or the one your
+  instance uses)
+    - Click Add Ingress Rules
+    - Add:
+    Source Type: CIDR
+  Source CIDR: 0.0.0.0/0
+  IP Protocol: TCP
+  Destination Port Range: 8000
+  Description: RAG API Server
+  3. Test Access:
+  Once configured, test with:
+  curl -s http://YOUR_INSTANCE_PUBLIC_IP:8000/
+
+  Alternative: Use Standard Ports
+
+  If you prefer not to open custom ports, you could:
+
+● Write(chatbot/start_on_port_80.sh)
 
 
+2025-06-07T15:37:48-07:00
+ok seems like I need to go to VCN "instance", route table, and then I see route rules.
+![[Pasted image 20250607154016.png]]
+
+Ok seems like the wrong place. At the create security list, I could allow rules for ingress
+- 2025-06-07T15:43:34-07:00 created one for the chatbot at port 8000
+- `Go to Security Lists, not Route Rules, and add the ingress rule for 
+  port 8000 with source CIDR 0.0.0.0/0.`
+- ok seems like 8000 should be destination port, not source port. Make sense...
+- so source of `0.0.0.0/0` basically means allowing everything?
+
+
+```
+
+  To Fix This:
+
+  1. Go to OCI Console
+  2. Navigate to: Networking → Virtual Cloud Networks → [Your VCN] →
+  Security Lists
+  3. Add Ingress Rule:
+    - Source CIDR: 0.0.0.0/0
+    - IP Protocol: TCP
+    - Destination Port Range: 8000
+```
+
+2025-06-07T15:50:58-07:00
+- ohh maybe I should add it to the default security list instead of creating a new list.
+- Let's see.
+- nope. Still not working.
+
+```
+
+  Common OCI Security List Issues:
+
+  1. Check Rule Configuration:
+
+  Your ingress rule should look like:
+  Source Type: CIDR
+  Source CIDR: 0.0.0.0/0
+  IP Protocol: TCP
+  Source Port Range: All (leave blank)
+  Destination Port Range: 8000
+  Stateful: YES (this is usually the default)
+
+  2. Double-check you're editing the RIGHT security list:
+```
+
+
+Hmm all seem fine to me. Maybe we need a new security group?
+
+Why do I have two of this shit?
+![[Pasted image 20250607155806.png]]
+
+2025-06-07T16:02:35-07:00
+hmm maybe it's the network security group of the instance?
+![[Pasted image 20250607160249.png]]
+- just added, let's see.
+
+```
+  Most OCI security lists block ping by default. You might need:
+  Ingress Rule:
+  Source: 0.0.0.0/0
+  IP Protocol: ICMP
+  Type and Code: All
+```
+
+
+There i a freaking subnet, and with a security list attached to it, the default.
+And the default security list's security rules already have the added port 8000 ingress rules.
+```
+
+● If port 80 doesn't work either (despite SSH working), this points to a
+  few specific issues:
+
+  Likely Causes:
+
+  1. Network Security Groups (NSGs) Override
+
+  If your instance has NSGs attached, they override security list rules:
+  - Go to Compute → Instances → Your Instance
+  - Look for Network Security Groups section
+  - If any NSGs are listed, you need to add rules to the NSG, not the
+  security list
+
+  2. Regional vs AD-specific Security Lists
+
+  - Make sure you're editing the security list in the correct 
+  Availability Domain
+  - Some VCNs have different security lists per AD
+
+  3. Instance-level Firewall Still Active
+
+  Even though we enabled UFW for port 8000, let's check if it's blocking
+  HTTP:
+
+  Check if the server is actually running and accessible locally:
+  curl -v http://localhost/
+  curl -v http://localhost:8000/
+
+  4. ICMP (Ping) Typically Blocked by Default
+
+  OCI blocks ping by default, so that's normal. But HTTP should work.
+
+  Key Questions:
+
+  1. Does your instance show any Network Security Groups attached?
+  2. Is the server actually running on the expected port?
+
+  The fact that SSH works but HTTP doesn't, despite having ingress rules,
+   strongly suggests either:
+  - NSGs are overriding the security list rules, or
+  - Server isn't actually listening on the expected interface
+
+  Can you check if your instance has any Network Security Groups attached
+   in the OCI console?
+```
+
+
+2025-06-07T16:13:53-07:00
+Wait a sec, the subnet is not connected to internet? Why can I ssh??
+![[Pasted image 20250607161410.png]]
+
+ok it does say this VNC already has an internet gateway:
+![[Pasted image 20250607161439.png]]
+
+2025-06-07T16:21:05-07:00
+Trying out the OCI path analysis:
+- https://cloud.oracle.com/networking/path-analyzer?region=us-sanjose-1
+
+Hmm it seems fine:
+![[Pasted image 20250607162203.png]]
+
+2025-06-07T16:36:04-07:00
+going to restart the instance...
+
+```
+wentaojiang@Mac RAG-chat-backend % curl -v http://146.235.193.141:8000/
+*   Trying 146.235.193.141:8000...
+* connect to 146.235.193.141 port 8000 from 192.168.12.43 port 59061 failed: Operation timed out
+* Failed to connect to 146.235.193.141 port 8000 after 50645 ms: Couldn't connect to server
+* Closing connection
+curl: (28) Failed to connect to 146.235.193.141 port 8000 after 50645 ms: Couldn't connect to server
+wentaojiang@Mac RAG-chat-backend % 
+wentaojiang@Mac RAG-chat-backend % 
+wentaojiang@Mac RAG-chat-backend % 
+wentaojiang@Mac RAG-chat-backend % 
+wentaojiang@Mac RAG-chat-backend % 
+wentaojiang@Mac RAG-chat-backend % curl -v http://146.235.193.141:8000/
+*   Trying 146.235.193.141:8000...
+* connect to 146.235.193.141 port 8000 from 192.168.12.43 port 63894 failed: Connection refused
+* Failed to connect to 146.235.193.141 port 8000 after 77 ms: Couldn't connect to server
+* Closing connection
+curl: (7) Failed to connect to 146.235.193.141 port 8000 after 77 ms: Couldn't connect to server
+```
+
+2025-06-07T16:45:18-07:00
+Finally, only took **1 h 15 min** !
+- the trick is to restart, who would have thought!
+
+I got an answer!
+```
+wentaojiang@Mac RAG-chat-backend % curl -X POST "http://146.235.193.141:8000/rag/generate-test" \
+    -H "Content-Type: application/json" \
+    -d '{"query": "any recent progress and discussion on quantum cryptography?", "context_limit": 1}'
+{"answer":"Based on the provided context, there is a brief mention of recent developments in **post-quantum cryptography** (PQC) in the blog post *This week's outside five sigma (#38)* (Date Unknown). Specifically, it highlights \"relatively quiet and recent developments in post-quantum encryption,\" though no further details are provided about specific algorithms, standards, or breakthroughs.  \n\nThe post also references a link to a document (possibly technical specifications) titled *EB-FCP-300-135-0976-0.5-V*, but its relevance to quantum cryptography is unclear from the context.  \n\n**Limitation**: The context does not provide enough information to summarize recent progress in quantum cryptography (e.g., NIST's PQC standardization updates, new attacks, or implementations). For a comprehensive answer, additional sources would be needed.  \n\n**Cited Source**:  \n- *This week's outside five sigma (#38)* (Date Unknown)","context_used":[{"content":"- EverBright - [EB-FCP-300-135-0976-0.5-V](https://v4.cecdn.yun300.cn/100001_2205175052/EB-FCP-300-105-0976-0.5-V.pdf) ![20250311_154748_0.jpg](/assets/images/2025/20250108_20250318/20250311_154748_0.jpg) ![20250311_154748_1.jpg](/assets/images/2025/20250108_20250318/20250311_154748_1.jpg) # Post-Quantum Cryptography and NIST Standards In addition to the recent quantum computing news from the big players, there are also relatively quiet and recent development in post-quantum encryption.","metadata":{"categories":"OFS","chunk_index":"55","header":"{\"cover\": \"/assets/images/2025/20250108_20250318/20250308_164713_1.jpg\", \"overlay_image\": \"/assets/images/2025/20250108_20250318/20250308_164713_1.jpg\", \"show_overlay_excerpt\": false, \"overlay_filter\": 0.5}","post_name":"2025-03-17-weekly-OFS-38.md","tags":"Electroreception, Laser_Doppler_Vibrometry, Pulse_Tube_Cryocooler, Super_resolution_Microscopy, Expansion_Microscopy, Quantum_Frequency_Conversion, Silicon_Carbide_Waveguide, Lithium_Niobate, Optical_Modulator, Photonics, Chu_Harrington_Limit, Graphene_Electrode, Superconducting_Nanowire_SPD, Quantum_Computing, Trapped_Ion_Qubit, Post_Quantum_Cryptography, ADC, Microfluidics, Structured_Light, Optical_Machine_Gun, Micro_Transfer_Printing, Nanofab, Plasmonic_Modulator, MEMS_Switch, Vortex_Beam, Low_Coherence_Light_Source, 2D_Metal, Soft_Gripper, Robotics, Near_Infrared_Spectroscopy, Annular_Core_Fiber","title":"This week's outside five sigma (#38)","toc":"True","toc_sticky":"True","total_chunks":"100","url":"https://github.com/jwt625/jwt625.github.io/blob/master/_posts/2025-03-17-weekly-OFS-38.md","use_math":"True"},"distance":0.7594912648200989}]}%         
+```
+
+This is slow, took about (I forgot).
+
+2025-06-07T16:53:55-07:00
+going to time it as well as bump context limit to 3.
+- `0.00s user 0.01s system 0% cpu 31.334 total`
+- huh it must be the first run is loading some shit then.
+
+
+## Rate limiting and auth
+2025-06-07T16:52:26-07:00
+Applied rate limiting to `app/api/rag.py`.
+
+Also asking Claude to update README and CLAUDE.md.
+
+ok how tf does auth work?
+
+JWT Authentication Flow in Our System:
+	cd ~/Docu
+  1. JWT Structure
+
+  JWTs are stateless tokens with three parts (separated by dots):
+  header.payload.signature
+
+  - Header: Algorithm info (HS256)
+  - Payload: User data (username, user ID, expiration)
+  - Signature: Cryptographic signature using secret key
+
+  2. How We Implement It:
+
+● Read(chatbot/app/security.py)
+  ⎿  Read 13 lines (ctrl+r to expand)
+
+● Read(chatbot/app/api/auth.py)
+  ⎿  Read 20 lines (ctrl+r to expand)
+
+● 3. Authentication Process:
+
+  A. User Registration:
+
+  1. Password Hashing: We store bcrypt-hashed passwords in PostgreSQL
+  2. User Storage: User accounts saved to database
+  3. No tokens yet: Registration doesn't create tokens
+
+  B. Login Process:
+
+  4. Credential Validation: Check username/password against database
+  5. Token Creation: If valid, create JWT with user info:
+  # In app/api/auth.py
+  access_token = create_access_token(
+      data={"sub": user.username, "id": user.id},  # Payload
+      expires_delta=access_token_expires
+  )
+
+  C. Token Verification:
+
+  6. No Database Lookup: JWT is stateless - we don't store tokens in
+  database
+  7. Signature Verification: We verify the token using our secret key:
+  # In app/security.py  
+  payload = jwt.decode(
+      token,
+      settings.JWT_SECRET_KEY.get_secret_value(),  # Secret key
+      algorithms=[settings.JWT_ALGORITHM]          # HS256
+  )
+
+  8. Key Security Points:
+
+  ✅ What We Store in Database:
+
+  - User accounts: username, email, hashed_password
+  - Chat sessions: linked to user IDs
+  - Message history: conversation records
+
+  ❌ What We DON'T Store:
+
+  - JWT tokens: They're stateless and self-contained
+  - Plain passwords: Only bcrypt hashes
+  - Session data: Everything needed is in the JWT
+
+  🔐 Security Features:
+
+  # Token contains:
+  {
+    "sub": "username",        # Subject (username)
+    "id": 1,                 # User ID for database queries
+    "exp": 1749198000        # Expiration timestamp
+  }
+
+  5. Why JWT is Secure:
+
+  6. Tamper-proof: Any modification breaks the signature
+  7. Expiring: Tokens auto-expire (30 minutes in our config)
+  8. Stateless: No server-side session storage needed
+  9. Cryptographically signed: Uses HMAC with secret key
+
+  10. Verification Flow:
+
+  Client sends: Authorization: Bearer eyJ...
+  ↓
+  Server extracts token from header
+  ↓
+  Verify signature with secret key
+  ↓
+  Extract user info from payload
+  ↓
+  Use user.id for database operations
+
+  The beauty of JWT is that it's self-contained - we don't need to store
+   session data or look up tokens in the database. The token itself
+  proves the user's identity through cryptographic verification.
 
 
 
