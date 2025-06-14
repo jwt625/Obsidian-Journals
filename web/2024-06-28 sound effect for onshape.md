@@ -40,3 +40,14 @@ I have the nsp file
 # Modding onshape
 Also found a discord server for onshape community and joined.
 - https://discord.gg/zcScyKpmHV
+
+
+# Coming back to this almost one year later
+2025-06-13T23:57:31-07:00
+https://github.com/KillzXGaming/Switch-Toolbox/issues/593
+https://gamebanana.com/tools/13236
+
+https://www.reddit.com/r/SBCGaming/comments/1b37ooi/sorry_im_a_noob_are_we_still_able_to_download/
+
+Actual game: https://www.ziperto.com/the-legend-of-zelda-tears-of-the-kingdom-switch/
+
