@@ -114,3 +114,14 @@ Yeees using firebox works.
 Download working, hell yeah. Slow though, 5~10 s per file.
 - 6 months is still 1 million files, guess I should get this start running
 
+2025-06-15T23:58:45-07:00
+Going into folders and downloading works. Going back not working.
+Stupid piece of shit, why not just use the browser's going back button??
+
+2025-06-16T23:15:33-07:00
+Hell yeah fixed the navigation and slow download. It is waiting for a 30 s timeout.
+
+Now debugging the download too fast and start skipping files...
+ok fuck this:
+![[Pasted image 20250616233110.png]]
+

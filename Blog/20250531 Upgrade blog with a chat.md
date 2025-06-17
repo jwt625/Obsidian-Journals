@@ -1157,6 +1157,7 @@ ok how tf does auth work?
 JWT Authentication Flow in Our System:
 	cd ~/Docu
   1. JWT Structure
+2. 
 
   JWTs are stateless tokens with three parts (separated by dots):
   header.payload.signature
