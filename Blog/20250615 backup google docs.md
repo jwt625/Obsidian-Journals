@@ -125,3 +125,34 @@ Now debugging the download too fast and start skipping files...
 ok fuck this:
 ![[Pasted image 20250616233110.png]]
 
+2025-06-16T23:37:59-07:00
+Hell yeah
+```
+
+📥 Downloading file 4/6: 20200122 - LN POM nat comm clean.zip
+📄 Downloading file: 20200122 - LN POM nat comm clean.zip
+🔄 Files in download folder before: 8
+🔄 Expected download location: ./firefox_downloads/20200122 - LN POM nat comm clean.zip
+🔄 Right-clicking on file element...
+🔄 Found download option with: [aria-label*="Download"]
+✅ Clicked download from context menu
+✅ Initiated download: 20200122 - LN POM nat comm clean.zip
+🔄 Checking for virus scan popup...
+🦠 Found virus warning dialog: Can’t scan file for viruses
+"20200122 - LN POM nat comm clean.zip" (35.5MB) exceeds the maximum file...
+🦠 Found 'Download anyway' button with: text="Download anyway"
+✅ Successfully clicked 'Download anyway' button
+🔄 Waiting for download completion of: 20200122 - LN POM nat comm clean.zip
+🔄 Monitoring folder: ./firefox_downloads
+💾 Downloaded: 20200122 - LN POM nat comm clean.zip → /20200122 - LN POM nat comm clean.zip
+✅ Download completed: File count increased from 8 to 9
+✅ New file detected: 232183_0_attach_6_17344.pdf
+⏱️  Rate limit delay: 1.4s (downloaded: 3)
+✅ Successfully downloaded: 20200122 - LN POM nat comm clean.zip
+```
+
+
+2025-06-16T23:51:22-07:00
+Had to fix it again for all popups.
+Seems to run fine now, running on QAOM drive.
+
