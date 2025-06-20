@@ -156,3 +156,6 @@ Hell yeah
 Had to fix it again for all popups.
 Seems to run fine now, running on QAOM drive.
 
+2025-06-17T23:31:03-07:00
+Added option for selective download at root.
+

@@ -2319,7 +2319,36 @@ For the other DOF, Open Scan is a good example:
 - https://openscan.eu/pages/openscan-mini
 
 
+# 20250619 Laser phosphor display
+2025-06-19T15:30:51-07:00
+From Prysm.
 
+134 images.
+https://www.prysmsystems.com/displays/lpd-6k-series/laser-phosphor-display/
+
+
+```
+
+I20250619 15:53:47.757063 41772639 incremental_pipeline.cc:390] Registering image #59 (138)
+I20250619 15:53:47.757089 41772639 incremental_pipeline.cc:393] => Image sees 59 / 423 points
+I20250619 15:53:47.886924 41772639 incremental_pipeline.cc:390] Registering image #60 (139)
+I20250619 15:53:47.886955 41772639 incremental_pipeline.cc:393] => Image sees 67 / 336 points
+I20250619 15:53:47.972224 41772639 incremental_pipeline.cc:42] Retriangulation and Global bundle adjustment
+I20250619 15:53:50.019073 41772639 timer.cc:91] Elapsed time: 1.053 [minutes]
+
+COLMAP reconstruction completed successfully!
+Results are in: /Users/wentaojiang/Documents/3DGS/20250619_Laser_Phosphor_Display/sparse/0
+```
+
+
+2025-06-19T17:35:51-07:00
+Trying to run on lambda's GPU:
+```bash
+~/GitHub/20250619_Laser_Phosphor_Display$ brush_app . --export-every 5000
+   ·•🖌️  Dataset loaded
+✅ evaluating every 1000 steps                                                  thread 'tokio-runtime-worker' panicked at /home/runner/.cargo/git/checkouts/cubecl-5f4b9a89973abd05/791903d/crates/cubecl-runtime/src/memory_management/memory_manage.rs:272:32:
+No pool handles allocation of size 268431360
+```
 
 
 
