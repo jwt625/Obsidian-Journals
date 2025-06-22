@@ -1,5 +1,7 @@
 2025-06-17T10:00:18-07:00
 
+## History
+
 
 
 # SC qubits
@@ -248,6 +250,40 @@ Ok time to sleep
 - https://qiskit-community.github.io/qiskit-metal/circuit-examples/F.Small-quantum-chips/51-Four_qubit_chip.html
 
 
+2025-06-21T09:59:53-07:00
+Ugh the requirements are not on github...
+Going to make Augment get it.
+
+Extracted from the wheel:
+```bash
+
+Requires-Dist: addict (==2.4.0)
+Requires-Dist: descartes (==1.1.0)
+Requires-Dist: gdspy (==1.6.12)
+Requires-Dist: geopandas (==0.12.2)
+Requires-Dist: ipython (==8.10.0)
+Requires-Dist: matplotlib (==3.7.0)
+Requires-Dist: numpy (==1.24.2)
+Requires-Dist: pandas (==1.5.3)
+Requires-Dist: pint (==0.20.1)
+Requires-Dist: pyEPR-quantum (==0.8.5.7)
+Requires-Dist: pygments (==2.14.0)
+Requires-Dist: pyside2 (==5.15.2.1)
+Requires-Dist: qdarkstyle (==3.1)
+Requires-Dist: qutip (==4.7.1)
+Requires-Dist: scipy (==1.10.0)
+Requires-Dist: shapely (==2.0.1)
+Requires-Dist: scqubits (==3.1.0)
+Requires-Dist: gmsh (==4.11.1)
+Requires-Dist: pyaedt (==0.6.46)
+Requires-Dist: pyyaml (==6.0)
+```
+
+
+2025-06-21T15:49:56-07:00
+Great, fixed the GUI interaction issue.
+
+
 
 # References
 
@@ -259,7 +295,65 @@ https://www.youtube.com/watch?v=NCNv3YPvveM&list=PLOFEBzvs-VvqHl5ZqVmhB_FcSqmLuf
 - ![[Pasted image 20250620235508.png]]
 
 
-## Papers
+https://github.com/openquantumhardware/qick
 
-https://arxiv.org/abs/2103.10344
 
+
+## chronicle
+
+Devoret1985: Measurements of Macroscopic Quantum Tunneling out of the Zero-Voltage State of a Current-Biased Josephson Junction https://doi.org/10.1103/PhysRevLett.55.1908
+
+Schoelkopf1995: Studies of noise in Josephson-effect mixers and their potential for submillimeter heterodyne detection: https://www.proquest.com/dissertations-theses/studies-noise-josephson-effect-mixers-their/docview/304166973/se-2
+
+Nakamura1999: Coherent control of macroscopic quantum states in a single-Cooper-pair box:
+- https://doi.org/10.1038/19718
+- https://arxiv.org/abs/cond-mat/9904003
+![[Pasted image 20250622103233.png]]
+
+Vion2002: Manipulating the Quantum State of an Electrical Circuit:
+- https://doi.org/10.1126/science.1069372
+- https://arxiv.org/abs/cond-mat/0205343
+![[Pasted image 20250622103007.png]]
+
+Wallraff2004: Strong coupling of a single photon to a superconducting qubit using circuit quantum electrodynamics: https://doi.org/10.1038/nature02851
+![[Pasted image 20250622104740.png]]
+![[Pasted image 20250622104836.png]]
+
+Koch2007: Charge-insensitive qubit design derived from the Cooper pair box: https://doi.org/10.1103/PhysRevA.76.042319
+![[Pasted image 20250622110657.png]]
+
+Schreier2008: Suppressing charge noise decoherence in superconducting charge qubits: https://doi.org/10.1103/PhysRevB.77.180502
+![[Pasted image 20250622110212.png]]
+
+Manucharyan2009: Fluxonium: Single cooper-pair circuit free of charge offsets: https://doi.org/10.1126/science.1175552
+![[Pasted image 20250622105129.png]]
+
+Paik2011: Observation of High Coherence in Josephson Junction Qubits Measured in a Three-Dimensional Circuit QED Architecture: https://doi.org/10.1103/PhysRevLett.107.240501
+![[Pasted image 20250622110927.png]]
+
+
+
+## Design
+
+Schuster2007: Circuit Quantum Electrodynamics: https://schusterlab.stanford.edu/static/pdfs/Schuster_thesis.pdf
+![[Pasted image 20250622115122.png]]
+
+Gao2008: The Physics of Superconducting Microwave Resonators: https://thesis.library.caltech.edu/2530/
+![[Pasted image 20250622114932.png]]
+
+Nigg2012: Black-Box Superconducting Circuit Quantization: https://doi.org/10.1103/PhysRevLett.108.240502
+![[Pasted image 20250622112043.png]]
+
+
+Minev2021: Circuit quantum electrodynamics (cQED) with modular quasi-lumped models: https://arxiv.org/abs/2103.10344
+![[Pasted image 20250622111657.png]]
+
+
+## Fabrication
+
+Schuster thesis:
+Kelly thesis:
+
+
+### Reviews
+Devoret2013: Superconducting Circuits for Quantum Information: An Outlook https://doi.org/10.1126/science.1231930
