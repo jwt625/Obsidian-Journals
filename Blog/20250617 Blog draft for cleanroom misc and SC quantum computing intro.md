@@ -301,6 +301,8 @@ https://github.com/openquantumhardware/qick
 
 ## chronicle
 
+### 1990s to 2000s: removing wires and adding filters
+
 Devoret1985: Measurements of Macroscopic Quantum Tunneling out of the Zero-Voltage State of a Current-Biased Josephson Junction https://doi.org/10.1103/PhysRevLett.55.1908
 
 Schoelkopf1995: Studies of noise in Josephson-effect mixers and their potential for submillimeter heterodyne detection: https://www.proquest.com/dissertations-theses/studies-noise-josephson-effect-mixers-their/docview/304166973/se-2
@@ -331,6 +333,35 @@ Manucharyan2009: Fluxonium: Single cooper-pair circuit free of charge offsets: h
 Paik2011: Observation of High Coherence in Josephson Junction Qubits Measured in a Three-Dimensional Circuit QED Architecture: https://doi.org/10.1103/PhysRevLett.107.240501
 ![[Pasted image 20250622110927.png]]
 
+Purcell filter
+
+### 2010s and 2020s: scaling up & error correction
+
+Barends2014: Superconducting quantum circuits at the surface code threshold for fault tolerance: https://doi.org/10.1038/nature13171
+![[Pasted image 20250622142311.png]]
+
+Ofek2016: Extending the lifetime of a quantum bit with error correction in superconducting circuits: https://doi.org/10.1038/nature18949
+
+
+IBM:
+![[Pasted image 20250622120219.png]]
+- https://www.technologyreview.com/2017/05/17/4673/ibm-nudges-ahead-in-the-race-for-quantum-supremacy/
+
+Krinner2019: Engineering cryogenic setups for 100-qubit scale superconducting circuit systems: https://doi.org/10.1140/epjqt/s40507-019-0072-0
+![[Pasted image 20250622141610.png]]
+
+Krinner2022: Realizing repeated quantum error correction in a distance-three surface code: https://doi.org/10.1038/s41586-022-04566-8, https://arxiv.org/abs/2112.03708
+![[Pasted image 20250622141918.png]]
+![[Pasted image 20250622141939.png]]
+
+
+
+
+
+
+
+## Types of qubits
+
 
 
 ## Design
@@ -349,11 +380,20 @@ Minev2021: Circuit quantum electrodynamics (cQED) with modular quasi-lumped mode
 ![[Pasted image 20250622111657.png]]
 
 
+
 ## Fabrication
 
-Schuster thesis:
+Schuster thesis: 
+Schuster2007: Circuit Quantum Electrodynamics: https://schusterlab.stanford.edu/static/pdfs/Schuster_thesis.pdf
+
+
 Kelly thesis:
+Kelly2015: Fault-tolerant superconducting qubits: https://web.physics.ucsb.edu/~martinisgroup/theses/Kelly2015.pdf
 
 
-### Reviews
+
+## Measurement
+
+
+## Reviews
 Devoret2013: Superconducting Circuits for Quantum Information: An Outlook https://doi.org/10.1126/science.1231930
