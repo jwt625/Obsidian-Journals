@@ -57,3 +57,14 @@ Damn it actually works
 ![[Pasted image 20250624235434.png]]
 
 ![[S.png]]
+
+
+2025-06-25T21:52:45-07:00
+Wider freq range, and animated:
+![[10-30GHz.png]]
+![[log_E_001.gif]]
+![[Ez_30GHz.gif]]
+
+
+
+
