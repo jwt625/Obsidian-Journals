@@ -390,3 +390,10 @@ Here is some youtube video:
 ```
 
 
+2025-06-29T17:20:31-07:00
+Added a bunch of other functionalities.
+Could use this for browsing the database:
+- https://sqlitebrowser.org/dl/
+![[Pasted image 20250629173030.png]]
+
+
