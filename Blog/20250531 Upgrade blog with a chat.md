@@ -1264,3 +1264,60 @@ curl -X POST "http://146.235.193.141:8000/rag/generate-test" -H "Content-Type: a
 {"answer":"Based on the provided context, there is no direct mention of a paper from a major telecom company (telco) about using robots to unplug/plug fibers in a warehouse or data center with vision capabilities. However, here are the closest relevant points from the context:\n\n1. **Large-Scale Robotic Fiber Switch Array**: The blog references a robotic system capable of moving \"a few thousand fibers at the same time,\" though it doesn’t specify if this is in a warehouse/data center or involve vision [This week's outside five sigma (#31) (Date Unknown)].  \n\n2. **Telepresence Robot with Arms**: IIT’s hydraulic quadruped robot is mentioned as carrying \"massive arms,\" which could theoretically be adapted for fiber manipulation, but this is speculative and not tied to telcos or data centers [This week's outside five sigma (#34) (Date Unknown)].  \n\nIf you need details on telco-specific implementations, additional sources would be required. The current context only hints at robotic fiber manipulation at scale.","context_used":[{"content":"Either need an active cable or fiber optic. 9. Imagine doing computer vision research in 1966 as an undergrad summer project ![20240706_231654_0.jpg](/assets/images/2024/20240608_20241127/20240706_231654_0.jpg) - [Computer Vision: Algorithms and Applications, 2nd ed.](https://szeliski.org/Book/) 10.","metadata":{"categories":"OFS","chunk_index":"21","header":"{\"cover\": \"/assets/images/2024/20240608_20241127/20240608_041250_0.jpg\", \"overlay_image\": \"/assets/images/2024/20240608_20241127/20240608_041250_0.jpg\", \"show_overlay_excerpt\": false, \"overlay_filter\": 0.5}","post_name":"2024-11-30-weekly-OFS-23.md","tags":"Microwave, Tubes, VED, Quantum, Qubit, Pasta, COMSOL, Nanofab, TTV, Wafer, TFLN, Tapeout, HDMI, Fiber, CV, Camera, Ethernet, MXene, Energy_harvest, 3D_print, Wirebond, Photonics, Corrosion","title":"This week's outside five sigma (#23)","toc":"True","toc_sticky":"True","total_chunks":"33","url":"https://github.com/jwt625/jwt625.github.io/blob/master/_posts/2024-11-30-weekly-OFS-23.md","use_math":"True"},"distance":0.9200011491775513},{"content":"Telepresence Anywhere - IIT’s hydraulic quadruped can carry a pair of massive arms](https://spectrum.ieee.org/telepresence-robot) ![20250211_211219_0.jpg](/assets/images/2025/20241101_20250216/20250211_211219_0.jpg) # Microplastics in Human Brains How micro/nano plastics might look like in our brains.","metadata":{"categories":"OFS","chunk_index":"33","header":"{\"cover\": \"/assets/images/2025/20241101_20250216/20250208_014851_1.jpg\", \"overlay_image\": \"/assets/images/2025/20241101_20250216/20250208_014851_1.jpg\", \"show_overlay_excerpt\": false, \"overlay_filter\": 0.5}","post_name":"2025-02-16-weekly-OFS-34.md","tags":"Copper_interconnects, Robotics, Optomechanics, SAW, LUS, Transient_grating_spectroscopy, Asynchronous_optical_sampling, Water_wave_diodes, Microfluidics, Capillary_waves, Acoustic_levitation, Ultrasound_phased_arrays, CMOS, Optical_tweezers, Photophoretic_trapping, Photonic_nanojet, Optical_whispering_gallery_modes, Dielectric_rod_antennas, Fiberscopic_robotics, Magnetic_manipulation, Sonic_boom_analysis, Niobium_superconducting_qubits, Metalens, Plasma_etching, Nanofab","title":"This week's outside five sigma (#34)","toc":"True","toc_sticky":"True","total_chunks":"73","url":"https://github.com/jwt625/jwt625.github.io/blob/master/_posts/2025-02-16-weekly-OFS-34.md","use_math":"True"},"distance":0.9616615772247314},{"content":"waveguide and its application to a modularized broadband high-level squeezer](https://doi.org/10.1063/5.0063118) - The [actual article from Riken](https://riken.jp/pr/news/2024/20241108_2/index.html) ![20250118_012317_0.jpg](/assets/images/2025/20241101_20250124/20250118_012317_0.jpg) # Large-Scale Robotic Fiber Switch Array Have you seen a robot moving a few thousand fibers at the same time?","metadata":{"categories":"OFS","chunk_index":"4","header":"{\"cover\": \"/assets/images/2025/20241101_20250124/20241215_005740_0.jpg\", \"overlay_image\": \"/assets/images/2025/20241101_20250124/20241215_005740_0.jpg\", \"show_overlay_excerpt\": false, \"overlay_filter\": 0.5}","post_name":"2025-01-26-weekly-OFS-31.md","tags":"EDWA, MEMS, PPLN, LCoS, OFDR, DAS, Josephson_junction, SNSPD, Cryogenics, Waveguide, Photonics, WDM, Microlens, ALD, DRIE, Nanopillar, YOLOv7, CNN, Nanofab, Vibrometry, Holography, Deflectometry, Copackaged_optics, Benes_network","title":"This week's outside five sigma (#31)","toc":"True","toc_sticky":"True","total_chunks":"48","url":"https://github.com/jwt625/jwt625.github.io/blob/master/_posts/2025-01-26-weekly-OFS-31.md","use_math":"True"},"distance":0.9887418150901794}]}**%**
 ```
 
+
+# Update 20250706
+2025-07-06T23:59:37-07:00
+Current database status:
+- from running `./scripts/check_last_update.sh `
+```
+
+🔍 Checking Last Update Information
+==================================
+
+📁 ChromaDB Data Directory:
+Last modified: 2025-06-02 04:32:01.387493255 +0000
+Directory size: 213M
+
+📝 Recent Update Activity in Logs:
+Recent update-related log entries:
+2025-06-08 00:07:27,279 - app.rag.ingestion - INFO - Initializing ContentIngester
+2025-06-08 00:07:28,575 - app.rag.ingestion - INFO - Connected to ChromaDB collection: blog_content
+
+📋 Update Log Files:
+No update log files found
+
+📊 Current System Status:
+Current document count: 4451
+Status: ok
+
+🔄 Server Process Info:
+Server PID: 5817
+Server started: Sun Jun  8 00:07:07 2025
+Server uptime: 29-06:51:48
+
+💡 Summary:
+To check for the most recent update activity:
+1. Look at ChromaDB directory modification time above
+2. Check the most recent update log files
+3. Run the update script to see current document count
+
+To perform a new update:
+  ./scripts/update_blog_content.sh
+
+To get detailed status (requires auth):
+  curl -X GET "http://localhost:8000/rag/status" -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+2025-07-07T00:13:22-07:00
+Fixed some middleware error and wohoo update seems worked:
+```
+{"status":"success","message":"Updated 5 posts with 278 chunks","progress":{"stage":"complete","current":278,"total":278,"message":"Successfully stored all chunks"}}
+```
+
+These are satisfying to watch, poor little machine but it is free
+![[Pasted image 20250707001730.png]]
+![[Pasted image 20250707001744.png]]
+
+
+
+
