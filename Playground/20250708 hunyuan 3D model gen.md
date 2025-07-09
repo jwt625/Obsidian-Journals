@@ -80,3 +80,34 @@ the fuck
 cd /home/ubuntu/GitHub/Hunyuan3D-2.1/hy3dpaint/DifferentiableRenderer && source ../../venv/bin/activate && bash compile_mesh_painter.sh
 ```
 
+2025-07-08T22:17:49-07:00
+Working!
+
+```
+
+🖌️  Generating texture...
+Loaded image from: 'output/textured_mesh.jpg'
+Loaded image from: 'output/textured_mesh_metallic.jpg'
+Loaded image from: 'output/textured_mesh_roughness.jpg'
+OBJ import of 'textured_mesh.glb' took 12.7 ms
+05:18:37 | ERROR: Draco mesh compression is not available because library could not be found at /home/ubuntu/GitHub/Hunyuan3D-2.1/4.0/python/lib/python3.10/site-packages/libextern_draco.so
+05:18:37 | INFO: Starting glTF 2.0 export
+05:18:37 | INFO: Extracting primitive: textured_mesh
+05:18:37 | WARNING: More than one shader node tex image used for a texture. The resulting glTF sampler will behave like the first shader node tex image.
+05:18:37 | INFO: Primitives created: 1
+05:18:37 | INFO: Finished glTF 2.0 export in 0.4498422145843506 s
+
+⏱️  Texture generation completed in 63.2s
+✅ Texture generation completed!
+🎉 Final textured mesh: output/textured_mesh.glb
+📊 Peak GPU memory usage: 23.5GB / 79.2GB (29.6%)
+
+🎊 Generation completed successfully!
+📂 Check 'output' for your 3D models
+Error: Not freed memory blocks: 28208, total unfreed memory 66.191013 MB
+```
+Input:
+![[MFG_CONSMP001-SMD-G-T.jpg]]
+Output:
+![[Pasted image 20250708221751.png]]
+Damn not bad at all.
