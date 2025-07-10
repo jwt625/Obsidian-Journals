@@ -66,5 +66,18 @@ Wider freq range, and animated:
 ![[Ez_30GHz.gif]]
 
 
+2025-07-09T22:54:50-07:00
+Smoothed the pattern.
+pretty much still works, shifted to higher freq a bit, better return loss, and better rejection lol
+
+![[Pasted image 20250709225501.png]]
+
+![[Pasted image 20250709225514.png]]
+
+Before smoothing:
+![[Pasted image 20250709225525.png]]
+
+After:
+![[Pasted image 20250709225533.png]]
 
 
