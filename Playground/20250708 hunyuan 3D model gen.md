@@ -111,3 +111,34 @@ Input:
 Output:
 ![[Pasted image 20250708221751.png]]
 Damn not bad at all.
+
+
+2025-07-12T09:20:35-07:00
+run time on single H100:
+```
+python test_with_images.py
+API Server Test with Images
+========================================
+✓ API server is healthy
+
+Testing API with: images/IMG_9469.JPG
+  ✓ Success in 84.8s
+  Saved: api_output_IMG_9469.glb
+
+Testing API with: images/MFG_CONSMP001-SMD-G-T.jpg
+  ✓ Success in 46.3s
+  Saved: api_output_MFG_CONSMP001-SMD-G-T.glb
+
+Testing API with: images/RIGOL_DG4202.jpg
+  ✓ Success in 60.5s
+  Saved: api_output_RIGOL_DG4202.glb
+
+Testing API with: images/cryomech.png
+  ✓ Success in 63.5s
+  Saved: api_output_cryomech.glb
+
+Testing API with: images/wirebonds.jpeg
+  ✓ Success in 52.1s
+  Saved: api_output_wirebonds.glb
+```
+
