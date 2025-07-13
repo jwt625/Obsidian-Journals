@@ -159,3 +159,106 @@ terminated by signals sent by prterun (as reported here).
 --------------------------------------------------------------------------
 ```
 
+
+2025-07-12T23:55:41-07:00
+The coaxial example ran. Got the files locally.
+Setting up paraview
+- `brew install --cask paraview`
+![[Pasted image 20250713002931.png]]
+Could see some shit but a lot of other examples are not running properly.
+
+2025-07-13T09:01:08-07:00
+Ran all examples before sleep yesterday:
+```
+cd /home/ubuntu/GitHub/palace && chmod +x run_all_examples.sh && ./run_all_examples.sh
+Palace Examples Run - Sun Jul 13 07:31:55 UTC 2025
+Palace Version: Usage: palace [OPTIONS] CONFIG_FILE
+========================================
+
+Running 15 Palace examples...
+
+[1/15] Running: spheres/spheres.json
+----------------------------------------
+ubuntu@192-222-54-152:~/GitHub/palace$ ^C
+ubuntu@192-222-54-152:~/GitHub/palace$ 
+ubuntu@192-222-54-152:~/GitHub/palace$ 
+ubuntu@192-222-54-152:~/GitHub/palace$ 
+ubuntu@192-222-54-152:~/GitHub/palace$ ./run_all_examples.sh
+Palace Examples Run - Sun Jul 13 07:36:29 UTC 2025
+Palace Version: Usage: palace [OPTIONS] CONFIG_FILE
+========================================
+
+Running 15 Palace examples...
+
+[1/15] Running: spheres/spheres.json
+----------------------------------------
+Status: FAILED (Exit Code: 1, Runtime: 1s)
+
+[2/15] Running: rings/rings.json
+----------------------------------------
+Status: FAILED (Exit Code: 1, Runtime: 0s)
+
+[3/15] Running: cylinder/cavity_pec.json
+----------------------------------------
+Status: SUCCESS (Exit Code: 0, Runtime: 392s)
+
+[4/15] Running: cylinder/cavity_impedance.json
+----------------------------------------
+Status: SUCCESS (Exit Code: 0, Runtime: 223s)
+
+[5/15] Running: cylinder/waveguide.json
+----------------------------------------
+Status: FAILED (Exit Code: 1, Runtime: 0s)
+
+[6/15] Running: cylinder/floquet.json
+----------------------------------------
+Status: FAILED (Exit Code: 1, Runtime: 0s)
+
+[7/15] Running: coaxial/coaxial_open.json
+----------------------------------------
+Status: SUCCESS (Exit Code: 0, Runtime: 74s)
+
+[8/15] Running: coaxial/coaxial_matched.json
+----------------------------------------
+Status: SUCCESS (Exit Code: 0, Runtime: 79s)
+
+[9/15] Running: coaxial/coaxial_short.json
+----------------------------------------
+Status: SUCCESS (Exit Code: 0, Runtime: 75s)
+
+[10/15] Running: cpw/cpw_lumped_uniform.json
+----------------------------------------
+Status: FAILED (Exit Code: 1, Runtime: 1s)
+
+[11/15] Running: cpw/cpw_wave_uniform.json
+----------------------------------------
+Status: FAILED (Exit Code: 1, Runtime: 0s)
+
+[12/15] Running: cpw/cpw_lumped_adaptive.json
+----------------------------------------
+Status: FAILED (Exit Code: 1, Runtime: 0s)
+
+[13/15] Running: cpw/cpw_wave_adaptive.json
+----------------------------------------
+Status: FAILED (Exit Code: 1, Runtime: 1s)
+
+[14/15] Running: cpw/cpw_coax_uniform.json
+----------------------------------------
+Status: FAILED (Exit Code: 1, Runtime: 0s)
+
+[15/15] Running: cpw/cpw_coax_adaptive.json
+----------------------------------------
+Status: FAILED (Exit Code: 1, Runtime: 1s)
+
+========================================
+FINAL SUMMARY
+========================================
+Total Examples: 15
+Successful: 5
+Failed: 10
+Success Rate: 33%
+Log file saved to: /home/ubuntu/GitHub/palace/all_examples_log.txt
+Results summary will be saved to: /home/ubuntu/GitHub/palace/example_results_summary.md
+Summary generated: /home/ubuntu/GitHub/palace/example_results_summary.md
+```
+
