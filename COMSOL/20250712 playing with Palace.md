@@ -123,3 +123,39 @@
 ==> xz: Executing phase: 
 ```
 
+
+2025-07-12T22:52:10-07:00
+Trying out some examples, get config error:
+```
+~/GitHub/palace/examples/spheres$ cd /home/ubuntu/GitHub/palace/examples/cpw && palace cpw_wave_uniform.json
+>> /home/ubuntu/spack/opt/spack/linux-icelake/openmpi-5.0.8-eck3x6xr3gz374vqoehf7dkjv4esq3k2/bin/mpirun -n 1 /home/ubuntu/spack/opt/spack/linux-icelake/palace-0.12.0-2l2r2vugxfbfossyzwenc7sfpmksqnog/bin/palace-x86_64.bin cpw_wave_uniform.json
+
+_____________     _______
+_____   __   \____ __   /____ ____________
+____   /_/  /  __ ` /  /  __ ` /  ___/  _ \
+___   _____/  /_/  /  /  /_/  /  /__/  ___/
+  /__/     \___,__/__/\___,__/\_____\_____/
+
+
+
+Verification failed: (it->find("X") != it->end() && it->find("Y") != it->end() && it->find("Z") != it->end()) is false:
+ --> Missing "Probe" point "X", "Y", or "Z" in configuration file!
+ ... in function: void palace::config::ProbePostData::SetUp(palace::config::json&)
+ ... in file: /tmp/ubuntu/spack-stage/spack-stage-palace-0.12.0-2l2r2vugxfbfossyzwenc7sfpmksqnog/spack-src/palace/utils/configfile.cpp:575
+
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI_COMM_WORLD
+  Proc: [[45441,1],0]
+  Errorcode: 1
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+prterun has exited due to process rank 0 with PID 0 on node 192-222-54-152 calling
+"abort". This may have caused other processes in the application to be
+terminated by signals sent by prterun (as reported here).
+--------------------------------------------------------------------------
+```
+
