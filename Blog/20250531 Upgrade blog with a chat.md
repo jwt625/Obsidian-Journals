@@ -1325,6 +1325,9 @@ These are satisfying to watch, poor little machine but it is free
 
 2025-07-21T23:32:29-07:00
 
+Also tried vercel but had build error.
+Also got the domain outside5sigma.com for only 10 bucks per year.
+
 
 # Repository Cleanup: Removing `_site` from Git History
 
