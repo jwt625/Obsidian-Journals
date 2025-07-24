@@ -1574,3 +1574,25 @@ If issues arise, the original repository state exists on GitHub until the force 
 **Repository:** jwt625.github.io
 
 **Status:** ✅ Successfully completed
+
+
+# 20250724 actually adding the RAG
+2025-07-24T00:14:27-07:00
+
+Local dev see docs folder of the github page repo.
+![[Pasted image 20250724001510.png]]
+
+Freaking working locally, but not working on prod because of http vs https.
+Need certificate.
+
+
+2025-07-24T00:34:51-07:00
+Using `http://rag-api.outside5sigma.com:8000/docs` for it.
+Obtaining the certificate...
+- need to add more ingress rules on OCI.
+
+2025-07-24T00:51:41-07:00
+Finally working. Now I could sleep in peace.
+
+
+
