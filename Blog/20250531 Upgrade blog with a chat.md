@@ -1590,9 +1590,31 @@ Need certificate.
 Using `http://rag-api.outside5sigma.com:8000/docs` for it.
 Obtaining the certificate...
 - need to add more ingress rules on OCI.
+![[Pasted image 20250724013645.png]]
+
 
 2025-07-24T00:51:41-07:00
 Finally working. Now I could sleep in peace.
 
+2025-07-24T01:09:06-07:00
+Fucking CORS error on iphone:
+![[Pasted image 20250724010913.png]]
+
+This web inspector is kind of nice.
+
+
+```
+[Log] Making API request to: – "https://rag-api.outside5sigma.com/rag/generate-test" (blog-chat-widget.js, line 224)
+[Log] Request payload: – {query: "test", context_limit: 3} (blog-chat-widget.js, line 225)
+[Error] Preflight response is not successful. Status code: 400
+[Error] Fetch API cannot load https://rag-api.outside5sigma.com/rag/generate-test due to access control checks.
+[Error] Failed to load resource: Preflight response is not successful. Status code: 400 (generate-test, line 0)
+[Error] Fetch error:
+TypeError: Load failed
+	(anonymous function) (blog-chat-widget.js:253)
+```
+
+2025-07-24T01:36:31-07:00
+Fixed.
 
 
