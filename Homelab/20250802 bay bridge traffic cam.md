@@ -12,3 +12,56 @@ Webpage (http://192.168.12.6:4747/remote) does not work unless activated using t
 ok could actually just hit the /video endpoint.
 ![[Pasted image 20250802110109.png]]
 
+dude
+![[Pasted image 20250802112549.png]]
+
+![[Pasted image 20250802122414.png]]
+
+2025-08-02T13:14:27-07:00
+Hmm the digital zoom clearly makes a difference:
+![[Pasted image 20250802131435.png]]
+
+2025-08-02T13:36:42-07:00
+Motion based tracking:
+![[Pasted image 20250802133646.png]]
+
+![[Pasted image 20250802133700.png]]
+
+2025-08-02T14:08:59-07:00
+More info on the motion mask:
+![[Pasted image 20250802140904.png]]
+
+
+2025-08-02T14:55:32-07:00
+Added object tracking:
+![[Pasted image 20250802145537.png]]
+
+
+2025-08-02T15:30:12-07:00
+Got telescope up:
+![[Pasted image 20250802153020.png]]
+
+2025-08-02T16:10:42-07:00
+I need to get rid of the grey area:
+![[Pasted image 20250802161048.png]]
+
+Shit is getting worse, it should be removed:
+![[Pasted image 20250802163322.png]]
+
+
+
+2025-08-02T16:35:31-07:00
+ok seems fixed:
+![[Pasted image 20250802163534.png]]
+- with:
+```python
+# Remove shadows if configured (convert grey shadow pixels to black)
+bg_config = config.BACKGROUND_SUBTRACTOR_CONFIG
+if bg_config["detectShadows"] and bg_config["removeShadows"]:
+# Remove shadow pixels (convert 127 to 0, keep 255 as 255)
+fg_mask[fg_mask == bg_config["shadowValue"]] = 0
+```
+
+
+
+
