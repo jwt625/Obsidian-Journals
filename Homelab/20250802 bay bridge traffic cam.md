@@ -118,10 +118,54 @@ https://jwt625.grafana.net/goto/3rf4clwNR?orgId=1
 
 ![[Pasted image 20250803022452.png]]
 
+ugh why are these web fuckery so complicated
+![[Pasted image 20250803023432.png]]
+
+
+## What You Can Do:
+
+### ✅ Option A: **Use Redirects (what you're doing now)**
+
+Easy, supported, but the URL changes to `*.grafana.net`
+
+### ✅ Option B: **Self-host Grafana**
+
+Install Grafana on a VPS or container and reverse-proxy it from your own domain
+
+### ⚠️ Option C: **Try a Worker or Reverse Proxy**
+
+Possible but likely to break due to CSP/X-Frame-Options
 
 
 
+2025-08-03T02:44:49-07:00
+Aaaannnnd I'm also getting no data on the shared link if it is incognito...
+- https://jwt625.grafana.net/public-dashboards/41c88f2c6da845e7985a03749bd721a9
+
+why is this so freaking stupid and hard.
+
+2025-08-03T02:48:58-07:00
+going to setup reverse proxy...
+
+2025-08-03T03:02:24-07:00
+damn claude is so good
+![[Pasted image 20250803030229.png]]
+
+2025-08-03T03:37:43-07:00
+Still debugging reverse proxy. Had to use all local grafana and prometheus.
+
+looks nice at night
+![[Pasted image 20250803033747.png]]
 
 
+2025-08-03T03:52:44-07:00
+fuck me
+![[Pasted image 20250803035247.png]]
+
+
+2025-08-03T04:06:16-07:00
+still not working, gave up for now...
+It looks so nice though...
+![[Pasted image 20250803040633.png]]
 
 
