@@ -83,9 +83,43 @@ Trying optical flow:
 
 2025-08-02T20:19:48-07:00
 Not as good. Going to focus back on setting up the data stream and grafana dashboard.
+Optical flow is also slower, could get max 20 fps.
+
 
 # Dashboard
 2025-08-02T20:20:45-07:00
+
+2025-08-03T01:01:02-07:00
+Still struggling to push to prometheus.
+And also debugging why my keylogging app is uing 70k+ metrics. Likely because of browser top domain switching.
+
+![[Pasted image 20250803010236.png]]
+
+
+2025-08-03T02:01:59-07:00
+Prometheus running fine locally
+- http://localhost:9090/
+
+![[Pasted image 20250803020214.png]]
+
+Still cannot find the cloud equivalent of this. I have clearly seen / used it in [[20250606 desktop key tracking]]. Cannot find it anymore.
+
+Anyways, could see the new metrics on: https://jwt625.grafana.net/a/grafana-metricsdrilldown-app/drilldown
+
+![[Pasted image 20250803020642.png]]
+
+
+2025-08-03T02:16:35-07:00
+Need to give claude/augment an example to make it fix its outdated grafana dashboard json schema.
+
+2025-08-03T02:24:34-07:00
+done!!!
+https://jwt625.grafana.net/goto/3rf4clwNR?orgId=1
+
+![[Pasted image 20250803022452.png]]
+
+
+
 
 
 
