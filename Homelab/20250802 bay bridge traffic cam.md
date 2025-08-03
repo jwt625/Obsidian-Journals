@@ -1,5 +1,9 @@
+
+# Setting up iphone as IP cam
+
 2025-08-02T10:55:42-07:00
 Booting up old iphone SE again.
+
 Almost forgot the password, locked myself out for 1 min. Luckily the second try worked.
 
 Installed [droidcam](https://droidcam.app/) and its OBS plugin.
@@ -12,6 +16,7 @@ Webpage (http://192.168.12.6:4747/remote) does not work unless activated using t
 ok could actually just hit the /video endpoint.
 ![[Pasted image 20250802110109.png]]
 
+# Identifying and tracking
 dude
 ![[Pasted image 20250802112549.png]]
 
@@ -61,6 +66,27 @@ if bg_config["detectShadows"] and bg_config["removeShadows"]:
 # Remove shadow pixels (convert 127 to 0, keep 255 as 255)
 fg_mask[fg_mask == bg_config["shadowValue"]] = 0
 ```
+
+2025-08-02T17:41:06-07:00
+Ugh this is annoying to deal with:
+![[Pasted image 20250802174113.png]]
+
+2025-08-02T18:00:37-07:00
+Makes no sense:
+![[Pasted image 20250802180041.png]]
+
+
+2025-08-02T18:49:55-07:00
+Trying optical flow:
+![[Pasted image 20250802184959.png]]
+- kind of working, but not consistent enough.
+
+2025-08-02T20:19:48-07:00
+Not as good. Going to focus back on setting up the data stream and grafana dashboard.
+
+# Dashboard
+2025-08-02T20:20:45-07:00
+
 
 
 
