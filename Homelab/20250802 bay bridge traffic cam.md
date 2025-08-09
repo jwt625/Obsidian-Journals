@@ -169,3 +169,16 @@ It looks so nice though...
 ![[Pasted image 20250803040633.png]]
 
 
+2025-08-03T11:29:01-07:00
+Fucking restarted prometheus container and lost all data.
+- modified to be persistent.
+
+
+
+2025-08-09T14:03:03-07:00
+Been running the whole week and it starts to get slow.
+![[Pasted image 20250809140312.png]]
+
+Also figured out proxy with nginx. Well not figured it out but got it working.
+- https://bay-bridge-traffic.com/
+
