@@ -32,4 +32,16 @@ Ok good for now. Going to continue backing up from DAS to NAS, and now I could a
 
 
 
+2025-08-18T21:44:56-07:00
+Fuck, I forgot the password for the NAS.
+
+2025-08-18T21:47:02-07:00
+ok found it lol.
+
+Checking because I got a cheap external storage from Bestbuy:
+![[Pasted image 20250818215049.png]]
+
+Amazing shit. How does it have larger storage capacity than my whole NAS. Maybe I should have gotten larger HDD.
+
+![[Pasted image 20250818215150.png]]
 
