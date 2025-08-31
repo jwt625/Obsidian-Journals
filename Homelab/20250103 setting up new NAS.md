@@ -37,6 +37,7 @@ Fuck, I forgot the password for the NAS.
 
 2025-08-18T21:47:02-07:00
 ok found it lol.
+- I should save this into a yaml file
 
 Checking because I got a cheap external storage from Bestbuy:
 ![[Pasted image 20250818215049.png]]
@@ -45,3 +46,7 @@ Amazing shit. How does it have larger storage capacity than my whole NAS. Maybe 
 
 ![[Pasted image 20250818215150.png]]
 
+I don't remember how much I have in my DAS...
+
+## for checking the NAS addr
+Go to router: http://192.168.0.1/webpages/index.html#/
