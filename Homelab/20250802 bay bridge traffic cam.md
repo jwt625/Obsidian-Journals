@@ -182,3 +182,25 @@ Been running the whole week and it starts to get slow.
 Also figured out proxy with nginx. Well not figured it out but got it working.
 - https://bay-bridge-traffic.com/
 
+# relocating the repo
+2025-08-31T20:39:06-07:00
+fuck reverse proxy.
+Why is putting a grafana into an iframe this hard???
+
+![[Pasted image 20250831203945.png]]
+
+```
+
+=== FINAL TEST RESULTS ===
+API Health:
+200
+Dashboard:
+404
+Landing Page:
+200
+API Search:
+200
+Public Assets:
+404
+```
+

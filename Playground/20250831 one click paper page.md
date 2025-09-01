@@ -29,6 +29,11 @@ Recognizing Text:  50%|███████████████████
 - what is wrong with python??
 - ohh it is the camera stream from the bay bridge traffic cam project.
 
+2025-08-31T12:40:21-07:00
+Conversion is going thru from FE to BE and back:
+![[Pasted image 20250831124032.png]]
+
+
 
 
 
