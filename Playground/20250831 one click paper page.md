@@ -34,6 +34,140 @@ Conversion is going thru from FE to BE and back:
 ![[Pasted image 20250831124032.png]]
 
 
+2025-09-01T00:25:54-07:00
+ok we'll see about this one:
+![[Pasted image 20250901002600.png]]
+
+2025-09-01T00:30:47-07:00
+Great this actually worked!
+![[Pasted image 20250901003053.png]]
+
+2025-09-01T00:39:20-07:00
+let's see if this forked the template properly
+![[Pasted image 20250901003928.png]]
+
+okay, good sign:
+![[Pasted image 20250901003951.png]]
+
+
+2025-09-01T00:47:21-07:00
+hmm
+```
+  
+Workflows aren’t being run on this forked repository  
+Because this repository contained workflow files when it was forked, we have disabled them from running on this fork. Make sure you understand the configured workflows and their expected usage before enabling Actions on this repository.
+```
+
+
+
+
+2025-09-01T09:33:30-07:00
+Now debugging workflow, seems to be disabled on forked repo by default. Need to create a repo from fresh.
+```
+
+INFO:     127.0.0.1:62071 - "GET /api/templates HTTP/1.1" 200 OK
+2025-09-01 09:32:53,397 - INFO - 🚀 Creating optimized repository: test-optimized-1756744373
+2025-09-01 09:32:53,398 - INFO - 🔍 Fetching template content from academicpages/academicpages.github.io
+2025-09-01 09:32:54,103 - INFO - 📋 Filtered 359 files to 271 essential files
+2025-09-01 09:32:54,104 - INFO - ✅ Cached template data for academicpages/academicpages.github.io (271 files)
+2025-09-01 09:32:55,606 - INFO - 📁 Copying template content to jwt625/test-optimized-1756744373
+2025-09-01 09:32:56,480 - ERROR - ❌ Failed to copy template content: Failed to create tree: {'message': 'tree.sha ba132f0d204eceb3742f01f5c63e32598948f8c6 is not a valid blob', 'documentation_url': 'https://docs.github.com/rest/git/trees#create-a-tree', 'status': '422'}
+2025-09-01 09:32:56,480 - ERROR - ❌ Failed to create optimized repository: Failed to create tree: {'message': 'tree.sha ba132f0d204eceb3742f01f5c63e32598948f8c6 is not a valid blob', 'documentation_url': 'https://docs.github.com/rest/git/trees#create-a-tree', 'status': '422'}
+2025-09-01 09:32:56,480 - ERROR - Optimized deployment test failed: Failed to create tree: {'message': 'tree.sha ba132f0d204eceb3742f01f5c63e32598948f8c6 is not a valid blob', 'documentation_url': 'https://docs.github.com/rest/git/trees#create-a-tree', 'status': '422'}
+INFO:     127.0.0.1:62071 - "POST /api/github/test-deploy-optimized HTTP/1.1" 500 Internal Server Error
+
+```
+
+2025-09-01T10:54:59-07:00
+Let's see if this is true:
+![[Pasted image 20250901105504.png]]
+
+Ok i see the files got created, but no action it seems.
+![[Pasted image 20250901105555.png]]
+
+
+2025-09-01T16:10:17-07:00
+```
+
+INFO:     127.0.0.1:59489 - "GET /api/templates HTTP/1.1" 200 OK
+2025-09-01 16:08:26,451 - INFO - 🏠 Creating dual deployment for: test-dual-1756768106
+2025-09-01 16:08:26,451 - INFO - 🚀 Creating optimized repository: test-dual-1756768106
+2025-09-01 16:08:26,451 - INFO - 🔍 Fetching template content from pages-themes/minimal
+2025-09-01 16:08:26,859 - INFO - 📋 Filtered 72 files to 42 essential files
+2025-09-01 16:08:26,859 - INFO - ✅ Cached template data for pages-themes/minimal (42 files)
+2025-09-01 16:08:28,296 - INFO - 📁 Copying template content to jwt625/test-dual-1756768106
+2025-09-01 16:08:28,681 - INFO - Creating blobs for 34 files
+2025-09-01 16:08:50,693 - INFO - ✅ Template content copied successfully (34 files)
+2025-09-01 16:08:50,694 - INFO - ⚙️ Adding deployment workflow to jwt625/test-dual-1756768106
+2025-09-01 16:08:51,165 - WARNING - Failed to add workflow: {'message': 'Not Found', 'documentation_url': 'https://docs.github.com/rest/repos/contents#create-or-update-file-contents', 'status': '404'}
+2025-09-01 16:08:51,795 - INFO - Enabled GitHub Pages with Actions for jwt625/test-dual-1756768106
+2025-09-01 16:08:51,795 - INFO - ✅ Optimized repository created: jwt625/test-dual-1756768106
+2025-09-01 16:08:51,795 - INFO - ✅ Dual deployment created: jwt625/test-dual-1756768106
+2025-09-01 16:08:51,795 - INFO - 📍 Standalone URL: https://jwt625.github.io/test-dual-1756768106/
+INFO:     127.0.0.1:59489 - "POST /api/github/test-dual-deploy HTTP/1.1" 200 OK
+
+```
+- fixing the 404 error
+
+2025-09-01T16:28:00-07:00
+Batch delete the test repo:
+```
+gh repo list your-username --limit 1000 --json name -q '.[].name' | grep '^test-dual-'
+```
+
+```
+for repo in \
+test-dual-1756769191 \
+test-dual-1756768992 \
+test-dual-1756768844 \
+test-dual-1756768721 \
+test-dual-1756768543 \
+test-dual-1756768243 \
+test-dual-1756768106 \
+test-dual-1756767639; do
+  gh repo delete your-username/$repo --confirm
+done
+
+```
+
+Very nice:
+```
+
+
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1756769191
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1756768992
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1756768844
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1756768721
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1756768543
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1756768243
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1756768106
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1756767639
+```
+
+
+2025-09-01T18:16:55-07:00
+Fucking piece of shit:
+```
+**Bingo!** The old filtering was **skipping `README.md`** (line 1669), so there was no conflict with the auto-generated README.
+
+Now we're trying to copy the template's README.md, which conflicts with the repository's initial README.md.
+```
+
+2025-09-01T21:15:48-07:00
+Could be token scope problem...
+
+2025-09-01T22:17:28-07:00
+Fucking finally, it is indeed an oauth scope problem...
+![[Pasted image 20250901221738.png]]
+
 
 
 
