@@ -168,7 +168,77 @@ Could be token scope problem...
 Fucking finally, it is indeed an oauth scope problem...
 ![[Pasted image 20250901221738.png]]
 
+2025-09-01T22:30:19-07:00
+A lot of conversations...
+![[Pasted image 20250901223024.png]]
 
+
+
+# Test deploy and actual deploy
+
+2025-09-06T09:53:24-07:00
+
+Got test deploy working, pages are actually visible.
+![[Pasted image 20250906095350.png]]
+- https://github.com/jwt625/test-dual-1757177047
+- will probably get removed later.
+
+Now refactoring the backend `github_service.py`.
+
+
+2025-09-07T02:04:01-07:00
+Removing test repos:
+```
+
+Deleting test-dual-1757224576...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1757224576
+Deleting test-dual-1757187652...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1757187652
+Deleting test-dual-1757187433...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1757187433
+Deleting test-dual-1757187196...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1757187196
+Deleting test-dual-1757186523...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1757186523
+Deleting test-dual-1757182636...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1757182636
+Deleting test-dual-1757177047...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1757177047
+Deleting test-dual-1757176701...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1757176701
+Deleting test-dual-1756789786...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1756789786
+Deleting test-dual-1756789570...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1756789570
+Deleting test-dual-1756789391...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1756789391
+Deleting test-dual-1756789297...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/test-dual-1756789297
+Deleting paper-18-jun-2025httpsarxivorgabs250615633v1-17572-1757234846...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/paper-18-jun-2025httpsarxivorgabs250615633v1-17572-1757234846
+Deleting paper-18-jun-2025httpsarxivorgabs250615633v1-17572-1757234213...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/paper-18-jun-2025httpsarxivorgabs250615633v1-17572-1757234213
+Deleting arxiv250615633v1-quant-ph-18-jun-2025httpsarxivorg-1757231870...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/arxiv250615633v1-quant-ph-18-jun-2025httpsarxivorg-1757231870
+Deleting arxiv250615633v1-quant-ph-18-jun-2025httpsarxivorg...
+Flag --confirm has been deprecated, use `--yes` instead
+✓ Deleted repository jwt625/arxiv250615633v1-quant-ph-18-jun-2025httpsarxivorg
+```
 
 
 
