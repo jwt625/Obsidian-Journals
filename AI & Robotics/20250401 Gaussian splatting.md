@@ -434,6 +434,7 @@ Asked cursor to add comments to `main.js`
 
 Code:
 - gradio: `/opt/homebrew/anaconda3/envs/colmap_env/bin/python colmap_gradio.py`
+	- at `/Users/wentaojiang/Documents/GitHub/colmap-gradio`
 
 
 ## 20250413 Coherent laser
@@ -2319,7 +2320,7 @@ For the other DOF, Open Scan is a good example:
 - https://openscan.eu/pages/openscan-mini
 
 
-# 20250619 Laser phosphor display
+## 20250619 Laser phosphor display
 2025-06-19T15:30:51-07:00
 From Prysm.
 
@@ -2349,6 +2350,15 @@ Trying to run on lambda's GPU:
 ✅ evaluating every 1000 steps                                                  thread 'tokio-runtime-worker' panicked at /home/runner/.cargo/git/checkouts/cubecl-5f4b9a89973abd05/791903d/crates/cubecl-runtime/src/memory_management/memory_manage.rs:272:32:
 No pool handles allocation of size 268431360
 ```
+
+
+## 20251004 CRT display
+2025-10-04T22:39:21-07:00
+
+/Users/wentaojiang/Documents/3DGS/20251004_CRT_display
+
+2025-10-04T22:48:40-07:00 started colmap.
+2025-10-04T23:11:20-07:00 Done.
 
 
 
