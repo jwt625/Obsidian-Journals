@@ -714,3 +714,74 @@ installation finished.
 
 
 
+2025-11-07T08:18:14-07:00
+Installing:
+```
+Downloading and Extracting Packages:
+
+moose-libmesh-2025.1 | 30.0 MB   | ####1                                                     |   7% 
+
+moose-libmesh-vtk-9. | 29.1 MB   | ####2                                                     |   8% 
+
+libllvm20-20.1.8     | 27.5 MB   | ######6                                                   |  12% 
+
+moose-petsc-3.24.0   | 26.2 MB   | ####9                                                     |   9% 
+
+libllvm18-18.1.8     | 24.8 MB   | #####2                                                    |   9% 
+
+llvm-tools-18-18.1.8 | 22.5 MB   |                                                           |   0% 
+
+clang-tools-18.1.8   | 18.4 MB   |                                                           |   0% 
+
+gfortran_impl_osx-ar | 17.9 MB   |                                                           |   0% 
+
+cmake-3.31.6         | 15.7 MB   |                                                           |   0% 
+
+scipy-1.15.2         | 13.9 MB   |                                                           |   0% 
+
+perl-5.32.1          | 13.8 MB   |                                                           |   0% 
+
+pandas-2.3.3         | 13.4 MB   |                                                           |   0% 
+
+libclang-cpp18.1-18. | 12.7 MB   |                                                           |   0% 
+
+python-3.13.5        | 12.3 MB   |                                                           |   0% 
+
+scikit-image-0.25.2  | 9.9 MB    |                                                           |   0% 
+
+compiler-rt_osx-arm6 | 9.7 MB    |                                                           |   0% 
+
+ruff-0.14.1          | 9.5 MB    |                                                           |   0% 
+
+libclang13-20.1.2    | 8.0 MB    |                                                           |   0% 
+
+matplotlib-base-3.10 | 7.8 MB    |                                                           |   0% 
+
+numpy-2.3.4          | 6.4 MB    |                                                           |   0% 
+
+plotly-6.4.0         | 4.9 MB    |                                                           |   0% 
+
+gtk3-3.24.43         | 4.6 MB    |                                                           |   0% 
+
+libgrpc-1.73.1       | 4.4 MB    |                                                           |   0% 
+
+sympy-1.14.0         | 4.4 MB    |                                                           |   0% 
+
+librsvg-2.58.4       | 4.4 MB    |                                                           |   0% 
+
+pyarrow-core-21.0.0  | 4.4 MB    |                                                           |   0% 
+
+libopenblas-0.3.29   | 4.0 MB    |                                                           |   0% 
+
+libarrow-21.0.0      | 3.7 MB    |                                                           |   0% 
+
+git-lfs-3.4.1        | 3.6 MB    |                                                           |   0% 
+
+ ... (more hidden) ...
+```
+
+
+2025-11-07T08:51:19-07:00
+![[Pasted image 20251107085120.png]]
+Build running by claude. Had to run it from a different directory.
+
