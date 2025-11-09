@@ -2319,6 +2319,8 @@ For the other DOF, Open Scan is a good example:
 ![[Pasted image 20250425001039.png]]
 - https://openscan.eu/pages/openscan-mini
 
+2025-11-08T22:02:59-08:00
+I should just use a robotic arm to move around the phone.
 
 ## 20250619 Laser phosphor display
 2025-06-19T15:30:51-07:00
