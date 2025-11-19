@@ -2382,6 +2382,11 @@ SH related:
 - [Instant neural graphics primitives with a multiresolution hash encoding](https://dl.acm.org/doi/10.1145/3528223.3530127)
 
 
+# Depth anything 3
+2025-11-18T22:18:30-08:00
+
+Took only 44 s on the dilfridge dataset, wow:
+![[Pasted image 20251118221842.png]]
 
 
 
