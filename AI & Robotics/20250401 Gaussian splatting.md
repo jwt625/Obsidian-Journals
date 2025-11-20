@@ -2388,7 +2388,39 @@ SH related:
 Took only 44 s on the dilfridge dataset, wow:
 ![[Pasted image 20251118221842.png]]
 
+![[Pasted image 20251118224119.png]]
 
+2025-11-18T22:41:23-08:00
+Trying to directly generate 3dgs scene with the giant model.
+Nope, it sucks.
+2025-11-18T23:27:00-08:00
+Running brush on the OD instance:
+```
+source $HOME/.cargo/env && timeout 30 ./target/release/brush_app ../colmap_output --export-every 1000 --eval-every 500 --total-steps 5000 --export-path ../outputs
+🖌️ ▓░•·  Training
+[9s] ○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○○       5/5000    Steps (0.5377/s, 3h remaining)
+✅ evaluating every 500 steps
+ℹ️ Completed loading                                                                                      
+```
+ugh but it is not detection the GPU thru webGPU.
+
+Had to run OG 3DGS.
+Result sucks.
+![[Pasted image 20251120084814.png]]
+
+2025-11-20T08:46:34-08:00
+Found colmap basically did not work:
+```
+colmap model_analyzer --path /home/ubuntu/GitHub/PlayGround/20251118_depth_anything_3/colmap_output/sparse/0
+Cameras: 1
+Images: 154
+Registered images: 154
+Points: 0
+Observations: 0
+Mean track length: 0.000000
+Mean observations per image: 0.000000
+Mean reprojection error: 0.000000px
+```
 
 
 
