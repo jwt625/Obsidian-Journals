@@ -2422,6 +2422,16 @@ Mean observations per image: 0.000000
 Mean reprojection error: 0.000000px
 ```
 
+2025-11-20T23:37:33-08:00
+Tried various colmap param, no lick.
+Had to use opencv camera instead of pinhole camera.
+Best case got ~30 images to work. However the final 3DGS is still crap:
+
+![[Pasted image 20251120233854.png]]
+A different angle would totally not work:
+![[Pasted image 20251120233917.png]]
+
+
 
 
 
