@@ -216,3 +216,7 @@ Test 4: 404
 Test 5: 200
 ```
 
+2025-12-17T09:33:27-08:00
+![[Pasted image 20251217093328.png]]
+
+iphone crashed once every two months or so.
